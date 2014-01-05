@@ -38,6 +38,7 @@
         <item>E</item>
         
     </string-array>
+    <string name="vborder">8dp</string>
     
     
 </resources>

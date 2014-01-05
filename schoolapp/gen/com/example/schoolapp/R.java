@@ -46,29 +46,31 @@ public final class R {
         public static final int timetable=0x7f020007;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a001b;
+        public static final int action_settings=0x7f0a001d;
         public static final int editText1=0x7f0a0004;
+        public static final int editText2=0x7f0a0015;
         public static final int imageView1=0x7f0a0002;
+        public static final int imageView2=0x7f0a0014;
         public static final int medicoView1=0x7f0a0000;
-        public static final int selectday=0x7f0a0017;
-        public static final int selectdays=0x7f0a0014;
-        public static final int selectdays1=0x7f0a0016;
-        public static final int selectdays2=0x7f0a0015;
+        public static final int selectday=0x7f0a0019;
+        public static final int selectdays=0x7f0a0016;
+        public static final int selectdays1=0x7f0a0018;
+        public static final int selectdays2=0x7f0a0017;
         public static final int tableRow2=0x7f0a0005;
         public static final int tableRow4=0x7f0a0006;
-        public static final int tbl_txt1=0x7f0a0019;
+        public static final int tbl_txt1=0x7f0a001b;
         public static final int tbl_txt11=0x7f0a0007;
         public static final int tbl_txt12=0x7f0a0008;
         public static final int tbl_txt13=0x7f0a0009;
         public static final int tbl_txt14=0x7f0a000a;
-        public static final int tbl_txt2=0x7f0a0018;
+        public static final int tbl_txt2=0x7f0a001a;
         public static final int tbl_txt21=0x7f0a000e;
         public static final int tbl_txt22=0x7f0a000f;
         public static final int tbl_txt23=0x7f0a0010;
         public static final int tbl_txt24=0x7f0a0011;
         public static final int tbl_txt31=0x7f0a0012;
         public static final int tbl_txt32=0x7f0a0013;
-        public static final int tbl_txt4=0x7f0a001a;
+        public static final int tbl_txt4=0x7f0a001c;
         public static final int tbl_txt41=0x7f0a0003;
         public static final int tbl_txt42=0x7f0a000b;
         public static final int tbl_txt43=0x7f0a000c;
@@ -78,7 +80,9 @@ public final class R {
     public static final class layout {
         public static final int leaveapp=0x7f030000;
         public static final int medico=0x7f030001;
-        public static final int timetable=0x7f030002;
+        public static final int medico_edited=0x7f030002;
+        public static final int medico_edited_1=0x7f030003;
+        public static final int timetable=0x7f030004;
     }
     public static final class menu {
         public static final int main_activity_actions=0x7f090000;
@@ -90,6 +94,7 @@ public final class R {
         public static final int font_size=0x7f060003;
         public static final int hello_world=0x7f060002;
         public static final int text_size=0x7f060004;
+        public static final int vborder=0x7f060005;
     }
     public static final class style {
         /** 
