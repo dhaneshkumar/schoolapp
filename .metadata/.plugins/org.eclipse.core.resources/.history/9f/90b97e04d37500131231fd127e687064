@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<ScrollView
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:background="@drawable/background"
+  android:layout_height="fill_parent">
+<LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"    
+        android:background="#eddec9" >
+
+    <ImageView
+        android:id="@+id/medicoView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="5dp"
+        android:src="@drawable/medico" />
+    
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/medicoView1"
+        android:text="Medicco"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="30sp" />
+
+   
+	</RelativeLayout>
+	
+    <TableLayout
+    android:background="@drawable/customshape"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    
+   
+    
+   >
+ 
+<TableRow android:layout_height="match_parent"
+     >
+            
+             <TextView
+         android:id="@+id/tbl_txt11"
+         android:layout_width="0dp"
+         android:layout_height="wrap_content"
+         android:textStyle="bold"
+         android:textSize="15sp"
+         android:textColor="#000"
+         android:padding="10dip"
+         android:layout_margin="4dip"
+         android:layout_weight="1"
+         android:text="Age" />
+             
+               <TextView
+         android:id="@+id/tbl_txt12"
+         android:layout_width="0dp"
+         android:layout_height="wrap_content"
+         android:textSize="15sp"
+         android:textColor="#000"
+         android:padding="10dip"
+         android:layout_margin="4dip"
+         android:layout_weight="1"
+         android:text="21 years" />
+               
+         <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+       
+        android:src="@drawable/edit" />
+               
+               
+      </TableRow>
+       <TableRow android:layout_height="1px" android:background="@color/silver">
+   <TextView android:layout_span="2" android:layout_height="1px" 
+             android:layout_width="fill_parent" android:text="">
+   </TextView>
+</TableRow>
+                 
+     <TableRow android:layout_height="match_parent"
+     >            
+                 <TextView
+         android:id="@+id/tbl_txt13"
+         android:layout_width="0dp"
+         android:layout_height="wrap_content"
+         android:textStyle="bold"
+         android:textSize="15sp"
+         android:textColor="#000"
+         android:padding="10dip"
+         android:layout_margin="4dip"
+         android:layout_weight="1"
+         android:text="Blood group" />
+                   <TextView
+         android:id="@+id/tbl_txt14"
+         android:layout_width="0dp"
+         android:layout_height="wrap_content"
+        
+         android:textSize="15sp"
+         android:textColor="#000"
+         android:padding="10dip"
+         android:layout_margin="4dip"
+         android:layout_weight="1"
+         android:text="A+" />
+                   
+          <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+       
+        android:src="@drawable/edit" />
+              
+        </TableRow>
+        
+      
+        
+	  <TableRow android:layout_height="1px" android:background="@color/silver">
+   <TextView android:layout_span="2" android:layout_height="1px" 
+             android:layout_width="fill_parent" android:text="">
+   </TextView>
+</TableRow>
+
+        <TableRow android:layout_height="match_parent" >
+            <TextView
+         android:id="@+id/tbl_txt41"
+         android:layout_width="0dip"
+         android:layout_height="wrap_content"
+         android:textStyle="bold"
+         android:textSize="15sp"
+         android:textColor="#000"
+         android:padding="10dip"
+         android:layout_margin="4dip"
+         android:layout_weight="1"
+         android:text="Eye Sight" />
+             
+               <TextView
+         android:id="@+id/tbl_txt42"
+         android:layout_width="0dip"
+         android:layout_height="wrap_content"
+         android:textSize="15sp"
+         android:textColor="#000"
+         android:padding="10dip"
+         android:layout_margin="4dip"
+         android:layout_weight="1"
+         android:text="6/6" />
+                <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+       
+        android:src="@drawable/edit" />
+              </TableRow>
+              <TableRow android:layout_height="1px" android:background="@color/silver">
+   <TextView android:layout_span="2" android:layout_height="1px" 
+             android:layout_width="fill_parent" android:text="">
+   </TextView>
+</TableRow>  
+        <TableRow android:layout_height="match_parent" >
+              
+                 <TextView
+         android:id="@+id/tbl_txt43"
+         android:layout_width="0dip"
+         android:layout_height="wrap_content"
+         android:textStyle="bold"
+         android:textSize="15sp"
+         android:textColor="#000"
+         android:padding="10dip"
+         android:layout_margin="4dip"
+         android:layout_weight="1"
+         android:text="PD" />
+                   <TextView
+         android:id="@+id/tbl_txt44"
+         android:layout_width="0dip"
+         android:layout_height="wrap_content"
+         android:textSize="15sp"
+         android:textColor="#000"
+         android:padding="10dip"
+         android:layout_margin="4dip"
+         android:layout_weight="1"
+         android:text="No" /> 
+             <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+       
+        android:src="@drawable/edit" />
+        </TableRow>
+        
+        
+ <TableRow android:layout_height="1px" android:background="@color/silver">
+   <TextView android:layout_span="2" android:layout_height="1px" 
+             android:layout_width="fill_parent" android:text="">
+   </TextView>
+</TableRow>
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="match_parent">
+             <TextView
+         android:id="@+id/tbl_txt21"
+         android:layout_width="0dip"
+         android:layout_height="wrap_content"
+         android:textStyle="bold"
+         android:textSize="15sp"
+         android:textColor="#000"
+         android:padding="10dip"
+         android:layout_margin="4dip"
+         android:layout_weight="1"
+         android:text="Height" />
+             
+               <TextView
+         android:id="@+id/tbl_txt22"
+         android:layout_width="0dip"
+         android:layout_height="wrap_content"
+         android:textSize="15sp"
+         android:textColor="#000"
+         android:padding="10dip"
+         android:layout_margin="4dip"
+         android:layout_weight="1"
+         android:text="6.1 inch" />
+                <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+       
+        android:src="@drawable/edit" />
+               </TableRow>
+               <TableRow android:layout_height="1px" android:background="@color/silver">
+   <TextView android:layout_span="2" android:layout_height="1px" 
+             android:layout_width="fill_parent" android:text="">
+   </TextView>
+</TableRow>  
+        <TableRow android:layout_height="match_parent" >       
+               
+              
+                 <TextView
+         android:id="@+id/tbl_txt23"
+         android:layout_width="0dip"
+         android:layout_height="wrap_content"
+         android:textStyle="bold"
+         android:textSize="15sp"
+         android:textColor="#000"
+         android:padding="10dip"
+         android:layout_margin="4dip"
+         android:layout_weight="1"
+         android:text="Weight" />
+                   <TextView
+         android:id="@+id/tbl_txt24"
+         android:layout_width="0dip"
+         android:layout_height="wrap_content"
+        
+         android:textSize="15sp"
+         android:textColor="#000"
+         android:padding="10dip"
+         android:layout_margin="4dip"
+         android:layout_weight="1"
+         android:text="60 kg" />
+                    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+       
+        android:src="@drawable/edit" />
+        </TableRow>
+       <TableRow android:layout_height="1px" android:background="@color/silver">
+   <TextView android:layout_span="2" android:layout_height="1px" 
+             android:layout_width="fill_parent" android:text="">
+   </TextView>
+</TableRow>  
+      <TableRow android:layout_height="match_parent" >
+         <TextView
+         android:id="@+id/tbl_txt31"
+         android:layout_width="0dip"
+         android:layout_height="wrap_content"
+         android:textStyle="bold"
+         android:textSize="15sp"
+         android:textColor="#000"
+         android:padding="10dip"
+         android:layout_margin="4dip"
+         android:layout_weight="1"
+         android:text="BMI" />
+             
+               <TextView
+         android:id="@+id/tbl_txt32"
+         android:layout_width="0dip"
+         android:layout_height="wrap_content"
+         android:textSize="15sp"
+         android:textColor="#000"
+         android:padding="10dip"
+         android:layout_margin="4dip"
+         android:layout_weight="1"
+         android:text="Normal" />
+                <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+       
+        android:src="@drawable/edit" />
+               </TableRow>
+            </TableLayout>
+    <!-- ****************************************************< Allergy >************************************* -->   
+   
+     <TableLayout android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:stretchColumns="1">
+      
+         
+        <TableRow android:layout_height="8px" >
+   <TextView android:layout_span="2" android:layout_height="20sp" android:layout_marginLeft="15dp"
+       android:layout_marginTop="5sp"
+       android:textSize="15sp"
+       android:textColor="#000"
+             android:layout_width="fill_parent" android:text="Allergy">
+   </TextView>
+   
+</TableRow>
+
+        </TableLayout>
+     <TableLayout
+    android:background="@drawable/customshape"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:stretchColumns="1" >     
+    
+         <TableRow android:layout_height="1px" android:background="@color/silver">
+   <TextView android:layout_span="2" android:layout_height="1px" 
+             android:layout_width="fill_parent" android:text="">
+   </TextView>
+</TableRow>  
+      <TableRow android:layout_height="match_parent" >
+         <TextView
+         android:id="@+id/tbl_txt31"
+         android:layout_width="0dip"
+         android:layout_height="wrap_content"
+         android:textStyle="bold"
+         android:textSize="15sp"
+         android:textColor="#000"
+         android:padding="10dip"
+         android:layout_margin="4dip"
+         android:layout_weight="1"
+         android:text="Add new" />
+             
+             
+                <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+       
+        android:src="@drawable/edit" />
+               </TableRow>
+               <TableRow android:layout_height="1px" android:background="@color/silver">
+   <TextView android:layout_span="2" android:layout_height="1px" 
+             android:layout_width="fill_parent" android:text="">
+   </TextView>
+</TableRow>
+        <TableRow android:layout_height="match_parent" >
+            <TextView
+         android:id="@+id/tbl_txt41"
+         android:layout_width="0dip"
+         android:layout_height="wrap_content"
+         android:textSize="15sp"
+         android:textColor="#000"
+         android:padding="10dip"
+         android:layout_margin="4dip"
+         android:layout_weight="9"
+         android:text="Cold" />
+             <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_weight="1"
+        android:src="@drawable/edit" />
+             
+           <ImageView
+        android:id="@+id/imageView2"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/edit" />
+               </TableRow>
+		<TableRow android:layout_height="1px" android:background="@color/silver">
+   <TextView android:layout_span="2" android:layout_height="1px" 
+             android:layout_width="fill_parent" android:text="">
+   </TextView>
+</TableRow>
+        
+        <TableRow android:layout_height="match_parent" >
+            <TextView
+         android:id="@+id/tbl_txt41"
+         android:layout_width="0dip"
+         android:layout_height="wrap_content"
+         android:textSize="15sp"
+         android:textColor="#000"
+         android:padding="10dip"
+         android:layout_margin="4dip"
+         android:layout_weight="1"
+         android:text="Perfumes" />
+          
+               </TableRow>
+               
+        <TableRow android:layout_height="1px" android:background="@color/silver">
+   <TextView android:layout_span="2" android:layout_height="1px" 
+             android:layout_width="fill_parent" android:text="">
+   </TextView>
+</TableRow>
+               
+         <TableRow android:layout_height="match_parent" >
+            <TextView
+         android:id="@+id/tbl_txt41"
+         android:layout_width="0dip"
+         android:layout_height="wrap_content"
+         android:textSize="15sp"
+         android:textColor="#000"
+         android:padding="10dip"
+         android:layout_margin="4dip"
+         android:layout_weight="1"
+         android:text="sun light" />
+          
+               </TableRow>
+               
+         </TableLayout>
+     <!-- ****************************************************< Past injuries >************************************* -->    
+       
+        <TableLayout android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:stretchColumns="1">
+        <TableRow android:layout_height="8px" >
+   <TextView android:layout_span="2" android:layout_height="20sp" android:layout_marginLeft="15dp"
+       android:layout_marginTop="5sp"
+       android:textSize="15sp"
+       android:textColor="#000"
+             android:layout_width="fill_parent" android:text="Past Life Injuries">
+   </TextView>
+   
+</TableRow>
+
+        </TableLayout>
+       
+        <TableLayout
+    android:background="@drawable/customshape"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:stretchColumns="1" > 
+       
+        <TableRow android:layout_height="match_parent" 
+            android:orientation="vertical">
+   
+            <TextView
+         android:id="@+id/tbl_txt41"
+         android:layout_width="0dip"
+         android:layout_height="wrap_content"
+         android:textSize="15sp"
+         android:textColor="#000"
+         android:padding="10dip"
+         android:layout_margin="4dip"
+         android:layout_marginBottom="0dip"
+         android:layout_weight="1"
+         android:text="Car Accident" />
+            
+           
+             </TableRow>
+             
+         <TableRow >
+              <TextView
+         android:id="@+id/tbl_txt41"
+         android:layout_width="0dip"
+         android:layout_height="wrap_content"
+         android:textSize="13sp"
+         android:textColor="#000"
+         android:padding="10dip"
+         android:layout_marginTop="-15dip"
+         android:layout_weight="1"
+         android:text="June 2013" />
+          
+               </TableRow>
+        
+              <TableRow >
+              <TextView
+         android:id="@+id/tbl_txt41"
+         android:layout_width="0dip"
+         android:layout_height="wrap_content"
+         android:textSize="12sp"
+         android:textColor="#000"
+         android:padding="10dip"
+         android:layout_marginTop="-15dip"
+         
+         android:layout_weight="1"
+         android:text="Happened at lonavala in night" />
+          
+               </TableRow>
+		<TableRow android:layout_height="1px" android:background="@color/silver">
+   <TextView android:layout_span="2" android:layout_height="1px" 
+             android:layout_width="fill_parent" android:text="">
+   </TextView>
+</TableRow>
+        
+       <TableRow android:layout_height="match_parent" 
+            android:orientation="vertical">
+   
+            <TextView
+         android:id="@+id/tbl_txt41"
+         android:layout_width="0dip"
+         android:layout_height="wrap_content"
+         android:textSize="15sp"
+         android:textColor="#000"
+         android:padding="10dip"
+         android:layout_margin="4dip"
+         android:layout_marginBottom="0dip"
+         android:layout_weight="10"
+         android:text="Train Accident" />
+            
+        
+             </TableRow>
+       <TableRow>       
+       
+        <TextView
+         android:id="@+id/tbl_txt41"
+         android:layout_width="0dip"
+         android:layout_height="wrap_content"
+         android:textSize="13sp"
+         android:textColor="#000"
+         android:padding="10dip"
+         android:layout_marginTop="-15dip"
+         android:layout_weight="1"
+         android:text="June 2013" />
+        
+         </TableRow>
+              <TableRow >
+              <TextView
+         android:id="@+id/tbl_txt41"
+         android:layout_width="0dip"
+         android:layout_height="wrap_content"
+         android:textSize="12sp"
+         android:textColor="#000"
+         android:padding="10dip"
+         android:layout_marginTop="-15dip"
+         
+         android:layout_weight="1"
+         android:text="Happened at lonavala in day" />
+          
+               </TableRow>
+    </TableLayout>
+    
+    
+</LinearLayout>
+</ScrollView>

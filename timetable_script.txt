@@ -1,0 +1,19 @@
+CREATE TABLE `TimeTable`( `class_no` INT(2) UNSIGNED NOT NULL, `section` VARCHAR(3) NOT NULL, `day` CHAR(3) NOT NULL, `FROM` TIME NOT NULL, `TO` TIME NOT NULL,  `teacher` VARCHAR(50), `subject` VARCHAR(20) , PRIMARY KEY(`class_no`, `section`, `day`, `FROM`));
+
+
+insert into TimeTable values( 1, 'A', 'MON', '08:30:00', '09:25:00', 'MR. Khander', 'PHY');
+insert into TimeTable values( 1, 'A', 'MON', '09:30:00', '10:25:00', 'MR. bean', 'Psychology');
+insert into TimeTable values( 1, 'A', 'MON', '10:30:00', '11:25:00', 'MR. martin', 'science');
+insert into TimeTable values( 1, 'A', 'MON', '11:30:00', '12:25:00', 'MR. ZUKERBERG', 'FACEBOOK');
+insert into TimeTable values( 1, 'A', 'TUE', '11:30:00', '12:25:00', 'MR. ZUKERBERG', 'BOOK');
+insert into TimeTable values( 1, 'A', 'WED', '11:30:00', '12:25:00', 'MR. ZUKER', 'FACEBOOK');
+insert into TimeTable values( 1, 'A', 'FRI', '11:30:00', '12:25:00', 'MR. ZUKERBERG', 'FACEBOOK');
+insert into TimeTable values( 1, 'A', 'TUE', '10:30:00', '11:25:00', 'MR. martin', 'science');
+insert into TimeTable values( 1, 'A', 'WED', '10:30:00', '11:25:00', 'MR. martin', 'scice');
+insert into TimeTable values( 1, 'A', 'FRI', '10:30:00', '11:25:00', 'MR. main', 'science');
+insert into TimeTable values( 1, 'A', 'TUE', '09:30:00', '10:25:00', 'MR. bean', 'Psychology');
+insert into TimeTable values( 1, 'A', 'WED', '09:30:00', '10:25:00', 'MR. bean', 'Psychology');
+insert into TimeTable values( 1, 'A', 'FRI', '09:30:00', '10:25:00', 'MR. bean', 'Psychogy');
+insert into TimeTable values( 1, 'A', 'TUE', '08:30:00', '09:25:00', 'MR. Kher', 'PHY');
+insert into TimeTable values( 1, 'A', 'WED', '08:30:00', '09:25:00', 'MR. Khander', 'PHY');
+insert into TimeTable values( 1, 'A', 'FRI', '08:30:00', '09:25:00', 'MR. Khaer', 'PHY');

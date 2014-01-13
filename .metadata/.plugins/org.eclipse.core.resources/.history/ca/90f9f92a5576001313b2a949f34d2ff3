@@ -1,0 +1,29 @@
+package com.example.schoolapp;
+
+import android.os.Bundle;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.app.ActionBar;
+import android.app.Activity;
+import android.view.Menu;
+
+public class Timetable extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.phonelist);
+	}
+	
+	
+	ActionBar bar = getActionBar();
+	bar.setBackgroundDrawable(new ColorDrawable("COLOR"));
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.timetable, menu);
+		return true;
+	}
+
+}

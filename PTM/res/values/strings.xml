@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">PTM</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="company_logo">Company Logo</string>
+    <string name="str_null">null</string>
+    <string name="action_student">Student Details</string>
+    <string name="action_school">School Details</string>
+    
+    <string-array name="left_drawer_list">
+        <item>Profile</item>
+        <item>Medical History</item>
+        <item>Timetable</item>
+        <item>Attendance</item>
+        <item>Leave App</item>
+        <item>Grades</item>
+        <item>Academic Calendar</item>
+        <item>Feedback</item>
+        <item>Academic History</item>
+        <item>Contact List</item>
+        <item>Gallery</item>
+    </string-array>
+    <string-array name="right_drawer_list">
+        <item>Profile</item>
+        <item>Medical Records</item>
+        <item>Timetable</item>
+        <item>Attendance</item>
+        <item>Grades</item>
+    </string-array>
+    <string-array name="parent_array">
+        <item>Father</item>
+        <item>Mother</item>
+        <item>Guardian</item>
+    </string-array>
+    
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+
+</resources>

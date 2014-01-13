@@ -116,6 +116,8 @@
         <TableRow
             android:id="@+id/tableRow2"
             android:layout_width="match_parent">
+
+           
             <EditText
                  android:id="@+id/editText1"
                  android:layout_width="match_parent"
