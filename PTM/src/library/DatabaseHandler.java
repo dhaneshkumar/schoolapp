@@ -224,6 +224,21 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return parent_types;
     }
     
+    public ArrayList<String> getStudents(){
+    	ArrayList<String> students = new ArrayList<String>();
+    	String query = "SELECT first_name FROM Student";
+    	SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        
+        while(cursor.moveToNext()){
+        	if(cursor.getCount() > 0)
+        		students.add(cursor.getString(0));
+        }
+        cursor.close();
+        db.close();
+        return students;
+    }
+    
     public String getStudentName(int i){
     	String name = null;
     	String query = "SELECT first_name FROM Student WHERE id = "+i;

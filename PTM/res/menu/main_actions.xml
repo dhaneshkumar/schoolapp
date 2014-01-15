@@ -6,6 +6,4 @@
           android:title="Edit"
           yourapp:showAsAction="always" />
     
-    
-    
 </menu>

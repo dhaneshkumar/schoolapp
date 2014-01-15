@@ -2,18 +2,22 @@ package com.trumplabs.ptm;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
 import library.DatabaseHandler;
 import library.UserFunctions;
+
 import org.json.JSONObject;
+
+import spinner.*;
+
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBar.Tab;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -26,11 +30,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.TabHost;
-import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
 
-public class ProfileActivity extends ActionBarActivity implements OnItemSelectedListener{
+public class ProfileActivity extends ActionBarActivity implements OnItemSelectedListener, ActionBar.OnNavigationListener{
 	ImageView img;
 	DatabaseHandler d;
 	UserFunctions u;
@@ -50,6 +54,15 @@ public class ProfileActivity extends ActionBarActivity implements OnItemSelected
 	private CharSequence			mDrawerTitle;
 	private CharSequence			mTitle;
 	private String[]				mPlanetTitles;
+	
+	private HashMap<String, String> studentsList;
+	
+	// Title navigation Spinner data
+    private ArrayList<StudentSpinner> navSpinner;
+     
+    // Navigation adapter
+    private SpinnerAdapter adapter;
+    private ActionBar actionBar;
 
 	@SuppressLint("NewApi")
 	@Override
@@ -72,12 +85,13 @@ public class ProfileActivity extends ActionBarActivity implements OnItemSelected
 		profession = (TextView)findViewById(R.id.profession);
 		pphone = (TextView)findViewById(R.id.pphone);
 		pemail = (TextView)findViewById(R.id.pemail);
-		//student_tab = (TabHost)findViewById(R.id.student_tab);
+		
 		
 		u = new UserFunctions();
 		d = new DatabaseHandler(this);
 		edit_flag = 0;
 		curr_child = 1;
+		studentsList = new HashMap<String ,String>();
 		
 		if(u.isUserLoggedIn(this)){
 			//if not fetched, fetch now
@@ -98,11 +112,21 @@ public class ProfileActivity extends ActionBarActivity implements OnItemSelected
 		}
 		
 		//Action Bar///////////////////////////////////////////////////////////////////////////
-		final ActionBar actionBar = getSupportActionBar();
+		actionBar = getSupportActionBar();
 		
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setHomeButtonEnabled(true);
+		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
 
+		//////////////Spinner
+		setStudentChoices();
+		
+		// title drop down adapter
+        adapter = new SpinnerAdapt(getApplicationContext(), navSpinner);
+ 
+        // assigning the spinner navigation    
+        actionBar.setListNavigationCallbacks(adapter, this);
+        //////////////\Spinner
 		//\Action Bar//////////////////////////////////////////////////////////////////
 		
 		/////////////////////////////////////////////////////////////////Drawer shit
@@ -159,6 +183,15 @@ public class ProfileActivity extends ActionBarActivity implements OnItemSelected
 				R.layout.spinner_layout, parent_types);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
+	}
+	
+	private void setStudentChoices(){
+		navSpinner = new ArrayList<StudentSpinner>();
+		ArrayList<String>students = d.getStudents();
+		for(int i = 0; i < d.getRowCount("Student"); i++){
+			navSpinner.add(new StudentSpinner(students.get(i), R.drawable.ic_action_person));
+			studentsList.put(i +"", students.get(i));
+		}
 	}
 	
 	private void showStudentDetails(int id){
@@ -264,6 +297,14 @@ public class ProfileActivity extends ActionBarActivity implements OnItemSelected
         // If the nav drawer is open, hide action items related to the content view
 		boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
         menu.findItem(R.id.edit_profile).setVisible(!drawerOpen);
+        if(drawerOpen){
+        	actionBar.setDisplayShowTitleEnabled(false);
+        	actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
+        }
+        else{
+        	actionBar.setDisplayShowTitleEnabled(true);
+        	actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+        }
         return super.onPrepareOptionsMenu(menu);
     }
 	
@@ -303,6 +344,10 @@ public class ProfileActivity extends ActionBarActivity implements OnItemSelected
 		// update selected item and title, then close the drawer
 		mDrawerList.setItemChecked(position, true);
 		setTitle(mPlanetTitles[position]);
+		if(position == 1){
+			Intent intent = new Intent("android.intent.action.MED");
+			startActivity(intent);
+		}
 		mDrawerLayout.closeDrawer(mDrawerList);
 	}
     
@@ -325,7 +370,14 @@ public class ProfileActivity extends ActionBarActivity implements OnItemSelected
 	public void onConfigurationChanged(Configuration newConfig)
 	{
 		super.onConfigurationChanged(newConfig);
-		// Pass any configuration change to the drawer toggls
+		// Pass any configuration change to the drawer toggles
 		mDrawerToggle.onConfigurationChanged(newConfig);
+	}
+
+	@Override
+	public boolean onNavigationItemSelected(int arg0, long arg1) {
+		// TODO Auto-generated method stub
+		showStudentDetails(d.getStudentId(studentsList.get(arg0 +"")));
+		return false;
 	}
 }

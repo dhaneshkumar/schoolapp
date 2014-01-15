@@ -5,7 +5,7 @@
     android:versionName="1.0" >
  
     <uses-sdk 
-        android:minSdkVersion="8"
+        android:minSdkVersion="7"
         android:targetSdkVersion="18" />
     
     <uses-permission android:name="android.permission.INTERNET" />
@@ -52,6 +52,15 @@
             android:name="DashboardActivity" >
             <intent-filter >
                 <action android:name="android.intent.action.DASH" />
+ 
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:label="@string/app_name"
+            android:name="MedicActivity" >
+            <intent-filter >
+                <action android:name="android.intent.action.MED" />
  
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>

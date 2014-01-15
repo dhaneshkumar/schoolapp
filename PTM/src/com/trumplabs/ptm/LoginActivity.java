@@ -49,11 +49,7 @@ public class LoginActivity extends Activity implements OnClickListener{
 		if(v.getId() == R.id.btn_login){
 			String username = user.getText().toString();
             String password = pass.getText().toString();
-           
             UserFunctions userFunction = new UserFunctions();
-            
-            
-            
             if(username.equals("") || password.equals("") || !isOnline()){
             	return;
             }
@@ -69,7 +65,6 @@ public class LoginActivity extends Activity implements OnClickListener{
                         // user successfully logged in
                         // Store user details in SQLite Database
                         DatabaseHandler db = new DatabaseHandler(this);
-                        
                         JSONObject json_user = json.getJSONObject("user");
                          
                         // Clear all previous data in database
