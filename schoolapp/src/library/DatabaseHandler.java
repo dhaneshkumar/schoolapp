@@ -3,12 +3,16 @@ package library;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.Toast;
  
 public class DatabaseHandler extends SQLiteOpenHelper {
  
@@ -29,7 +33,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     // Creating Tables
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String STUDENT = "CREATE TABLE Student(id INTEGER PRIMARY KEY,  first_name TEXT, last_name TEXT, age INTEGER, dob DATE, email_id TEXT, phone_no TEXT)";
+    /*
+    	String STUDENT = "CREATE TABLE Student(id INTEGER PRIMARY KEY,  first_name TEXT, last_name TEXT, age INTEGER, dob DATE, email_id TEXT, phone_no TEXT)";
         String PARENT = "CREATE TABLE Parent( id INTEGER, first_name TEXT , last_name TEXT , relation TEXT, profession TEXT, email_id TEXT, phone_no TEXT ,no_of_children INTEGER, sec_password VARCHAR, PRIMARY KEY(id, relation))";
         String TEACHER = "CREATE TABLE Teacher(id INTEGER PRIMARY KEY, first_name TEXT , last_name TEXT , qualification TEXT , email_id TEXT, phone_no TEXT)";
         String CLASS = "Create Table Class( class_no INTEGER  , section TEXT , strength INTEGER  , PRIMARY KEY(class_no,section))";
@@ -42,8 +47,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		String STUDENTPARENT = "CREATE TABLE StudentParent( student_id INTEGER  , parent_id INTEGER  , PRIMARY KEY(student_id), FOREIGN KEY(student_id) REFERENCES Student(id), FOREIGN KEY(parent_id) REFERENCES Parent(id))";
 		String SUBJECTBOOKCLASS= "CREATE TABLE SubjectBookClass( class_no INTEGER  , subject TEXT , book_id TEXT , PRIMARY KEY(class_no,book_id), FOREIGN KEY(class_no) REFERENCES Class(class_no), FOREIGN KEY(book_id) REFERENCES Book(id), FOREIGN KEY(subject) REFERENCES Subject(name))";
 		String MEDICALRECORD = "CREATE TABLE MedicalRecord( student_id INTEGER  , blood_group TEXT , height INTEGER  , weight INTEGER  , allergies TEXT, PRIMARY KEY(student_id), FOREIGN KEY(student_id) REFERENCES Student(id))";
-        String USER = "CREATE TABLE User( id INTEGER , table_name TEXT)";
-        db.execSQL(STUDENT);
+		*/
+    	
+    	
+		String TIMETABLE = "CREATE TABLE timeTable(class_no INTEGER, section TEXT, day TEXT,   teacher TEXT, subject TEXT ,kick  TEXT, finish TEXT, PRIMARY KEY(class_no, section, day, kick))";
+
+	//	String USER = "CREATE TABLE User( id INTEGER , table_name TEXT)";
+   /*   db.execSQL(STUDENT);
         db.execSQL(PARENT);
         db.execSQL(TEACHER);
         db.execSQL(CLASS);
@@ -51,19 +61,22 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(EVENT);
         db.execSQL(SUBJECT);
         db.execSQL(ATTENDANCE);
+        db.execSQL(TIMETABLE);
         db.execSQL(CLASSTEACHER);
         db.execSQL(STUDENTCLASS);
         db.execSQL(STUDENTPARENT);
         db.execSQL(SUBJECTBOOKCLASS);
         db.execSQL(MEDICALRECORD);
         db.execSQL(USER);
+    */
+		db.execSQL(TIMETABLE);
     }
      
     // Upgrading database
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Drop older table if existed
-        db.execSQL("DROP TABLE IF EXISTS User");
+  /*      db.execSQL("DROP TABLE IF EXISTS User");
         db.execSQL("DROP TABLE IF EXISTS MedicalRecord");
         db.execSQL("DROP TABLE IF EXISTS SubjectBookClass");
         db.execSQL("DROP TABLE IF EXISTS StudentParent");
@@ -77,6 +90,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS Teacher");
         db.execSQL("DROP TABLE IF EXISTS Parent");
         db.execSQL("DROP TABLE IF EXISTS Student");
+    */    db.execSQL("DROP TABLE IF EXISTS timeTable");
  
         // Create tables again
         onCreate(db);
@@ -85,6 +99,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     /**
      * Storing user details in database
      * */
+    
     public void addUser(int id, String table) {
     	SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -106,7 +121,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				    		int age,
 				    		String dob,
 				    		String email_id,
-				    		String phone_no){
+				    		String phone_no)
+    {
     	Log.e("DB","Inserting Row in Student");
     	SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -330,5 +346,230 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.delete("Student", null, null);
         db.close();
     }
+    
+    
+    /***************************************************************************************/
+    /*                              Timetable                                              */
+    /***************************************************************************************/
+    
+    UserFunctions uf =new UserFunctions();
+    SQLiteDatabase db = this.getWritableDatabase();
+    SQLiteDatabase db1 = this.getReadableDatabase();
+    
+    public void setTimeTable(String class_no, String section_no)
+    {
+    	JSONObject json = uf.getTtFromServer("timetable", class_no, section_no);
+    
+    	
+   
+    	show("setting timetable sqlite database------------");
+    
+    	String result1="";
+	
+	try {
+         if (json.getString("success") != null) {
+             int res = json.getInt("success");
+        
+             if(res == 1){
+                 result1 = json.getString("response");
+                 
+                 System.out.println("got result from localhost:-- " + result1);
+                 
+                 String[] store = result1.split("~");
+                 //System.out.println( "qqq" + "--- line----" );
+             
+        
+                 db.execSQL("DROP TABLE IF EXISTS timeTable");
+                 
+                 
+                 String TIMETABLE = "CREATE TABLE timeTable(class_no INTEGER, section TEXT, day TEXT, startTime  TEXT, endTime TEXT,  subject TEXT, teacher TEXT , PRIMARY KEY(class_no, section, day, startTime))";
+                 
+             	 db.execSQL(TIMETABLE);
+                 
+                 
+                 
+                // System.out.println( "www" + "--- line----" );
+                 for(int i =0; i< store.length;i++)
+                 {
+                //	 System.out.println( i + "--- line----" + store[i]);
+                	 String[]  input= store[i].split(",");
+                 
+                	 ContentValues insertValues = new ContentValues();
+                	 insertValues.put("class_no", input[0]);
+                	 insertValues.put("section", input[1]);
+                	 insertValues.put("day", input[2]);
+                	 insertValues.put("startTime", input[3]);
+                	 insertValues.put("endTime", input[4]);
+                	 insertValues.put("subject", input[5]);
+                	 insertValues.put("teacher", input[6]);
+                	 db.insert("timeTable", null, insertValues);
+                 }
+             }
+         }
+         System.out.println("data filled up in sqlite table------");
+	}
+ catch (JSONException e) {
+    //Toast.makeText(getApplicationContext(), "Error  null in retriving timetable ", Toast.LENGTH_LONG).show();
+       e.printStackTrace();
+   }
+    
+}
+    /************************************************************************************/
+   
+    // We need to store the id the student. From the id of student retrieve class & section of student.
+    public String getTimeTable(String day){
+      //  HashMap<String,String> user = new HashMap<String,String>();
+     //   String selectQuery = "SELECT  * FROM Parent WHERE id = " + id + " and relation = '" + relation + "'";
+        String selectQuery="SELECT * from timeTable where day = \"" + day + "\"";
+        
+        show("retrieving data from timetable sqlite database----------------");
+       // SQLiteDatabase db = this.getReadableDatabase();
+        //show("cursor ------ check1");
+        Cursor cursor = db1.rawQuery(selectQuery, null);
+        // Move to first row
+        String result="";
+        //show("cursor ------ check2");
+        cursor.moveToFirst();
+        
+       // show("cursor ------ check3");
+        
+       while(!cursor.isAfterLast())
+       {
+    	 //  show("no of colulmns :  --  "+cursor.getColumnCount());
+    	   
+    	   if(cursor.getCount() > 0){
+        	result +=  cursor.getString(3) +",";
+            result +=  cursor.getString(4) +",";
+            result +=  cursor.getString(5) + ",";
+            result +=  cursor.getString(6);
+            show(result);
+        }
+    	
+        cursor.moveToNext();
+        result += "~";
+       }
+       
+       
+       show("data retrived");
+        cursor.close();
+        db.close();
+        // return user
+        return result;
+    }
+    
+    
+    
+    /***************************************************************************************/
+    /*                              PHONE-LIST                                             */
+    /***************************************************************************************/
+    
+    //UserFunctions uf1 =new UserFunctions();
+    
+    public void setPhoneList()
+    {
+    	JSONObject json = uf.getPhoneListFromServer("phoneList");
+    
+    	
+   
+    	show("setting phoneList sqlite database------------");
+    
+    	String result1="";
+	
+	try {
+         if (json.getString("success") != null) {
+             int res = json.getInt("success");
+        
+             if(res == 1){
+                 result1 = json.getString("response");
+                 
+                 System.out.println("got result from localhost:-- " + result1);
+                 
+                 String[] store = result1.split("~");
+                 //System.out.println( "qqq" + "--- line----" );
+             //    SQLiteDatabase db = this.getWritableDatabase();
+        
+                 db.execSQL("DROP TABLE IF EXISTS phoneList");
+                 
+                 
+                 String PHONELIST = "CREATE TABLE phoneList(id INTEGER, name TEXT, post TEXT, con_person  TEXT, contact TEXT,  emailid TEXT, PRIMARY KEY(id))";
+                 
+             	 db.execSQL(PHONELIST);
+                 
+                 
+                 
+                // System.out.println( "www" + "--- line----" );
+                 for(int i =0; i< store.length;i++)
+                 {
+                //	 System.out.println( i + "--- line----" + store[i]);
+                	 String[]  input= store[i].split(",");
+                 
+                	 ContentValues insertValues = new ContentValues();
+                	 insertValues.put("name", input[0]);
+                	 insertValues.put("post", input[1]);
+                	 insertValues.put("con_person", input[2]);
+                	 insertValues.put("contact", input[3]);
+                	 insertValues.put("emailid", input[4]);
+                	
+                	 db.insert("phoneList", null, insertValues);
+                 }
+             }
+         }
+         System.out.println("data filled up in sqlite table------");
+	}
+ catch (JSONException e) {
+    //Toast.makeText(getApplicationContext(), "Error  null in retriving timetable ", Toast.LENGTH_LONG).show();
+       e.printStackTrace();
+   }
+    
+}
+    /************************************************************************************/
+   
+    // We need to store the id the student. From the id of student retrieve class & section of student.
+    public String getPhoneList(){
+      //  HashMap<String,String> user = new HashMap<String,String>();
+     //   String selectQuery = "SELECT  * FROM Parent WHERE id = " + id + " and relation = '" + relation + "'";
+        String selectQuery="SELECT * from phoneList;";
+        
+        show("retrieving data from phoneList sqlite database----------------");
+        //SQLiteDatabase db1 = this.getReadableDatabase();
+        show("cursor ------ check1");
+        Cursor cursor = db1.rawQuery(selectQuery, null);
+        // Move to first row
+        String result="";
+        show("cursor ------ check2");
+        cursor.moveToFirst();
+        
+        show("cursor ------ check3");
+        
+       while(!cursor.isAfterLast())
+       {
+    	   show("no of colulmns :  --  "+cursor.getColumnCount());
+    	   
+    	   if(cursor.getCount() > 0){
+        	result +=  cursor.getString(1) +",";
+            result +=  cursor.getString(2) +",";
+            result +=  cursor.getString(3) + ",";
+            result +=  cursor.getString(4) + ",";
+            result +=  cursor.getString(5);
+            show(result);
+        }
+    	
+        cursor.moveToNext();
+        result += "~";
+       }
+       
+       
+       show("data retrived");
+        cursor.close();
+        db.close();
+        // return user
+        return result;
+    }
+    
+   void show(String st)
+   {
+	   System.out.println(st);
+   }
+    
  
 }

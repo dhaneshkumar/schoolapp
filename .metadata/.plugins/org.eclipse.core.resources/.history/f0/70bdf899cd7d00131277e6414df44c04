@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" 
+    xmlns:yourapp="http://schemas.android.com/apk/res-auto">
+   
+    <item android:id="@+id/MON"
+          android:title="MON"
+          android:showAsAction="never"/>
+     <item android:id="@+id/TUE"
+          android:title="TUE"
+          android:showAsAction="never"/>
+      <item android:id="@+id/WED"
+          android:title="WED"
+          android:showAsAction="never"/>
+     
+</menu>

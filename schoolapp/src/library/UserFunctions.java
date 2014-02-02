@@ -113,16 +113,46 @@ public class UserFunctions {
         return true;
     }
     
-    //**************************************************************************************
+   
     
-    public JSONObject getTimetable(String table, String day){
+    
+    public JSONObject getTtFromServer(String table, String class_name, String section_name){
         // Building Parameters
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         
         params.add(new BasicNameValuePair("tag", "timeTableDetails"));
         params.add(new BasicNameValuePair("table", table));
-        params.add(new BasicNameValuePair("day", day));
+        params.add(new BasicNameValuePair("class", class_name));
+        params.add(new BasicNameValuePair("section", section_name));
         
+        
+        AsyncTask<List<NameValuePair>, Void, JSONObject> json_parse = new JSONParser(loginURL).execute(params);
+        
+		try {
+			json = json_parse.get();
+			
+		//	System.out.println("json---" + json);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+        return json;
+    }
+    
+    
+    //**********************************< phone list>**********************************
+    
+    public JSONObject getPhoneListFromServer(String table){
+        // Building Parameters
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        
+        params.add(new BasicNameValuePair("tag", "phoneListDetails"));
+        params.add(new BasicNameValuePair("table", table));
+      
         AsyncTask<List<NameValuePair>, Void, JSONObject> json_parse = new JSONParser(loginURL).execute(params);
         
 		try {
@@ -139,7 +169,6 @@ public class UserFunctions {
 		
         return json;
     }
-    
     
      
 }

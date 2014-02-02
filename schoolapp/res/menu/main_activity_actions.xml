@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
-    
-
+<menu xmlns:android="http://schemas.android.com/apk/res/android" 
+    xmlns:yourapp="http://schemas.android.com/apk/res-auto">
+   
+    <item android:id="@+id/MON"
+          android:title="MON"
+          yourapp:showAsAction="always"/>
+     <item android:id="@+id/TUE"
+          android:title="TUE"
+          yourapp:showAsAction="ifRoom"/>
+      <item android:id="@+id/WED"
+          android:title="WED"
+          yourapp:showAsAction="ifRoom"/>
+     
 </menu>
