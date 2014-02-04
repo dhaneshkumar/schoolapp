@@ -1,7 +1,0 @@
-package library;
-
-public class init {
-	DatabaseHandler db= new DatabaseHandler(null);
-	UserFunctions uf = new UserFunctions();
-
-}

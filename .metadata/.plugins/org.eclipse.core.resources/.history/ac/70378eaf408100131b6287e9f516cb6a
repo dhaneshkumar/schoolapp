@@ -1,8 +1,0 @@
-package library;
-
-
-public class init extends Activity{
-	DatabaseHandler db= new DatabaseHandler(null);
-	UserFunctions uf = new UserFunctions();
-
-}
