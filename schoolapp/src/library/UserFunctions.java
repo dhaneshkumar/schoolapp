@@ -151,6 +151,7 @@ public class UserFunctions {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         
         params.add(new BasicNameValuePair("tag", "phoneListDetails"));
+        //params.add(new BasicNameValuePair("tag", "phoneListDetails"));
         params.add(new BasicNameValuePair("table", table));
       
         AsyncTask<List<NameValuePair>, Void, JSONObject> json_parse = new JSONParser(loginURL).execute(params);

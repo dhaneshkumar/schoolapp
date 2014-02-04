@@ -27,6 +27,7 @@
         </activity>
         
         <activity android:name="com.example.schoolapp.Timetable"></activity>
+        <activity android:name="com.example.schoolapp.PhoneList_ext"></activity>
     </application>
 
 </manifest>

@@ -1,0 +1,121 @@
+package com.example.schoolapp;
+
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import org.json.JSONException;
+import org.json.JSONObject;
+import library.DatabaseHandler;
+import library.UserFunctions;
+import android.R.layout;
+import android.net.Uri;
+import android.os.Bundle;
+import android.provider.CalendarContract;
+import android.provider.CalendarContract.Calendars;
+import android.provider.CalendarContract.Events;
+import android.support.v7.app.ActionBarActivity;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.app.ActionBar;
+import android.app.ActionBar.LayoutParams;
+import android.app.Activity;
+import android.content.ContentResolver;
+import android.content.Intent;
+import android.database.Cursor;
+import android.view.Menu;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
+import android.widget.Toast;
+import library.*;
+
+public class PhoneList extends ActionBarActivity {
+	
+	TableLayout table;
+	TextView text1;
+	TextView text2;
+	TextView text3;
+	
+	
+@Override
+public void onCreate(Bundle savedInstanceState) {
+	super.onCreate(savedInstanceState);
+	setContentView(R.layout.phonelist);
+	
+	//Initializing all variables
+	//table = ( TableLayout) findViewById(R.id.timeTable);
+	
+	LinearLayout l1 = (LinearLayout) findViewById(R.id.layout1);
+	//l1.setBackgroundColor(Color.LTGRAY);
+	
+	DatabaseHandler db = new DatabaseHandler(this);
+	String result1="";	    
+	db.setPhoneList();
+	result1 = db.getPhoneList();
+	System.out.println("got result : " + result1);                 
+	String[] store = result1.split("~");
+
+	
+	for(int i=0; i<store.length;i++)
+	{
+		
+		// Creating a new RelativeLayout
+        RelativeLayout rl = new RelativeLayout(this);
+
+        // Defining the RelativeLayout layout parameters.
+        // In this case I want to fill its parent
+        LinearLayout.LayoutParams rlp = new LinearLayout.LayoutParams(
+        LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+        rlp.setMargins(2, 1, 2, 0);
+        rl.setLayoutParams(rlp);
+        rl.setBackgroundColor(Color.WHITE);
+        l1.addView(rl);
+        
+       
+        
+        ImageView image = new ImageView(this);
+        image.setId(i);
+        image.setBackgroundResource(R.drawable.ic_launcher);
+        LinearLayout.LayoutParams vp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        RelativeLayout.LayoutParams vp1 = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+       // vp1.addRule(RelativeLayout.LEFT_OF);
+        vp.setMargins(2, 2, 2, 2);
+        vp1.setMargins(4, 4, 4, 4);
+        image.setLayoutParams(vp);
+        rl.addView(image);
+	                	 
+       
+        String[] parts = store[i].split(",");
+        
+        System.out.println(parts);
+        
+       
+        
+        
+        TextView text1 = new TextView(this);
+        text1.setText(parts[1]);
+        text1.setLayoutParams(vp);
+        text1.setTextSize(15);
+        rl.addView(text1);
+        
+        TextView text2 = new TextView(this);
+        RelativeLayout.LayoutParams vp2 = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+        vp1.addRule(RelativeLayout.BELOW);
+        text2.setText(parts[0]);
+        text2.setLayoutParams(vp2);
+        text2.setTextSize(15);
+        rl.addView(text2);
+        
+	    
+	}
+	              		 
+		
+		
+
+}
+
+}
