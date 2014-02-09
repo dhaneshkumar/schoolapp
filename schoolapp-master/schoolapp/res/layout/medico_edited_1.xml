@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical" >
+
+    <TableLayout
+    android:background="@drawable/customshape"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    
+   
+    
+   >
+ 
+<TableRow android:layout_height="match_parent"
+     >
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Age "
+        android:layout_weight="1"
+        android:inputType="number" />
+           <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+       
+        android:src="@drawable/edit" />
+             </TableRow>
+             
+
+             
+             </TableLayout>
+             
+       
+    <TableLayout
+    android:background="@drawable/customshape"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+   >
+    
+        
+        
+ 
+<TableRow android:layout_height="match_parent"
+     >
+           
+             <EditText
+                 android:id="@+id/editText1"
+                 android:layout_width="match_parent"
+                  android:textSize="15sp"
+                  android:layout_margin="4dip"
+                  android:hint="Title"
+                  android:textColor="#000"
+                  android:layout_weight="1"
+                  android:layout_height="wrap_content"
+                 android:inputType="date" >
+
+                 <requestFocus />
+             </EditText>
+              
+          
+             
+        </TableRow>
+        
+	
+
+        <TableRow android:layout_height="match_parent" >
+          <EditText
+                 android:id="@+id/editText1"
+                 android:layout_width="match_parent"
+                  android:textSize="15sp"
+                  android:layout_margin="4dip"
+                  android:hint="Happening Date"
+                  android:textColor="#000"
+                  android:layout_weight="1"
+                  android:layout_height="wrap_content"
+                 android:inputType="date" >
+
+                 <requestFocus />
+             </EditText>
+            
+        </TableRow>
+        
+  
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="match_parent">
+            <EditText
+                 android:id="@+id/editText1"
+                 android:layout_width="match_parent"
+                  android:textSize="15sp"
+                 android:layout_marginTop="4dip"
+                 android:layout_marginLeft="4dip"
+                 android:layout_marginRight="4dip"
+                  android:layout_marginBottom="10dip"
+                  android:hint="Details"
+                  android:textColor="#000"
+                  android:layout_weight="1"
+                  android:layout_height="wrap_content"
+                  >
+
+                 <requestFocus />
+             </EditText>
+               
+             
+        </TableRow>
+        
+         <TableRow android:layout_height="1px" android:background="@color/silver">
+   <TextView android:layout_span="2" android:layout_height="3px" 
+      
+             android:layout_width="fill_parent" android:text="">
+   </TextView>
+</TableRow>
+        
+        
+        <TableRow
+            android:id="@+id/tableRow4"
+           android:background="@drawable/buttonshape"
+            
+             android:padding="8dp"
+            android:layout_width="match_parent">
+
+           <TextView android:layout_height="wrap_content" 
+                android:background="@color/grey"
+                style="@android:style/Widget.Button" 
+                android:layout_weight="1"
+                android:textSize="15sp"
+             
+               android:clickable="true" android:focusable="true"
+                android:text="save"
+                android:layout_width="0dp"></TextView>
+           
+           
+            <TextView android:layout_height="wrap_content" 
+                android:background="@color/silver"
+                android:text=""
+                android:layout_width="1px"></TextView>
+				
+            <!--   android:onClick="onClick" -->  
+            <TextView android:layout_height="wrap_content" 
+                android:background="@color/grey"
+                style="@android:style/Widget.Button" 
+                android:layout_weight="1"
+                android:clickable="true" android:focusable="true"
+                 android:textSize="15sp"
+                android:text="cancel"
+                android:layout_width="0dp"></TextView>
+            
+            </TableRow>
+       
+            </TableLayout>
+
+   
+             </LinearLayout>

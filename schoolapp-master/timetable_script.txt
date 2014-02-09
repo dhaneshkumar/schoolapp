@@ -1,0 +1,53 @@
+CREATE TABLE `TimeTable`( `class_no` INT(2) UNSIGNED NOT NULL, `section` VARCHAR(3) NOT NULL, `day` CHAR(3) NOT NULL, `FROM` TIME NOT NULL, `TO` TIME NOT NULL,  `teacher` VARCHAR(50), `subject` VARCHAR(20) , PRIMARY KEY(`class_no`, `section`, `day`, `FROM`));
+CREATE TABLE `TimeStampDetails`( `table_name` VARCHAR(10), `time_stamp` TIMESTAMP, `flag` INT(3), PRIMARY KEY(`table_name`));
+
+insert into TimeTable values( 1, 'A', 'MON', '08:30:00', '09:25:00', 'MR. Khander', 'PHY');
+insert into TimeTable values( 1, 'A', 'MON', '09:30:00', '10:25:00', 'MR. bean', 'Psychology');
+insert into TimeTable values( 1, 'A', 'MON', '10:30:00', '11:25:00', 'MR. martin', 'science');
+insert into TimeTable values( 1, 'A', 'MON', '11:30:00', '12:25:00', 'MR. ZUKERBERG', 'FACEBOOK');
+insert into TimeTable values( 1, 'A', 'TUE', '11:30:00', '12:25:00', 'MR. ZUKERBERG', 'BOOK');
+insert into TimeTable values( 1, 'A', 'WED', '11:30:00', '12:25:00', 'MR. ZUKER', 'FACEBOOK');
+insert into TimeTable values( 1, 'A', 'FRI', '11:30:00', '12:25:00', 'MR. ZUKERBERG', 'FACEBOOK');
+insert into TimeTable values( 1, 'A', 'TUE', '10:30:00', '11:25:00', 'MR. martin', 'science');
+insert into TimeTable values( 1, 'A', 'WED', '10:30:00', '11:25:00', 'MR. martin', 'scice');
+insert into TimeTable values( 1, 'A', 'FRI', '10:30:00', '11:25:00', 'MR. main', 'science');
+insert into TimeTable values( 1, 'A', 'TUE', '09:30:00', '10:25:00', 'MR. bean', 'Psychology');
+insert into TimeTable values( 1, 'A', 'WED', '09:30:00', '10:25:00', 'MR. bean', 'Psychology');
+insert into TimeTable values( 1, 'A', 'FRI', '09:30:00', '10:25:00', 'MR. bean', 'Psychogy');
+insert into TimeTable values( 1, 'A', 'TUE', '08:30:00', '09:25:00', 'MR. Kher', 'PHY');
+insert into TimeTable values( 1, 'A', 'WED', '08:30:00', '09:25:00', 'MR. Khander', 'PHY');
+insert into TimeTable values( 1, 'A', 'FRI', '08:30:00', '09:25:00', 'MR. Khaer', 'PHY');
+
+
+/*******************************************************< phoneList >***********************************************************************/
+
+CREATE TABLE `phoneList` (`ID` INT(5) NOT NULL AUTO_INCREMENT, `NAME`  VARCHAR(60) NOT NULL, `POST` VARCHAR(30) NOT NULL, `CON_PERSON` VARCHAR(60), `CONTACT` INT(15), `EMAILID`  VARCHAR(70), PRIMARY KEY (`ID`));
+insert into phoneList(NAME, POST, CON_PERSON, CONTACT, EMAILID) values('S Khurana', 'principal', 'roshan', '32324242', 'khuran@gmail.com');
+insert into phoneList(NAME, POST, CON_PERSON, CONTACT, EMAILID) values('P PANDAY', 'vice-principal', 'puja', '32324242', 'panday@gmail.com');
+insert into phoneList(NAME, POST, CON_PERSON, CONTACT, EMAILID) values('shiva prasad', 'physics-teacher','', '43867862', 'prasad@gmail.com');
+insert into phoneList(NAME, POST, CON_PERSON, CONTACT, EMAILID) values('milind sohni', 'IC102-prof', '', '999324242', 'sohni@gmail.com');
+insert into phoneList(NAME, POST, CON_PERSON, CONTACT, EMAILID) values('versa aapte', 'sanskrit-teacher', '', '7878324242', 'aapte@gmail.com');
+
+
+
+
+
+
+
+
+
+
+-----------------------------TO DO---------------------------
+sesseion
+security : 
+encrypted key
+https post req
+foreign key
+min  sdk version
+boundry cases +exceptions
+
+
+--------------------------------------(init)------------------
+
+send all timestamp together and check --- then sync one by one..
+instanciate all object in it e.g >  db, userFunction 
