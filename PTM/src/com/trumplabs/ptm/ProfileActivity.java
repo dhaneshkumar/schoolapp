@@ -93,24 +93,24 @@ public class ProfileActivity extends ActionBarActivity implements OnItemSelected
 		curr_child = 1;
 		studentsList = new HashMap<String ,String>();
 		
-		if(u.isUserLoggedIn(this)){
-			//if not fetched, fetch now
-			addParentsToDb(d.id);
-			addChildrenToDb(d.id);
-			
-			//Set tabs
-			//setStudentTabs();
-			
-			//Set the choices of parent type
-			setSpinnerChoices();
-			
-			//Now parents table is not empty so fetch from DB
-			spinner.setOnItemSelectedListener(this);
-			
-			//Show student details
-			showStudentDetails(curr_child);
-		}
-		
+//		if(u.isUserLoggedIn(this)){
+//			//if not fetched, fetch now
+//			addParentsToDb(d.id);
+//			addChildrenToDb(d.id);
+//			
+//			//Set tabs
+//			//setStudentTabs();
+//			
+//			//Set the choices of parent type
+//			setSpinnerChoices();
+//			
+//			//Now parents table is not empty so fetch from DB
+//			spinner.setOnItemSelectedListener(this);
+//			
+//			//Show student details
+//			showStudentDetails(curr_child);
+//		}
+//		
 		//Action Bar///////////////////////////////////////////////////////////////////////////
 		actionBar = getSupportActionBar();
 		

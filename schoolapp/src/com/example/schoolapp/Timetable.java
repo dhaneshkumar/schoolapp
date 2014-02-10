@@ -11,9 +11,11 @@ import android.os.Bundle;
 import android.provider.CalendarContract;
 import android.provider.CalendarContract.Calendars;
 import android.provider.CalendarContract.Events;
+import android.support.v7.app.ActionBar.OnNavigationListener;
 import android.support.v7.app.ActionBarActivity;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.ContentResolver;
@@ -21,25 +23,67 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.SpinnerAdapter;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 import library.*;
 
-public class Timetable extends ActionBarActivity {
+@SuppressLint("NewApi")
+public class Timetable extends ActionBarActivity implements  ActionBar.OnNavigationListener{
 	
 	TableLayout table;
 	TextView text1;
 	TextView text2;
 	TextView text3;
 	
-	
+@SuppressLint("NewApi")
 @Override
 public void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
 	setContentView(R.layout.timetable);
+	
+	
+	/*
+	 * Action bar actions
+	 */
+	getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+	SpinnerAdapter mSpinnerAdapter = ArrayAdapter.createFromResource(this, R.array.days,
+	          android.R.layout.simple_spinner_dropdown_item);
+	getSupportActionBar().setNavigationMode(1);
+	
+	
+	final DatabaseHandler db = new DatabaseHandler(this);
+	
+	OnNavigationListener mOnNavigationListener = new OnNavigationListener() {
+		  // Get the same strings provided for the drop-down's ArrayAdapter
+		  String[] strings = getResources().getStringArray(R.array.days);
+		 
+		  @Override
+		  public boolean onNavigationItemSelected(int position, long itemId) {
+		   
+			 db.setDay(strings[position]);
+			  Toast.makeText(getApplicationContext(), strings[position], Toast.LENGTH_SHORT).show(); 
+		    return true;
+		  }
+		  
+		  
+		};
+	
+		getSupportActionBar().setListNavigationCallbacks(mSpinnerAdapter, mOnNavigationListener);
+		//getSupportActionBar().LayoutParams(right);
+	
+	/**************************************************/
+	
+	
+	
+	
+	
+	
+		 String result1 = db.getTimeTable(db.getDay());
 	
 	//Initializing all variables
 	table = ( TableLayout) findViewById(R.id.timeTable);
@@ -59,16 +103,16 @@ public void onCreate(Bundle savedInstanceState) {
 	//create an object userFunction in init functions.
 //	UserFunctions userFunction = new UserFunctions();
 //	JSONObject json = userFunction.getTimetable("timetable", "WED");
-	DatabaseHandler db = new DatabaseHandler(this);
+	
 	
 	//db.init();
 	//init start= new init();
 	
 	//System.out.println("result : *******s*******************" + json);
 	
-			     String result1="";	    
+			         
 			     db.setTimeTable("1", "A");
-                 result1 = db.getTimeTable("MON");
+                 
                  System.out.println("got result : " + result1);
                  
                  String[] store = result1.split("~");
@@ -125,14 +169,19 @@ public void onCreate(Bundle savedInstanceState) {
               // Toast.makeText(getApplicationContext(), result1, Toast.LENGTH_LONG).show();     
              }
         
-	
-	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main_activity_actions, menu);
+		//getMenuInflater().inflate(R.menu.main_activity_actions, menu);
 		 return super.onCreateOptionsMenu(menu);
 	}
 
+
+
+	@Override
+	public boolean onNavigationItemSelected(int itemPosition, long itemId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
 

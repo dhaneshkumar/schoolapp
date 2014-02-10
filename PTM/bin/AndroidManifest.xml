@@ -15,6 +15,20 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
+         <activity
+            android:label="@string/app_name"
+            android:name="ProfileActivity"
+            android:parentActivityName="com.trumplabs.ptm.DashboardActivity" >
+            <intent-filter >
+                <action android:name="android.intent.action.PROFILE" />
+ 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.trumplabs.ptm.DashboardActivity" />
+        </activity>
+        
         <activity
             android:label="@string/app_name"
             android:name="LogoActivity"
@@ -25,26 +39,14 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity
-            android:label="@string/app_name"
-            android:name="ProfileActivity"
-            android:parentActivityName="com.trumplabs.ptm.DashboardActivity" >
-            <intent-filter >
-                <action android:name="android.intent.action.PROFILE" />
- 
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-            <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.trumplabs.ptm.DashboardActivity" />
-        </activity>
+       
         <activity
             android:label="@string/app_name"
             android:name="LoginActivity" >
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
  
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity

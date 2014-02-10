@@ -12,10 +12,12 @@ import android.os.Bundle;
 import android.provider.CalendarContract;
 import android.provider.CalendarContract.Calendars;
 import android.provider.CalendarContract.Events;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
@@ -23,6 +25,8 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.database.Cursor;
 import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -41,11 +45,13 @@ public class PhoneList extends ActionBarActivity {
 	TextView text2;
 	TextView text3;
 	
-	
+@SuppressLint("NewApi")
 @Override
 public void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
 	setContentView(R.layout.phonelist);
+	
+	getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 	
 	//Initializing all variables
 	//table = ( TableLayout) findViewById(R.id.timeTable);
@@ -135,9 +141,33 @@ public void onCreate(Bundle savedInstanceState) {
 	    
 	}
 	              		 
-		
-		
+	}
+
+
+	//adding actions to action bar
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+	    // Inflate the menu items for use in the action bar
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.main_activity_actions, menu);
+	    return super.onCreateOptionsMenu(menu);
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle presses on the action bar items
+	    switch (item.getItemId()) {
+	        case R.id.action_search:
+	          //  openSearch();
+	            return true;
+	        case android.R.id.home:
+	        	//NavUtils.navigateUpTo(this,new Intent(this, Timetable.class));
+	            NavUtils.navigateUpFromSameTask(this);
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
+	}
 
 }
 
-}
