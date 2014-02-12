@@ -56,7 +56,7 @@ public void onCreate(Bundle savedInstanceState) {
 	getSupportActionBar().setNavigationMode(1);
 	
 	
-	final DatabaseHandler db = new DatabaseHandler(this);
+	 DatabaseHandler db = new DatabaseHandler(this);
 	
 	OnNavigationListener mOnNavigationListener = new OnNavigationListener() {
 		  // Get the same strings provided for the drop-down's ArrayAdapter
@@ -65,7 +65,7 @@ public void onCreate(Bundle savedInstanceState) {
 		  @Override
 		  public boolean onNavigationItemSelected(int position, long itemId) {
 		   
-			 db.setDay(strings[position]);
+			 //db.setTimeTable(strings[position]);
 			  Toast.makeText(getApplicationContext(), strings[position], Toast.LENGTH_SHORT).show(); 
 		    return true;
 		  }
@@ -83,7 +83,7 @@ public void onCreate(Bundle savedInstanceState) {
 	
 	
 	
-		 String result1 = db.getTimeTable(db.getDay());
+		
 	
 	//Initializing all variables
 	table = ( TableLayout) findViewById(R.id.timeTable);
@@ -112,7 +112,8 @@ public void onCreate(Bundle savedInstanceState) {
 	
 			         
 			     db.setTimeTable("1", "A");
-                 
+			     String result1 = db.getTimeTable("MON");
+			     
                  System.out.println("got result : " + result1);
                  
                  String[] store = result1.split("~");

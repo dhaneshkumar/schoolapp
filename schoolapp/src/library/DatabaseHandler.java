@@ -15,9 +15,8 @@ import android.util.Log;
 import android.widget.Toast;
  
 public class DatabaseHandler extends SQLiteOpenHelper {
- 
+
 	private static String day;
-    // All Static variables
     // Database Version
     private static final int DATABASE_VERSION = 1;
  

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" 
+<<<<<<< HEAD
     xmlns:schoolapp="http://schemas.android.com/apk/res-auto">
    
     <item android:id="@+id/action_search"
@@ -7,5 +8,18 @@
           android:title="@string/action_search"
           schoolapp:showAsAction="always" 
           schoolapp:actionViewClass="android.support.v7.widget.SearchView"/>
+=======
+    xmlns:yourapp="http://schemas.android.com/apk/res-auto">
+   
+    <item android:id="@+id/MON"
+          android:title="MON"
+          yourapp:showAsAction="always"/>
+     <item android:id="@+id/TUE"
+          android:title="TUE"
+          yourapp:showAsAction="ifRoom"/>
+      <item android:id="@+id/WED"
+          android:title="WED"
+          yourapp:showAsAction="ifRoom"/>
+>>>>>>> 5601c6fc05f5f809b96f5ed610d89a31107df757
      
 </menu>

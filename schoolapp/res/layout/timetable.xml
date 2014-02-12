@@ -12,7 +12,57 @@
     android:background="@color/silver"
     android:orientation="vertical" >
 
+<<<<<<< HEAD
  
+=======
+<RelativeLayout 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    
+    android:layout_marginTop="4dp" 
+    android:layout_marginLeft="4dp" 
+    android:layout_marginRight="4dp" 
+    android:layout_marginBottom="0dp" 
+    android:background="@drawable/customshape"
+    android:orientation="horizontal">
+
+    
+    
+    
+    <Spinner
+        android:id="@+id/selectdays"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:layout_toRightOf="@+id/imageView1"
+        android:layout_alignParentTop="true"
+        
+        android:entries="@array/days" />
+	
+    <Spinner
+        android:id="@+id/selectdays2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:layout_alignParentRight="true"
+   		android:layout_marginBottom="1dp"
+        android:entries="@array/sections" />
+    
+    <Spinner
+        android:id="@+id/selectdays1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:layout_toLeftOf="@+id/selectdays2"
+        android:layout_alignParentTop="true"
+        
+        android:entries="@array/classes" />
+    
+
+    
+
+</RelativeLayout>  
+>>>>>>> 5601c6fc05f5f809b96f5ed610d89a31107df757
     
 <TableLayout
     android:id="@+id/timeTable"

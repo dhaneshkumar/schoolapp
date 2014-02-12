@@ -12,12 +12,18 @@ import android.os.Bundle;
 import android.provider.CalendarContract;
 import android.provider.CalendarContract.Calendars;
 import android.provider.CalendarContract.Events;
+<<<<<<< HEAD
 import android.support.v4.app.NavUtils;
+=======
+>>>>>>> 5601c6fc05f5f809b96f5ed610d89a31107df757
 import android.support.v7.app.ActionBarActivity;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
+<<<<<<< HEAD
 import android.annotation.SuppressLint;
+=======
+>>>>>>> 5601c6fc05f5f809b96f5ed610d89a31107df757
 import android.app.ActionBar;
 import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
@@ -25,8 +31,11 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.database.Cursor;
 import android.view.Menu;
+<<<<<<< HEAD
 import android.view.MenuInflater;
 import android.view.MenuItem;
+=======
+>>>>>>> 5601c6fc05f5f809b96f5ed610d89a31107df757
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -45,14 +54,21 @@ public class PhoneList extends ActionBarActivity {
 	TextView text2;
 	TextView text3;
 	
+<<<<<<< HEAD
 @SuppressLint("NewApi")
+=======
+	
+>>>>>>> 5601c6fc05f5f809b96f5ed610d89a31107df757
 @Override
 public void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
 	setContentView(R.layout.phonelist);
 	
+<<<<<<< HEAD
 	getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 	
+=======
+>>>>>>> 5601c6fc05f5f809b96f5ed610d89a31107df757
 	//Initializing all variables
 	//table = ( TableLayout) findViewById(R.id.timeTable);
 	
@@ -141,6 +157,7 @@ public void onCreate(Bundle savedInstanceState) {
 	    
 	}
 	              		 
+<<<<<<< HEAD
 	}
 
 
@@ -171,3 +188,11 @@ public void onCreate(Bundle savedInstanceState) {
 
 }
 
+=======
+		
+		
+
+}
+
+}
+>>>>>>> 5601c6fc05f5f809b96f5ed610d89a31107df757

@@ -6,17 +6,25 @@
 
     <uses-sdk
         android:minSdkVersion="7"
+<<<<<<< HEAD
         android:targetSdkVersion="18" />
     <uses-permission android:name="android.permission.WRITE_CALENDAR"/>
     <uses-permission android:name="android.permission.READ_CALENDAR"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+=======
+        android:targetSdkVersion="17" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR"/>
+    <uses-permission android:name="android.permission.READ_CALENDAR"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+>>>>>>> 5601c6fc05f5f809b96f5ed610d89a31107df757
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
+<<<<<<< HEAD
          <activity android:name="com.example.schoolapp.Home">   </activity>
          
          <activity android:name="com.example.schoolapp.Timetable"
@@ -47,6 +55,20 @@
         
        
         
+=======
+        <activity
+            android:name="com.example.schoolapp.Leaveapp"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <activity android:name="com.example.schoolapp.PhoneList"></activity>
+        <activity android:name="com.example.schoolapp.Timetable"></activity>
+>>>>>>> 5601c6fc05f5f809b96f5ed610d89a31107df757
         <activity android:name="com.example.schoolapp.PhoneList_ext"></activity>
     </application>
 
