@@ -6,14 +6,11 @@
     <string name="hello_world">Hello world!</string>
     <string name="font_size">25dp</string>
      <string name="text_size">18sp</string>
-<<<<<<< HEAD
      <string name="action_search">Search</string>
      <string name="vborder">8dp</string>
     <string name="phoneList">Phone List</string>
     <string name="timeTable">Time Table</string>
     
-=======
->>>>>>> 5601c6fc05f5f809b96f5ed610d89a31107df757
     
     <string-array name="days">
         <item>MON</item>
@@ -46,11 +43,8 @@
         <item>E</item>
         
     </string-array>
-<<<<<<< HEAD
     
-=======
     <string name="vborder">8dp</string>
->>>>>>> 5601c6fc05f5f809b96f5ed610d89a31107df757
     
     
 </resources>
