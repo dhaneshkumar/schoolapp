@@ -4,20 +4,25 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="fill_parent"
   android:background="@color/silver"
+  android:id="@+id/s1"
   android:layout_height="fill_parent">
 
 
 <LinearLayout 
+    android:id="@+id/l1"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/silver"
     android:orientation="vertical" >
    
 <TableLayout
-    android:id="@+id/timeTable"
+    android:id="@+id/timeTable132"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:layout_margin="4dp" 
+    android:layout_marginTop="4dp" 
+    android:layout_marginLeft="4dp" 
+    android:layout_marginRight="4dp" 
+    android:layout_marginBottom="0dp" 
     android:background="@drawable/customshape"
     android:stretchColumns="1" >
  
@@ -64,15 +69,23 @@
          android:text="TEACHER" />
       
     </TableRow>
-  <TableRow android:layout_height="1px" android:background="#BDBDBD">
-   <TextView  android:layout_height="1px" 
-             android:layout_width="fill_parent" android:text="">
-   </TextView>
-</TableRow>
+  
 
 
 </TableLayout>
 
+<TableLayout
+    android:id="@+id/timeTable"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_marginTop="1dp"  
+    android:layout_marginLeft="4dp" 
+    android:layout_marginRight="4dp" 
+    android:background="@drawable/customshape"
+    android:stretchColumns="1" >
+
+
+</TableLayout>
 
 
 </LinearLayout>

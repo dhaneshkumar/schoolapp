@@ -1,42 +1,23 @@
 package com.example.schoolapp;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import org.json.JSONException;
-import org.json.JSONObject;
 import library.DatabaseHandler;
-import library.UserFunctions;
-import android.R.layout;
-import android.net.Uri;
-import android.os.Bundle;
-import android.provider.CalendarContract;
-import android.provider.CalendarContract.Calendars;
-import android.provider.CalendarContract.Events;
-import android.support.v4.app.NavUtils;
-import android.support.v7.app.ActionBarActivity;
+import android.annotation.SuppressLint;
+import android.app.ActionBar.LayoutParams;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.graphics.drawable.ColorDrawable;
-import android.annotation.SuppressLint;
-import android.app.ActionBar;
-import android.app.ActionBar.LayoutParams;
-import android.app.Activity;
-import android.content.ContentResolver;
-import android.content.Intent;
-import android.database.Cursor;
+import android.os.Bundle;
+import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
-import library.*;
 
 public class PhoneList extends ActionBarActivity {
 	
