@@ -21,7 +21,18 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
-         <activity android:name="com.example.schoolapp.Home">   </activity>
+        
+         
+          <activity android:name="com.example.schoolapp.Home" 
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        
+        </activity>
+         
          
          <activity android:name="com.example.schoolapp.Timetable"
              android:label="@string/timeTable" 
@@ -29,7 +40,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         
         </activity>

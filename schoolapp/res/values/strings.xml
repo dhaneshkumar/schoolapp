@@ -11,6 +11,27 @@
     <string name="phoneList">Phone List</string>
     <string name="timeTable">Time Table</string>
     
+     <!-- Nav Drawer Menu Items -->
+    <string-array name="navigationList">
+        <item>profile</item>
+        <item>Medico</item>
+        <item>Timetable</item>
+        <item>Phonelist</item>
+        <item>Leave App</item>
+        <item>Attandance</item>
+    </string-array>
+    
+    
+    <!-- Nav Drawer List Item Icons -->
+    <!-- Keep them in order as the titles are in -->
+    <array name="nav_drawer_icons">
+        <item>@drawable/ic_action_labels</item>
+        <item>@drawable/ic_action_labels</item>
+       <item>@drawable/ic_action_labels</item>
+       <item>@drawable/ic_action_labels</item>
+       <item>@drawable/ic_action_labels</item>
+       <item>@drawable/ic_action_labels</item>
+    </array>
     
     <string-array name="days">
         <item>MON</item>
@@ -21,6 +42,8 @@
         <item>SAT</item>
     </string-array>
 	
+    
+    
     
     <string-array name="classes">
         <item>1</item>
@@ -47,4 +70,8 @@
     <string name="vborder">8dp</string>
     
     
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="action_websearch">Web search</string>
+    <string name="app_not_available">Sorry, there\'s no web browser available</string>
 </resources>
