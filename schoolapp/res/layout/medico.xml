@@ -12,42 +12,7 @@
     android:background="@drawable/background"
     android:orientation="vertical" >
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="52dp"    
-        android:background="#eddec9" >
-
-    <ImageView
-        android:id="@+id/medicoView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="5dp"
-        android:src="@drawable/medico" />
-    
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/medicoView1"
-        android:text="Medicco"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="30sp" />
-
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-       
-        android:src="@drawable/edit" />
-
-	</RelativeLayout>
-	
+   
     <TableLayout
     android:background="@drawable/customshape"
     android:layout_width="fill_parent"
