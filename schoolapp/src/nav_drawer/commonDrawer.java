@@ -1,72 +1,72 @@
-package com.example.schoolapp;
+package nav_drawer;
 
-import nav_drawer.*;
+
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Locale;
-import library.DatabaseHandler;
-import library.UserFunctions;
-import org.json.JSONObject;
+
 import android.annotation.SuppressLint;
-import android.app.Fragment;
-import android.app.SearchManager;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
-import android.widget.TabHost;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.schoolapp.Event;
+import com.example.schoolapp.Home;
+import com.example.schoolapp.PhoneList;
+import com.example.schoolapp.R;
+import com.example.schoolapp.Timetable;
 
 @SuppressLint("NewApi")
-public class Home extends ActionBarActivity {
-	private String[] navigationList;
-    private DrawerLayout mDrawerLayout;
-    private ListView mDrawerList;
-    private ActionBarDrawerToggle mDrawerToggle;
-    private CharSequence mTitle;
-    private CharSequence mDrawerTitle;
-    private TypedArray navMenuIcons;
-    private ArrayList<NavDrawerItem> navDrawerItems;
-	private NavDrawerListAdapter adapter;
-	private int homeFlag=0;
+public class commonDrawer extends ActionBarActivity {
+	public String[] navigationList;
+    public DrawerLayout mDrawerLayout;
+    public LinearLayout linearLayout;
+    public ListView mDrawerList;
+    public ActionBarDrawerToggle mDrawerToggle;
+    public CharSequence mTitle;
+    public CharSequence mDrawerTitle;
+    public TypedArray navMenuIcons;
+    public ArrayList<NavDrawerItem> navDrawerItems;
+	public NavDrawerListAdapter adapter;
+	public int homeFlag=0;
+	public int CONTENT_LAYOUT_ID;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.home);
+		setContentView(R.layout.nav_drawer);
 		
+		CONTENT_LAYOUT_ID =R.layout.phonelist;
+		show("starting 1------------------"+ CONTENT_LAYOUT_ID);
 		
 		mTitle = mDrawerTitle = getTitle();
 		navigationList = getResources().getStringArray(R.array.navigationList);
+		
+		show("starting 2------------------");
+		linearLayout = (LinearLayout) findViewById(R.id.LinearLayout);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
+        int j=R.id.left_drawer;
+        
+        show("starting 3------------------" + j + mDrawerList);
+        show("starting 3------------------" + j + mDrawerLayout);
         navMenuIcons = getResources()
 				.obtainTypedArray(R.array.nav_drawer_icons);
         navDrawerItems = new ArrayList<NavDrawerItem>();
         
-        
+        show("starting 4------------------");
      // adding nav drawer items to array
      		// Home
      		navDrawerItems.add(new NavDrawerItem(navigationList[0], navMenuIcons.getResourceId(0, -1)));
@@ -76,23 +76,26 @@ public class Home extends ActionBarActivity {
      		navDrawerItems.add(new NavDrawerItem(navigationList[4], navMenuIcons.getResourceId(4, -1)));
      		navDrawerItems.add(new NavDrawerItem(navigationList[5], navMenuIcons.getResourceId(5, -1), true, "50+"));
      		
-        
+     		show("starting 5------------------");
      	// Recycle the typed array
     		navMenuIcons.recycle();
+    		show("starting 51------------------");
+    		
+    		//if(mDrawerList != null)
     		mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
     		//mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
-        
+    		show("starting 6------------------");
     		// setting the nav drawer list adapter
     		adapter = new NavDrawerListAdapter(getApplicationContext(),
     				navDrawerItems);
     		mDrawerList.setAdapter(adapter);
-    		
+    		show("starting 7------------------");
     		// enabling action bar app icon and behaving it as toggle button
     		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     		getSupportActionBar().setHomeButtonEnabled(true);
     		
-    		
+    		show("starting 8------------------");
     		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
     				R.drawable.ic_drawer, //nav menu toggle icon
     				R.string.app_name, // nav drawer open - description for accessibility
@@ -112,12 +115,28 @@ public class Home extends ActionBarActivity {
     		};
     		mDrawerLayout.setDrawerListener(mDrawerToggle);
 
-    		if (savedInstanceState == null) {
+    		//if (savedInstanceState == null) {
     			// on first time display view for first nav item
-    			displayView(0);
-    		}
+    			//displayView(0);
+    		//}
+    		show("starting 4------------------finshed");
     }
 
+	protected void setContentLayout(int sourceId) {
+		show("starting 1------------------"+ CONTENT_LAYOUT_ID);
+	    View contentLayout = findViewById(CONTENT_LAYOUT_ID);
+	    show("starting 1------------------"+ contentLayout);
+	    ViewGroup parent = (ViewGroup) contentLayout.getParent();
+	    int index = parent.indexOfChild(contentLayout);
+
+	    parent.removeView(contentLayout);
+	    contentLayout = getLayoutInflater().inflate(sourceId, parent, false);
+	    parent.addView(contentLayout, index);
+	    
+	    show("layout change------------------");
+	}
+	
+	
         
 	/**
 	 * Slide menu item click listener
@@ -186,31 +205,23 @@ public class Home extends ActionBarActivity {
 		Intent fragment = null;
 		switch (position) {
 		case 0:
-			if(homeFlag==0)
-			{
-				homeFlag++;
-				show("intent 000000");
-			}
-			else
-			{
-			 fragment = new Intent(this, Home.class);
-			 show("intent started ++++++++++++++++++++++=");
-			}
+			 fragment = new Intent(this,  Timetable.class);
+			
 			break;
 		case 1:
-			fragment = new Intent(this, Home.class);
+			fragment = new Intent(this,  PhoneList.class);
 			break;
 		case 2:
-			fragment = new Intent(Home.this, PhoneList.class);
+			fragment = new Intent(this, PhoneList.class);
 			break;
 		case 3:
-			fragment = new Intent(Home.this, Timetable.class);
+			fragment = new Intent(this, Timetable.class);
 			break;
 		case 4:
-			fragment = new Intent(Home.this, Timetable.class);
+			fragment = new Intent(this, Timetable.class);
 			break;
 		case 5:
-			fragment = new Intent(Home.this, PhoneList.class);
+			fragment = new Intent(this, PhoneList.class);
 			break;
 
 		default:

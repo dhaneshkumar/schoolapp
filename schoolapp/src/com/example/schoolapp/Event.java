@@ -25,7 +25,7 @@ import android.widget.TextView;
 import nav_drawer.*;
 
 
-public class PhoneList extends commonDrawer{		
+public class Event extends commonDrawer{		
 		TableLayout table;
 		TextView text1;
 		TextView text2;
@@ -135,7 +135,7 @@ public class PhoneList extends commonDrawer{
 	            @Override
 	            public void onClick(View v) {
 	                //Toast.makeText(getApplicationContext(), parts[1] + "+" + parts[0], Toast.LENGTH_SHORT).show();
-	                Intent i=new Intent(PhoneList.this, PhoneList_ext.class);
+	                Intent i=new Intent(Event.this, PhoneList_ext.class);
 	                i.putExtra("name", parts[0]);
 	                i.putExtra("post", parts[1]);
 	                i.putExtra("concPerson", parts[2]);

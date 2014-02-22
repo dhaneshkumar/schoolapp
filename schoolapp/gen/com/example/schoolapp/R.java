@@ -1030,6 +1030,7 @@ containing a value of this type.
         public static final int titleshape=0x7f02006e;
     }
     public static final class id {
+        public static final int LinearLayout=0x7f05006f;
         public static final int View01=0x7f05004c;
         public static final int action_bar=0x7f05001c;
         public static final int action_bar_activity_content=0x7f050015;
@@ -1077,7 +1078,6 @@ containing a value of this type.
         public static final int image=0x7f050027;
         public static final int imageView1=0x7f050049;
         public static final int imageView2=0x7f050062;
-        public static final int l1=0x7f05006f;
         public static final int layout1=0x7f050064;
         public static final int left_drawer=0x7f050048;
         public static final int listMode=0x7f050001;
@@ -1211,10 +1211,11 @@ containing a value of this type.
         public static final int medico=0x7f030021;
         public static final int medico_edited=0x7f030022;
         public static final int medico_edited_1=0x7f030023;
-        public static final int phonelist=0x7f030024;
-        public static final int phonelist_ext=0x7f030025;
-        public static final int support_simple_spinner_dropdown_item=0x7f030026;
-        public static final int timetable=0x7f030027;
+        public static final int nav_drawer=0x7f030024;
+        public static final int phonelist=0x7f030025;
+        public static final int phonelist_ext=0x7f030026;
+        public static final int support_simple_spinner_dropdown_item=0x7f030027;
+        public static final int timetable=0x7f030028;
     }
     public static final class menu {
         public static final int main_activity_actions=0x7f0d0000;

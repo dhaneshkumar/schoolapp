@@ -2,14 +2,19 @@ package com.example.schoolapp;
 
 import java.util.Vector;
 
+import nav_drawer.commonDrawer;
+
 import library.DatabaseHandler;
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar.OnNavigationListener;
 import android.support.v7.app.ActionBarActivity;
+import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -20,7 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 @SuppressLint("NewApi")
-public class Timetable extends ActionBarActivity implements  ActionBar.OnNavigationListener{
+public class Timetable extends commonDrawer{
 	
 	TableLayout table;
 	TextView text1;
@@ -34,11 +39,26 @@ public class Timetable extends ActionBarActivity implements  ActionBar.OnNavigat
 @Override
 public void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
-	setContentView(R.layout.timetable);
+	//setContentView(R.layout.timetable);
+	
+	
+	
+	
+	
+	LayoutInflater inflater = (LayoutInflater) this
+            .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    View contentView = inflater.inflate(R.layout.timetable, null, false);
+    mDrawerLayout.addView(contentView, 0);
+	
+	
+	
+	
 	
 	db = new DatabaseHandler(this);
 	db.setTimeTable("1", "A");
 	table = ( TableLayout) findViewById(R.id.timeTable);
+	
+	System.out.println("table : ---   "+table);
 	
 	System.out.println("db started");
 	//display(currentDay);
@@ -63,8 +83,9 @@ public void onCreate(Bundle savedInstanceState) {
 		  public boolean onNavigationItemSelected(int position, long itemId) {
 		   
 			 final String s =strings[position];
+			 //System.out.println("today timetable : ----" + s);
 			  display(s);
-			  Toast.makeText(getApplicationContext(), strings[position], Toast.LENGTH_SHORT).show(); 
+			 // Toast.makeText(getApplicationContext(), strings[position], Toast.LENGTH_SHORT).show(); 
 		    return true;
 		  }
 		  
@@ -167,10 +188,5 @@ public void onCreate(Bundle savedInstanceState) {
 
 
 
-	@Override
-	public boolean onNavigationItemSelected(int itemPosition, long itemId) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 }
 
