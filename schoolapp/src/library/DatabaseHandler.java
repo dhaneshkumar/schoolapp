@@ -30,15 +30,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
  
-    public String getDay()
-    {
-    	return day;
-    }
-    
-    public void setDay(String name)
-    {
-    	day=name;
-    }
+   
     // Creating Tables
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -194,45 +186,24 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.close(); // Closing database connection
 	}
     
-    public HashMap<String, String> getSelfDetails(String relation){
-    	String t = this.table;
-    	int i = this.id;
-    	if(t.equals("Student")){
-    		return getStudentDetails(i);
-    	}
-    	else if(t.equals("Parent")){
-    		return getParentDetails(i, relation);
-    	}
-    	else if(t.equals("Teacher")){
-    		return getTeacherDetails(i);
-    	}
-    	else{
-    		return null;
-    	}
-    }
+//    public HashMap<String, String> getSelfDetails(String relation){
+//    	String t = this.table;
+//    	int i = this.id;
+//    	if(t.equals("Student")){
+//    		return getStudentDetails(i);
+//    	}
+//    	else if(t.equals("Parent")){
+//    		return getParentDetails(i, relation);
+//    	}
+//    	else if(t.equals("Teacher")){
+//    		return getTeacherDetails(i);
+//    	}
+//    	else{
+//    		return null;
+//    	}
+//    }
     
-    public HashMap<String, String> getStudentDetails(int id){
-        HashMap<String,String> user = new HashMap<String,String>();
-        String selectQuery = "SELECT * FROM Student WHERE id = " + id;
-          
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
-        // Move to first row
-        cursor.moveToFirst();
-        if(cursor.getCount() > 0){
-        	user.put("id", cursor.getString(0));
-            user.put("first_name", cursor.getString(1));
-            user.put("last_name", cursor.getString(2));
-            user.put("age", cursor.getString(3));
-            user.put("dob", cursor.getString(4));
-            user.put("email_id", cursor.getString(5));
-            user.put("phone_no", cursor.getString(6));
-        }
-        cursor.close();
-        db.close();
-        // return user
-        return user;
-    }
+    
     
     public ArrayList<String> setParentTypes(){
     	ArrayList<String> parent_types = new ArrayList<String>();
@@ -355,6 +326,34 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.delete("Student", null, null);
         db.close();
     }
+    
+    /**************************************************************************************/
+    /*                              Profile                                               */
+    /**************************************************************************************/
+    
+    public HashMap<String, String> getProfile(int sid){
+        HashMap<String,String> user = new HashMap<String,String>();
+        String selectQuery = "SELECT * FROM Student WHERE id = " + id;
+          
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        // Move to first row
+        cursor.moveToFirst();
+        if(cursor.getCount() > 0){
+        	user.put("id", cursor.getString(0));
+            user.put("first_name", cursor.getString(1));
+            user.put("last_name", cursor.getString(2));
+            user.put("age", cursor.getString(3));
+            user.put("dob", cursor.getString(4));
+            user.put("email_id", cursor.getString(5));
+            user.put("phone_no", cursor.getString(6));
+        }
+        cursor.close();
+        db.close();
+        // return user
+        return user;
+    }
+    
     
     
     /***************************************************************************************/

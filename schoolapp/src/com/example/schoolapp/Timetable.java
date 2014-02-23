@@ -103,7 +103,7 @@ public void onCreate(Bundle savedInstanceState) {
 	public void display(String currentDay)
 	{
 		db = new DatabaseHandler(this);
-		System.out.println("display called : " + currentDay);
+		//System.out.println("display called : " + currentDay);
 		
 		
 		table.removeAllViews();

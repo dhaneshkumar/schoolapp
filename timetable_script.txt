@@ -29,6 +29,23 @@ insert into phoneList(NAME, POST, CON_PERSON, CONTACT, EMAILID) values('milind s
 insert into phoneList(NAME, POST, CON_PERSON, CONTACT, EMAILID) values('versa aapte', 'sanskrit-teacher', '', '7878324242', 'aapte@gmail.com');
 
 
+/****************************************************< Student >*****************************************************************************/
+INSERT INTO  `schoolapp`.`student` (
+`id` ,
+`firstname` ,
+`lastname` ,
+`class` ,
+`section` ,
+`dob` ,
+`phoneno` ,
+`emailid` ,
+`interests` ,
+`address` ,
+`achievements`
+)
+VALUES (
+'124',  'dhanesh',  'kumar',  '9',  'C',  '1992-05-26',  '7687686786',  'dhaneshkr26@gmail.com',  'cricket, football, chess',  'fsf,fdf ,fdsfsfds f,sfsff mumbai',  'inter iit winner::: class 6 - May 2013 ::: happened in iit guwahati, 1st postion in Atheletics '
+);
 
 
 

@@ -23,9 +23,11 @@ import android.widget.ListView;
 
 import com.example.schoolapp.Event;
 import com.example.schoolapp.Home;
+import com.example.schoolapp.Medico;
 import com.example.schoolapp.PhoneList;
 import com.example.schoolapp.R;
 import com.example.schoolapp.Timetable;
+import com.example.schoolapp.profile;
 
 @SuppressLint("NewApi")
 public class commonDrawer extends ActionBarActivity {
@@ -209,10 +211,10 @@ public class commonDrawer extends ActionBarActivity {
 			
 			break;
 		case 1:
-			fragment = new Intent(this,  PhoneList.class);
+			fragment = new Intent(this,  profile.class);
 			break;
 		case 2:
-			fragment = new Intent(this, PhoneList.class);
+			fragment = new Intent(this, Medico.class);
 			break;
 		case 3:
 			fragment = new Intent(this, Timetable.class);
