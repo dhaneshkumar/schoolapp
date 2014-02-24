@@ -1,0 +1,21 @@
+step to run schemas :
+
+goto schemas.sql containing folder
+mysql -u root
+source schemas.sql
+
+
+-----------------------------TO DO---------------------------
+sesseion
+security : 
+encrypted key
+https post req
+foreign key
+min  sdk version
+boundry cases +exceptions
+
+
+--------------------------------------(init)------------------
+
+send all timestamp together and check --- then sync one by one..
+instanciate all object in it e.g >  db, userFunction 
