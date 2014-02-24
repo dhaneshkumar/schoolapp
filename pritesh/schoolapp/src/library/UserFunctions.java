@@ -170,6 +170,32 @@ public class UserFunctions {
 		
         return json;
     }
+    //**********************************< acad-calander>**********************************
+
+    public JSONObject getAcadCalenderFromServer(String table){
+        // Building Parameters
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        
+        params.add(new BasicNameValuePair("tag", "AcadCalanderDetails"));
+        //params.add(new BasicNameValuePair("tag", "phoneListDetails"));
+        params.add(new BasicNameValuePair("table", table));
+      
+        AsyncTask<List<NameValuePair>, Void, JSONObject> json_parse = new JSONParser(loginURL).execute(params);
+        
+		try {
+			json = json_parse.get();
+			
+			System.out.println("json---" + json);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+        return json;
+    }
     
      
 }

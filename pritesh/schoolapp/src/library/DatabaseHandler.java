@@ -457,8 +457,76 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return result;
     }
     
+    /***************************************************************************************/
+    /*                             Acad-Calender                                            */
+    /***************************************************************************************/
+    public void setAcadCalender()
+    {
+    	JSONObject json = uf.getAcadCalenderFromServer("event");
     
+    	
+        show(json.toString());
+    	show("setting acadcalender sqlite database------------");
     
+    	String result1="";
+    	show(result1);
+	
+	try {
+         if (json.getString("success") != null) {
+             int res = json.getInt("success");
+        
+             if(res == 1){
+                 result1 = json.getString("response");
+                 
+                 
+                 System.out.println("got result from localhost:-- " + result1);
+                 String[] store = result1.split("~");
+             
+                 System.out.println("got result from localhost:-- " + store);
+             }
+         }
+	}
+         catch (JSONException e) {
+        	    //Toast.makeText(getApplicationContext(), "Error  null in retriving timetable ", Toast.LENGTH_LONG).show();
+        	       e.printStackTrace();
+        	   }
+         /*
+            
+                 //System.out.println( "qqq" + "--- line----" );
+             //    SQLiteDatabase db = this.getWritableDatabase();
+        
+              db.execSQL("DROP TABLE IF EXISTS phoneList");
+                 
+                 
+                 String PHONELIST = "CREATE TABLE phoneList(id INTEGER, name TEXT, post TEXT, con_person  TEXT, contact TEXT,  emailid TEXT, PRIMARY KEY(id))";
+                 
+             	 db.execSQL(PHONELIST);
+                 
+                 
+                 
+                // System.out.println( "www" + "--- line----" );
+                 for(int i =0; i< store.length;i++)
+                 {
+                //	 System.out.println( i + "--- line----" + store[i]);
+                	 String[]  input= store[i].split(",");
+                 
+                	 ContentValues insertValues = new ContentValues();
+                	 insertValues.put("name", input[0]);
+                	 insertValues.put("post", input[1]);
+                	 insertValues.put("con_person", input[2]);
+                	 insertValues.put("contact", input[3]);
+                	 insertValues.put("emailid", input[4]);
+                	
+                	 db.insert("phoneList", null, insertValues);
+                 }
+             }
+         }
+         System.out.println("data filled up in sqlite table------");
+	}*/
+ 
+    
+}
+    /***************************************************************************************/ 
     /***************************************************************************************/
     /*                              PHONE-LIST                                             */
     /***************************************************************************************/
