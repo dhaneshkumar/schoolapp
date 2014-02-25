@@ -465,11 +465,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     	JSONObject json = uf.getAcadCalenderFromServer("event");
     
     	
-        show(json.toString());
-    	show("setting acadcalender sqlite database------------");
+   
+    	show("setting event sqlite database------------");
     
     	String result1="";
-    	show(result1);
 	
 	try {
          if (json.getString("success") != null) {
@@ -478,29 +477,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
              if(res == 1){
                  result1 = json.getString("response");
                  
-                 
                  System.out.println("got result from localhost:-- " + result1);
+                 
                  String[] store = result1.split("~");
-             
-                 System.out.println("got result from localhost:-- " + store);
-             }
-         }
-	}
-         catch (JSONException e) {
-        	    //Toast.makeText(getApplicationContext(), "Error  null in retriving timetable ", Toast.LENGTH_LONG).show();
-        	       e.printStackTrace();
-        	   }
-         /*
-            
                  //System.out.println( "qqq" + "--- line----" );
              //    SQLiteDatabase db = this.getWritableDatabase();
         
-              db.execSQL("DROP TABLE IF EXISTS phoneList");
+                 db.execSQL("DROP TABLE IF EXISTS event");
                  
                  
-                 String PHONELIST = "CREATE TABLE phoneList(id INTEGER, name TEXT, post TEXT, con_person  TEXT, contact TEXT,  emailid TEXT, PRIMARY KEY(id))";
+                 String EVENTLIST = "CREATE TABLE event(eid INTEGER, title TEXT, description TEXT, start_time  DATETIME, end_time DATETIME,  venue TEXT,special_guest TEXT,extra_details TEXT, PRIMARY KEY(eid))";
                  
-             	 db.execSQL(PHONELIST);
+             	 db.execSQL(EVENTLIST);
                  
                  
                  
@@ -511,21 +499,68 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 	 String[]  input= store[i].split(",");
                  
                 	 ContentValues insertValues = new ContentValues();
-                	 insertValues.put("name", input[0]);
-                	 insertValues.put("post", input[1]);
-                	 insertValues.put("con_person", input[2]);
-                	 insertValues.put("contact", input[3]);
-                	 insertValues.put("emailid", input[4]);
+                	 insertValues.put("title", input[0]);
+                	 insertValues.put("description", input[1]);
+                	 insertValues.put("start_time", input[2]);
+                	 insertValues.put("end_time", input[3]);
+                	 insertValues.put("venue", input[4]);
+                	 insertValues.put("special_guest", input[5]);
+                	 insertValues.put("extra_details", input[6]);
                 	
-                	 db.insert("phoneList", null, insertValues);
+                	 db.insert("event", null, insertValues);
                  }
              }
          }
          System.out.println("data filled up in sqlite table------");
-	}*/
- 
+	}
+ catch (JSONException e) {
+    //Toast.makeText(getApplicationContext(), "Error  null in retriving timetable ", Toast.LENGTH_LONG).show();
+       e.printStackTrace();
+   }
     
 }
+    public String getAcadCalender(){
+        //  HashMap<String,String> user = new HashMap<String,String>();
+       //   String selectQuery = "SELECT  * FROM Parent WHERE id = " + id + " and relation = '" + relation + "'";
+          String selectQuery="SELECT * from event;";
+          
+          show("retrieving data from event sqlite database----------------");
+          //SQLiteDatabase db1 = this.getReadableDatabase();
+          show("cursor ------ check1");
+          Cursor cursor = db1.rawQuery(selectQuery, null);
+          // Move to first row
+          String result="";
+          show("cursor ------ check2");
+          cursor.moveToFirst();
+          
+          show("cursor ------ check3");
+          
+         while(!cursor.isAfterLast())
+         {
+      	   show("no of colulmns :  --  "+cursor.getColumnCount());
+      	   
+      	   if(cursor.getCount() > 0){
+          	result +=  cursor.getString(1) +",";
+              result +=  cursor.getString(2) +",";
+              result +=  cursor.getString(3) + ",";
+              result +=  cursor.getString(4) + ",";
+              result +=  cursor.getString(5) + ",";
+              result +=  cursor.getString(6) + ",";
+              result +=  cursor.getString(7);
+              show(result);
+          }
+      	
+          cursor.moveToNext();
+          result += "~";
+         }
+         
+         
+         show("data retrived");
+          cursor.close();
+          db.close();
+          // return user
+          return result;
+      }
     /***************************************************************************************/ 
     /***************************************************************************************/
     /*                              PHONE-LIST                                             */

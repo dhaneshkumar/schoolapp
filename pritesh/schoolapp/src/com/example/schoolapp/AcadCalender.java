@@ -2,8 +2,11 @@ package com.example.schoolapp;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+
+import library.DatabaseHandler;
 
 
 import com.roomorama.caldroid.CaldroidFragment;
@@ -27,6 +30,7 @@ import android.widget.Toast;
 @SuppressLint("SimpleDateFormat")
 public class AcadCalender extends FragmentActivity{
 	TextView display_event;
+	String [] store;
 	String date_string = "2014-02-24";
 	String date_string_2 ="2014-02-25";
 	String event="Midsem over party";
@@ -36,7 +40,7 @@ public class AcadCalender extends FragmentActivity{
 	Date date1;
 	SimpleDateFormat formatter=new SimpleDateFormat("yyyy-MM-dd");
 	ListView list;
-	int size=2;
+	int size=0;
 	LinearLayout calenderview;
 	 String[] date_array = new String[] { "2014-02-24", 
              "2014-02-25"
@@ -44,11 +48,33 @@ public class AcadCalender extends FragmentActivity{
 	 String[] event_array = new String[] { "Midsem over party", 
              "endsem lukha"
             };
+	ArrayList<String> date_start_array=new ArrayList<String>();
+	ArrayList<String> date_end_array=new ArrayList<String>();;
+	ArrayList<String>time_start_array=new ArrayList<String>();;
+	ArrayList<String> time_end_array=new ArrayList<String>();;
+	ArrayList<String>title_array=new ArrayList<String>();;
+	ArrayList<String> description_array=new ArrayList<String>();;
+	ArrayList<String> special_guest_array=new ArrayList<String>();;
+	ArrayList<String> venue_array=new ArrayList<String>();;
+	ArrayList<String> extra_details_array=new ArrayList<String>();;
+	 
 	private void setCustomResourceForDates() {
 		Calendar cal = Calendar.getInstance();
 		Date blueDate;
 		try {
-			blueDate = new SimpleDateFormat("yyyy-MM-dd").parse(date_string);
+			
+			for(int i=0;i<date_start_array.size() ;++i){
+				if (caldroidFragment != null) {
+					blueDate = formatter.parse(date_start_array.get(i));
+					caldroidFragment.setBackgroundResourceForDate(R.color.blue,
+							blueDate);
+				//	caldroidFragment.setBackgroundResourceForDate(R.color.green,
+					//		greenDate);
+					caldroidFragment.setTextColorForDate(R.color.white, blueDate);
+				//	caldroidFragment.setTextColorForDate(R.color.white, greenDate);
+				}
+			}
+		
 		
        
 
@@ -57,18 +83,11 @@ public class AcadCalender extends FragmentActivity{
 		//Date blueDate = cal.getTime();
 
 		// Max date is next 7 days
-		cal = Calendar.getInstance();
-		cal.add(Calendar.DATE, 2);
-		Date greenDate = new SimpleDateFormat("yyyy-MM-dd").parse(date_string_2);
+		//cal = Calendar.getInstance();
+		//cal.add(Calendar.DATE, 2);
+		//Date greenDate = new SimpleDateFormat("yyyy-MM-dd").parse(date_string_2);
 
-		if (caldroidFragment != null) {
-			caldroidFragment.setBackgroundResourceForDate(R.color.blue,
-					blueDate);
-			caldroidFragment.setBackgroundResourceForDate(R.color.green,
-					greenDate);
-			caldroidFragment.setTextColorForDate(R.color.white, blueDate);
-			caldroidFragment.setTextColorForDate(R.color.white, greenDate);
-		}
+	
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -104,13 +123,71 @@ public class AcadCalender extends FragmentActivity{
 			caldroidFragment.setArguments(args);
 		}
 
+		
+		
+		DatabaseHandler db = new DatabaseHandler(this);
+		String result1="";	
+		
+		db.setAcadCalender();
+		result1=db.getAcadCalender();
+		store= result1.split("~");
+		System.out.println("result1---" + result1);
+		System.out.println("store0---" + store[0]);
+		System.out.println("store0---" + store[1]);
+
+		for(int i=0;i<store.length;++i){
+			System.out.println("in loop---" + Integer.toString(size));
+			size=size+1;
+		 String[] parts = store[i].split(",");
+		
+		
+		 
+		System.out.println("parts_length---"+Integer.toString(parts.length));
+	  final String start_string[]=parts[2].split("\\s+");
+	    final String end_string[]=parts[3].split("\\s+");
+	    
+	   date_start_array.add(start_string[0]);
+	    time_start_array.add(start_string[1]);
+	    date_end_array.add(end_string[0]);
+	    time_end_array.add(end_string[1]);
+	    title_array.add(parts[0]);
+	     description_array.add(parts[1]);
+	    venue_array.add(parts[4]);
+	    special_guest_array.add(parts[5]);
+	    extra_details_array.add(parts[6]);
+        System.out.println("parts : -- " + parts);
+		}
 		setCustomResourceForDates();
 
 		// Attach to the activity
 		FragmentTransaction t = getSupportFragmentManager().beginTransaction();
 		t.replace(R.id.calendar1, caldroidFragment);
 		t.commit();
+	/*	final CaldroidListener listener = new CaldroidListener() {
+
+			@Override
+			public void onSelectDate(Date date, View view) {
+				String temp=formatter.format(date);
+				//Toast.makeText(getApplicationContext(), formatter.format(date),
+					//	Toast.LENGTH_SHORT).show();
+				for(int j=0;j<date_start_array.size();++j){
+				if(temp.equals(date_start_array.get(j))){
+					display_event.setText(title_array.get(j));
+					break;
+				}
+				
+				}
+			}
+
+		};*/
+
+		// Setup Caldroid
 		
+		
+		caldroidFragment.setCaldroidListener(setuplistener());
+
+}
+	public CaldroidListener setuplistener(){
 		final CaldroidListener listener = new CaldroidListener() {
 
 			@Override
@@ -118,21 +195,19 @@ public class AcadCalender extends FragmentActivity{
 				String temp=formatter.format(date);
 				//Toast.makeText(getApplicationContext(), formatter.format(date),
 					//	Toast.LENGTH_SHORT).show();
-				if(temp.equals(date_string)){
-					display_event.setText(event);
+				for(int j=0;j<date_start_array.size();++j){
+				if(temp.equals(date_start_array.get(j))){
+					display_event.setText(title_array.get(j));
+					break;
 				}
-				else if(temp.equals(date_string_2)){
-					display_event.setText(event2);	
+				
 				}
+			
+		
 			}
-
-		};
-
-		// Setup Caldroid
-		caldroidFragment.setCaldroidListener(listener);
-
-}
-	
+	};
+	return listener;
+	}
 	public void setup_calender(){
 		
 		caldroidFragment = new CaldroidFragment();
@@ -154,7 +229,7 @@ public class AcadCalender extends FragmentActivity{
 		t.replace(R.id.calendar1, caldroidFragment);
 		t.commit();
 		
-		final CaldroidListener listener = new CaldroidListener() {
+		/*final CaldroidListener listener = new CaldroidListener() {
 
 			@Override
 			public void onSelectDate(Date date, View view) {
@@ -169,35 +244,36 @@ public class AcadCalender extends FragmentActivity{
 				}
 			}
 
-		};
+		};*/
 
 		// Setup Caldroid
-		caldroidFragment.setCaldroidListener(listener);	
+		caldroidFragment.setCaldroidListener(setuplistener());	
 	}
 public void month_clicked(View v){
 	
-	final MySimpleArrayAdapter list_adapter =new MySimpleArrayAdapter(this, new String[0],new String[0], 0);
+	final MySimpleArrayAdapter list_adapter =new MySimpleArrayAdapter(this, new ArrayList<String>(),new ArrayList<String>(), 0);
 	list.setAdapter(list_adapter);
 	display_event.setVisibility(View.VISIBLE);
 	calenderview=(LinearLayout)findViewById(R.id.calendar1);
-	calenderview.setVisibility(View.VISIBLE);	
 	setup_calender();
+	calenderview.setVisibility(View.VISIBLE);	
+	
 		
 	}
 public void all_clicked(View v){
 	calenderview=(LinearLayout)findViewById(R.id.calendar1);
 	calenderview.setVisibility(View.GONE);
 	display_event.setVisibility(View.GONE);
-	final MySimpleArrayAdapter list_adapter =new MySimpleArrayAdapter(this, date_array, event_array, size);
+	final MySimpleArrayAdapter list_adapter =new MySimpleArrayAdapter(this, date_start_array, title_array, date_start_array.size());
 	list.setAdapter(list_adapter);
 	
 }
 public class MySimpleArrayAdapter extends ArrayAdapter<String> {
 	private final Context context;
-	private final String[] dates_array_dummy;
-	private final String[] events;
+	private final ArrayList<String> dates_array_dummy;
+	private final ArrayList<String> events;
 	private final int size2;
-	public MySimpleArrayAdapter(Context context, String[] values,String[] value1,int size1) {
+	public MySimpleArrayAdapter(Context context, ArrayList<String>values,ArrayList<String> value1,int size1) {
 		super(context, R.layout.row_layout_list, values);
 		this.context = context;
 		this.dates_array_dummy = values;
@@ -215,10 +291,10 @@ public class MySimpleArrayAdapter extends ArrayAdapter<String> {
 	
 		// Change the icon for Windows and iPhone
 
-		String s = dates_array_dummy[position];
+		String s = dates_array_dummy.get(position);
 		textView.setText(s);
 		TextView tv2=(TextView) rowView.findViewById(R.id.textView2);
-		tv2.setText(events[position]);
+		tv2.setText(events.get(position));
 		return rowView;
 	}
 }

@@ -176,7 +176,7 @@ public class UserFunctions {
         // Building Parameters
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         
-        params.add(new BasicNameValuePair("tag", "AcadCalanderDetails"));
+        params.add(new BasicNameValuePair("tag", "event"));
         //params.add(new BasicNameValuePair("tag", "phoneListDetails"));
         params.add(new BasicNameValuePair("table", table));
       

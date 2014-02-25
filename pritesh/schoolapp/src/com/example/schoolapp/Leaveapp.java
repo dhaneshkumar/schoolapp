@@ -51,6 +51,7 @@ public class Leaveapp extends ActionBarActivity{
 		ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, android.R.id.text1);
 		spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		select.setAdapter(spinnerAdapter);
+		
 		for(int i=0;i<store.length;++i){
 		final String[] parts = store[i].split(",");
 		spinnerAdapter.add(parts[0]);
