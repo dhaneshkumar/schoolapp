@@ -25,6 +25,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+          <activity android:name="com.example.schoolapp.EventDisplayAcadCal"></activity>
         <activity android:name="com.example.schoolapp.Leaveapp"></activity>
         <activity android:name="com.example.schoolapp.PhoneList"></activity>
         <activity android:name="com.example.schoolapp.Timetable"></activity>

@@ -9,11 +9,13 @@ import java.util.Date;
 import library.DatabaseHandler;
 
 
+
 import com.roomorama.caldroid.CaldroidFragment;
 import com.roomorama.caldroid.CaldroidListener;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
@@ -21,6 +23,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -104,6 +108,7 @@ public class AcadCalender extends FragmentActivity{
 		list=(ListView)findViewById(R.id.list);
 		
 		caldroidFragment = new CaldroidFragment();
+		
 		if (savedInstanceState != null) {
 			caldroidFragment.restoreStatesFromKey(savedInstanceState,
 					"CALDROID_SAVED_STATE");
@@ -158,31 +163,46 @@ public class AcadCalender extends FragmentActivity{
         System.out.println("parts : -- " + parts);
 		}
 		setCustomResourceForDates();
+		final MySimpleArrayAdapter list_adapter =new MySimpleArrayAdapter(this, date_start_array, title_array, date_start_array.size());
+		list.setAdapter(list_adapter);
+		list.setOnItemClickListener(new OnItemClickListener(){
 
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
+					long id) {
+				// TODO Auto-generated method stub
+				 // ListView Clicked item index
+                int itemPosition     = position;
+                
+                // ListView Clicked item value
+                String  itemValue    = (String) list.getItemAtPosition(position);
+               
+            	for(int j=0;j<date_start_array.size();++j){
+    				if(itemValue.equals(date_start_array.get(j))){
+    					display_event.setText(title_array.get(j));
+    					Intent myIntent=new Intent(AcadCalender.this,EventDisplayAcadCal.class);
+    					String [] print =new String[] {title_array.get(j),date_start_array.get(j),
+    							time_start_array.get(j),date_end_array.get(j),time_end_array.get(j),
+    							description_array.get(j),special_guest_array.get(j),venue_array.get(j),
+    							extra_details_array.get(j)};
+    					myIntent.putExtra("firstKeyName",print);
+    				
+    					startActivity(myIntent);
+    					break;
+    				}
+    				
+    				}
+				
+			}
+			
+		});
+		list.setVisibility(View.GONE);
 		// Attach to the activity
 		FragmentTransaction t = getSupportFragmentManager().beginTransaction();
 		t.replace(R.id.calendar1, caldroidFragment);
 		t.commit();
-	/*	final CaldroidListener listener = new CaldroidListener() {
-
-			@Override
-			public void onSelectDate(Date date, View view) {
-				String temp=formatter.format(date);
-				//Toast.makeText(getApplicationContext(), formatter.format(date),
-					//	Toast.LENGTH_SHORT).show();
-				for(int j=0;j<date_start_array.size();++j){
-				if(temp.equals(date_start_array.get(j))){
-					display_event.setText(title_array.get(j));
-					break;
-				}
-				
-				}
-			}
-
-		};*/
-
+	
 		// Setup Caldroid
-		
 		
 		caldroidFragment.setCaldroidListener(setuplistener());
 
@@ -198,12 +218,18 @@ public class AcadCalender extends FragmentActivity{
 				for(int j=0;j<date_start_array.size();++j){
 				if(temp.equals(date_start_array.get(j))){
 					display_event.setText(title_array.get(j));
+					Intent myIntent=new Intent(AcadCalender.this,EventDisplayAcadCal.class);
+					String [] print =new String[] {title_array.get(j),date_start_array.get(j),
+							time_start_array.get(j),date_end_array.get(j),time_end_array.get(j),
+							description_array.get(j),special_guest_array.get(j),venue_array.get(j),
+							extra_details_array.get(j)};
+					myIntent.putExtra("firstKeyName",print);
+				
+					startActivity(myIntent);
 					break;
 				}
 				
 				}
-			
-		
 			}
 	};
 	return listener;
@@ -229,30 +255,14 @@ public class AcadCalender extends FragmentActivity{
 		t.replace(R.id.calendar1, caldroidFragment);
 		t.commit();
 		
-		/*final CaldroidListener listener = new CaldroidListener() {
-
-			@Override
-			public void onSelectDate(Date date, View view) {
-				String temp=formatter.format(date);
-				//Toast.makeText(getApplicationContext(), formatter.format(date),
-					//	Toast.LENGTH_SHORT).show();
-				if(temp.equals(date_string)){
-					display_event.setText(event);
-				}
-				else if(temp.equals(date_string_2)){
-					display_event.setText(event2);	
-				}
-			}
-
-		};*/
-
-		// Setup Caldroid
+		
 		caldroidFragment.setCaldroidListener(setuplistener());	
 	}
 public void month_clicked(View v){
 	
-	final MySimpleArrayAdapter list_adapter =new MySimpleArrayAdapter(this, new ArrayList<String>(),new ArrayList<String>(), 0);
-	list.setAdapter(list_adapter);
+	//final MySimpleArrayAdapter list_adapter =new MySimpleArrayAdapter(this, new ArrayList<String>(),new ArrayList<String>(), 0);
+	//list.setAdapter(list_adapter);
+	list.setVisibility(View.GONE);
 	display_event.setVisibility(View.VISIBLE);
 	calenderview=(LinearLayout)findViewById(R.id.calendar1);
 	setup_calender();
@@ -264,8 +274,10 @@ public void all_clicked(View v){
 	calenderview=(LinearLayout)findViewById(R.id.calendar1);
 	calenderview.setVisibility(View.GONE);
 	display_event.setVisibility(View.GONE);
-	final MySimpleArrayAdapter list_adapter =new MySimpleArrayAdapter(this, date_start_array, title_array, date_start_array.size());
-	list.setAdapter(list_adapter);
+	//final MySimpleArrayAdapter list_adapter =new MySimpleArrayAdapter(this, date_start_array, title_array, date_start_array.size());
+	//list.setAdapter(list_adapter);
+	list.setVisibility(View.VISIBLE);
+	
 	
 }
 public class MySimpleArrayAdapter extends ArrayAdapter<String> {
