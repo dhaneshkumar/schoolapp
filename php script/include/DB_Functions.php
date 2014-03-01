@@ -128,17 +128,40 @@ class DB_Functions {
     }
 
     }
+	/****************************************************< acad-calender >**************************************************************/
+    public function showAcadCalender($table)
+    {
+        
+       $text = "SELECT  * FROM `". $table. "`";
+      // echo $text;
 
+        $result1 = mysql_query($text);
+        $no_of_rows = mysql_num_rows($result1);
+        
+        
+        $res = "";
 
+        if ($no_of_rows > 0) {
+        while($row = mysql_fetch_array($result1))
+       {
+           
+            for($i =1; $i<8; $i++)
+            {
+                $res .= $row[$i] .",";
+               // echo $res;
+            }
+           // echo $res;
+            $res .= "~";
+       }
+        //echo $res;
+       return $res;
+    }
+    else
+    {
+        return false;
+    }
 
-
-
-
-
-
-
-
-
+    }
 
 //**************************************************************************************************************
 	
