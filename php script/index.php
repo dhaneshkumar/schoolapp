@@ -133,13 +133,27 @@
         echo json_encode("Invalid Request");
         }
     } 
+   
+    //******************************************< Acad Calendar List>************************************************************
+     else if($tag == 'event')
+     {
+        $table = $_POST['table'];
 
+        $details = $db->showAcadCalender($table);
+        if ($details != false) {
+            // user found
+            // echo json with success = 1
+            $response["success"] = 1;
+            $response["response"] = $details;
 
-
-}    
+            echo json_encode($response);
+     }
+       
+ 
     else {
     echo json_encode("Access Denied");
-    }  
-
+		}
+	} 
+}
 
 ?>
