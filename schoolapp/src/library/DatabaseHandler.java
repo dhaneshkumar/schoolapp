@@ -499,7 +499,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                  db.execSQL("DROP TABLE IF EXISTS phoneList");
                  
                  
-                 String PHONELIST = "CREATE TABLE phoneList(id INTEGER, name TEXT, post TEXT, con_person  TEXT, contact TEXT,  emailid TEXT, PRIMARY KEY(id))";
+                 String PHONELIST = "CREATE TABLE phoneList(id INTEGER, name TEXT, post TEXT, tag TEXT, con_person  TEXT, contact TEXT,  emailid TEXT, PRIMARY KEY(id))";
                  
              	 db.execSQL(PHONELIST);
                  
@@ -514,9 +514,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 	 ContentValues insertValues = new ContentValues();
                 	 insertValues.put("name", input[0]);
                 	 insertValues.put("post", input[1]);
-                	 insertValues.put("con_person", input[2]);
-                	 insertValues.put("contact", input[3]);
-                	 insertValues.put("emailid", input[4]);
+                	 insertValues.put("tag", input[2]);
+                	 insertValues.put("con_person", input[3]);
+                	 insertValues.put("contact", input[4]);
+                	 insertValues.put("emailid", input[5]);
                 	
                 	 db.insert("phoneList", null, insertValues);
                  }
@@ -533,10 +534,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     /************************************************************************************/
    
     // We need to store the id the student. From the id of student retrieve class & section of student.
-    public String getPhoneList(){
+    public String getPhoneList(String tag){
       //  HashMap<String,String> user = new HashMap<String,String>();
      //   String selectQuery = "SELECT  * FROM Parent WHERE id = " + id + " and relation = '" + relation + "'";
-        String selectQuery="SELECT * from phoneList;";
+        String selectQuery="SELECT * from phoneList  where tag = \"" + tag + "\"";
         
         show("retrieving data from phoneList sqlite database----------------");
         //SQLiteDatabase db1 = this.getReadableDatabase();
@@ -556,9 +557,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     	   if(cursor.getCount() > 0){
         	result +=  cursor.getString(1) +",";
             result +=  cursor.getString(2) +",";
-            result +=  cursor.getString(3) + ",";
             result +=  cursor.getString(4) + ",";
-            result +=  cursor.getString(5);
+            result +=  cursor.getString(5) + ",";
+            result +=  cursor.getString(6);
             show(result);
         }
     	

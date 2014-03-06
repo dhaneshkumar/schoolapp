@@ -21,10 +21,9 @@ import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
-import com.example.schoolapp.Event;
+import com.example.schoolapp.ContactList;
 import com.example.schoolapp.Home;
 import com.example.schoolapp.Medico;
-import com.example.schoolapp.PhoneList;
 import com.example.schoolapp.R;
 import com.example.schoolapp.Timetable;
 import com.example.schoolapp.profile;
@@ -223,7 +222,7 @@ public class commonDrawer extends ActionBarActivity {
 			fragment = new Intent(this, Timetable.class);
 			break;
 		case 5:
-			fragment = new Intent(this, PhoneList.class);
+			fragment = new Intent(this, ContactList.class);
 			break;
 
 		default:

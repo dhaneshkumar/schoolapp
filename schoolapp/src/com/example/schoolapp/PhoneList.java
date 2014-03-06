@@ -22,6 +22,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import nav_drawer.*;
 
 
@@ -34,12 +35,8 @@ public class PhoneList extends commonDrawer{
 	@SuppressLint("NewApi")
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		
-		System.out.println("drawer loading--------------------.");
 		super.onCreate(savedInstanceState);
-		//setContentView(R.layout.phonelist);
-		//super.setContentLayout(R.layout.phonelist);
-//		
+		
 		LayoutInflater inflater = (LayoutInflater) this
 	            .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	    View contentView = inflater.inflate(R.layout.phonelist, null, false);
@@ -47,10 +44,11 @@ public class PhoneList extends commonDrawer{
 
 	    //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		
-		
+	    Intent intent = getIntent();
+	    String tag = intent.getStringExtra("tag");
 	
 
-		System.out.println("phonelist loading s--------------------.");
+		System.out.println("phonelist loading -----------tag :     " + tag + "     :---------.");
 		
 	//	commonDrawer cd=new commonDrawer();  //****************************************
 		
@@ -68,7 +66,7 @@ public class PhoneList extends commonDrawer{
 		DatabaseHandler db = new DatabaseHandler(this);
 		String result1="";	    
 		db.setPhoneList();
-		result1 = db.getPhoneList();
+		result1 = db.getPhoneList(tag);
 		System.out.println("got result : " + result1);                 
 		String[] store = result1.split("~");
 
@@ -106,17 +104,17 @@ public class PhoneList extends commonDrawer{
 	       
 	        final String[] parts = store[i].split(",");
 	        
-	        System.out.println("parts : -- " + parts);
+	        System.out.println("parts : -- " + parts[0]);
 	        
 	       
 	        
 	        
 	        TextView text1 = new TextView(this);
 	        text1.setId(i+1000);
-	        text1.setText(parts[1]);
+	        text1.setText(parts[0]);
 	        text1.setLayoutParams(vp1);
 	        text1.setTextSize(15);
-	        text1.setTypeface(Typeface.DEFAULT_BOLD);
+	       
 	        rl.addView(text1);
 	        
 	        TextView text2 = new TextView(this);
@@ -124,8 +122,9 @@ public class PhoneList extends commonDrawer{
 	        vp2.addRule(RelativeLayout.BELOW, text1.getId());
 	        vp2.setMargins(4, 4, 4, 4);
 	        vp2.addRule(RelativeLayout.RIGHT_OF, image.getId());
-	        text2.setText(parts[0]);
+	        text2.setText(parts[1]);
 	        text2.setLayoutParams(vp2);
+	        text2.setTypeface(Typeface.DEFAULT_BOLD);
 	        text2.setTextSize(13);
 	        text2.setPadding(0, 0, 0, 5);
 	        rl.addView(text2);
@@ -134,8 +133,9 @@ public class PhoneList extends commonDrawer{
 	        rl.setOnClickListener( new View.OnClickListener(){
 	            @Override
 	            public void onClick(View v) {
-	                //Toast.makeText(getApplicationContext(), parts[1] + "+" + parts[0], Toast.LENGTH_SHORT).show();
-	                Intent i=new Intent(PhoneList.this, PhoneList_ext.class);
+	            	
+	            //    Toast.makeText(getApplicationContext(), parts[1] + "+" + parts[4], Toast.LENGTH_SHORT).show();
+	                Intent i=new Intent(getApplicationContext(), PhoneList_ext.class);
 	                i.putExtra("name", parts[0]);
 	                i.putExtra("post", parts[1]);
 	                i.putExtra("concPerson", parts[2]);

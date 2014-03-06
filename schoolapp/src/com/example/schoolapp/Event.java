@@ -68,7 +68,7 @@ public class Event extends commonDrawer{
 		DatabaseHandler db = new DatabaseHandler(this);
 		String result1="";	    
 		db.setPhoneList();
-		result1 = db.getPhoneList();
+		result1 = db.getPhoneList("teacher");
 		System.out.println("got result : " + result1);                 
 		String[] store = result1.split("~");
 

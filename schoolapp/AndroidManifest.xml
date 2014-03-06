@@ -63,8 +63,9 @@
          <activity
             android:name="nav_drawer.commonDrawer"></activity>
        
-        <activity android:name="com.example.schoolapp.PhoneList_ext"></activity>
+        <activity android:name="com.example.schoolapp.ContactList"></activity>
         <activity android:name="com.example.schoolapp.PhoneList"></activity>
+        <activity android:name="com.example.schoolapp.PhoneList_ext"></activity>
         <activity android:name="com.example.schoolapp.profile"></activity>
         <activity android:name="com.example.schoolapp.Medico"></activity>
     </application>
