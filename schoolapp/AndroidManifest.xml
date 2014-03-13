@@ -46,13 +46,9 @@
         </activity>
         
         <activity
-            android:name="com.example.schoolapp.Event"
-            android:label="@string/phoneList" 
-            android:parentActivityName="com.example.schoolapp.Timetable" >
-        <!-- Parent activity meta-data to support 4.0 and lower -->
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.example.schoolapp.Timetable" />
+            android:name="com.example.schoolapp.splash"
+            >
+        
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -63,6 +59,7 @@
          <activity
             android:name="nav_drawer.commonDrawer"></activity>
        
+        <activity android:name="com.example.schoolapp.Event"></activity>
         <activity android:name="com.example.schoolapp.ContactList"></activity>
         <activity android:name="com.example.schoolapp.PhoneList"></activity>
         <activity android:name="com.example.schoolapp.PhoneList_ext"></activity>

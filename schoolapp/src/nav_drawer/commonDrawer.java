@@ -29,7 +29,7 @@ import com.example.schoolapp.Timetable;
 import com.example.schoolapp.profile;
 
 @SuppressLint("NewApi")
-public class commonDrawer extends ActionBarActivity {
+	public class commonDrawer extends ActionBarActivity {
 	public String[] navigationList;
     public DrawerLayout mDrawerLayout;
     public LinearLayout linearLayout;

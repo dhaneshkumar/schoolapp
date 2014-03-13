@@ -15,6 +15,7 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import android.app.Activity;
@@ -69,31 +70,25 @@ public class JSONParser extends AsyncTask<List<NameValuePair>, Void, JSONObject>
             while ((line = reader.readLine()) != null) {
                 sb.append(line + "\n");
             }
+            
+            
+            System.out.println("segment :" + sb+"--");
             is.close();
             
            
             
-            json = sb.toString();
             
+           json = sb.toString();
            
+            System.out.println("segment12 :"  + json  + " ---json created");
+            jObj = new JSONObject(json);  
+            System.out.println("result1111-- : "+ jObj + "--json obj");
             Log.e("JSON", json);
         } catch (Exception e) {
             Log.e("Buffer Error", "Error converting result123 " + e.toString());
         }
  
-        // try parse the string to a JSON object
-        try {
-        	System.out.println("result-- : "+ json);
-        	
-            jObj = new JSONObject(json);  
-            System.out.println("result-- : "+ jObj);
-        } catch (JSONException e) {
-            Log.e("JSON Parser", "Error parsing data " + e.toString());
-        }
- 
-        // return JSON String
-        
-        
+       
         return jObj;
 	}
 }

@@ -1,0 +1,2 @@
+setTeacher()
+getTeacher(clas, section)

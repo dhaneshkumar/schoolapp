@@ -171,5 +171,38 @@ public class UserFunctions {
         return json;
     }
     
+    
+    
+    //**************************************< table details>******************************
+    
+    public JSONObject getTables(String table)
+    {
+    	// Building Parameters
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        
+        params.add(new BasicNameValuePair("tag", "details"));
+        params.add(new BasicNameValuePair("table", table));
+        params.add(new BasicNameValuePair("pid", DatabaseHandler.pid));
+       
+        AsyncTask<List<NameValuePair>, Void, JSONObject> json_parse = new JSONParser(loginURL).execute(params);
+        
+		try {
+			json = json_parse.get();
+			
+		System.out.println("json---" + json);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+        return json;
+    }
+    
+    
+    
+    
      
 }

@@ -2,7 +2,10 @@ package library;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -18,66 +21,77 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 	private static String day;
     // Database Version
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
  
     // Database Name
     private static final String DATABASE_NAME = "schoolapp";
-    
     public static int id;
     public static String table;
- 
+    
+    public static String pid= "2";
+    public static String currentSid= "1";
+    
+    
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
+    
+    public final static String[] tableList={"Parent","Login","Student","teacher","TimeTable","phoneList","Class","Event","Attendance","Medico","AcadHistory","Notifications","GradeAnalysis","TimeStampDetails"};
+    String[] tablesname;
  
    
     // Creating Tables
     @Override
     public void onCreate(SQLiteDatabase db) {
-    /*
-    	String STUDENT = "CREATE TABLE Student(id INTEGER PRIMARY KEY,  first_name TEXT, last_name TEXT, age INTEGER, dob DATE, email_id TEXT, phone_no TEXT)";
-        String PARENT = "CREATE TABLE Parent( id INTEGER, first_name TEXT , last_name TEXT , relation TEXT, profession TEXT, email_id TEXT, phone_no TEXT ,no_of_children INTEGER, sec_password VARCHAR, PRIMARY KEY(id, relation))";
-        String TEACHER = "CREATE TABLE Teacher(id INTEGER PRIMARY KEY, first_name TEXT , last_name TEXT , qualification TEXT , email_id TEXT, phone_no TEXT)";
-        String CLASS = "Create Table Class( class_no INTEGER  , section TEXT , strength INTEGER  , PRIMARY KEY(class_no,section))";
-        String BOOK = "Create Table Book( id TEXT  PRIMARY KEY, title TEXT , author TEXT, description TEXT )";
-        String EVENT = "CREATE Table Event( name TEXT , description TEXT , start_time DATETIME , end_time DATETIME , venue TEXT , PRIMARY KEY(start_time,end_time,venue))";
-		String SUBJECT = "CREATE TABLE Subject( name TEXT  PRIMARY KEY)";
-		String ATTENDANCE = "CREATE TABLE Attendance( student_id INTEGER  , date DATE , P_A TEXT , PRIMARY KEY(student_id,date), FOREIGN KEY(student_id) REFERENCES Student(id))";
-		String CLASSTEACHER = "CREATE TABLE ClassTeacher( class_no INTEGER  , section TEXT , teacher_id INTEGER  , PRIMARY KEY(class_no,section), FOREIGN KEY(class_no,section) REFERENCES Class(class_no,section), FOREIGN KEY(teacher_id) REFERENCES Teacher(id))";
-		String STUDENTCLASS = "CREATE TABLE StudentClass( student_id INTEGER  , class_no INTEGER  , section TEXT , PRIMARY KEY(student_id), FOREIGN KEY(student_id) REFERENCES Student(id), FOREIGN KEY(class_no,section) REFERENCES Class(class_no,section))";
-		String STUDENTPARENT = "CREATE TABLE StudentParent( student_id INTEGER  , parent_id INTEGER  , PRIMARY KEY(student_id), FOREIGN KEY(student_id) REFERENCES Student(id), FOREIGN KEY(parent_id) REFERENCES Parent(id))";
-		String SUBJECTBOOKCLASS= "CREATE TABLE SubjectBookClass( class_no INTEGER  , subject TEXT , book_id TEXT , PRIMARY KEY(class_no,book_id), FOREIGN KEY(class_no) REFERENCES Class(class_no), FOREIGN KEY(book_id) REFERENCES Book(id), FOREIGN KEY(subject) REFERENCES Subject(name))";
-		String MEDICALRECORD = "CREATE TABLE MedicalRecord( student_id INTEGER  , blood_group TEXT , height INTEGER  , weight INTEGER  , allergies TEXT, PRIMARY KEY(student_id), FOREIGN KEY(student_id) REFERENCES Student(id))";
-		*/
+    	show("Creating db in sqlite---------------------");
+    	
+    	//Changes required if change occured in schemas : 1.-tableList 2> no_of_tables 3> tablsnames
+    	
+    	//set no. of tables
+    	int no_of_tables=15;
+    	
+    	tablesname= new String[no_of_tables];
+    
+    	
+    	tablesname[0] = "CREATE TABLE  SchoolName  ( name  TEXT PRIMARY KEY)";
+    	tablesname[1] = "CREATE TABLE  Parent (  pid  INTEGER    NOT NULL ,  first_name  TEXT NOT NULL,  last_name  TEXT NOT NULL,   phone_no  TEXT ,  email_id  TEXT ,  profession  TEXT,  relation  TEXT, PRIMARY KEY( pid , relation ))";
+    	tablesname[2] = "CREATE TABLE  Login  ( username  TEXT PRIMARY KEY,  pid  INTEGER  NOT NULL,  password  TEXT NOT NULL,  type  CHAR(1) DEFAULT 'P',  no_child  INTEGER DEFAULT '1',  sec_password  TEXT,  conf_code  TEXT, FOREIGN KEY( pid ) REFERENCES  Parent ( pid )  )";
+    	tablesname[3] = "CREATE TABLE  Student ( sid  INTEGER  NOT NULL   PRIMARY KEY,  pid  INTEGER  NOT NULL, first_name  TEXT NOT NULL,  last_name  TEXT NOT NULL, roll  INTEGER NOT NULL,  class  TEXT NOT NULL,  section  TEXT NOT NULL,  dob  DATE,  phone_no  TEXT ,  email_id  TEXT,  address  TEXT,  achievements  TEXT,  INTEGERerests  TEXT, FOREIGN KEY( pid ) REFERENCES  Parent ( pid )   )";
+    	tablesname[4] = "CREATE TABLE  teacher  ( ID  INTEGER  NOT NULL  ,  NAME   TEXT NOT NULL,  SUBS  TEXT,  CLASSES  TEXT,  CONTACT  INTEGER,  EMAILID   TEXT, PRIMARY KEY (ID))";
+    	tablesname[5] = "CREATE TABLE  TimeTable (  class_no TEXT  NOT NULL,  section  TEXT NOT NULL,  day  CHAR(3) NOT NULL,  startTime  TEXT NOT NULL,  endTime  TEXT NOT NULL,   ID  INTEGER  ,  subject  TEXT , PRIMARY KEY( class_no ,  section ,  day ,  startTime ), FOREIGN KEY(ID) REFERENCES teacher (ID) )";
+    	tablesname[6] = "CREATE TABLE  phoneList  ( ID  INTEGER  NOT NULL  ,  NAME   TEXT NOT NULL,  POST  TEXT NOT NULL,  TAG  TEXT NOT NULL,  CON_PERSON  TEXT,  CONTACT  INTEGER,  EMAILID   TEXT, PRIMARY KEY (ID))";
+    	tablesname[7] = "Create TABLE  Class (  class_no TEXT  NOT NULL,  section  CHAR(2) NOT NULL,  subject  TEXT NOT NULL,  ID  INTEGER  ,  students  INTEGER  NOT NULL ,  classteacher  CHAR(1) DEFAULT 'N', PRIMARY KEY( class_no , section ,  subject ), FOREIGN KEY(ID) REFERENCES teacher (ID)  )";
+    	tablesname[8] = "CREATE TABLE  Event (  eid  INTEGER  NOT NULL   PRIMARY KEY,  title  TEXT NOT NULL,  description  TEXT,  start_time  DATETIME NOT NULL,  end_time  DATETIME ,  venue  TEXT,  special_guest  TEXT,  extra_details  TEXT)";
+    	tablesname[9] = "CREATE TABLE  Attendance (  sid  INTEGER  NOT NULL,  date  DATE NOT NULL,  status  CHAR(1) NOT NULL, PRIMARY KEY( sid , date ), FOREIGN KEY( sid ) REFERENCES  Student ( sid ))";
+    	tablesname[10] = "CREATE TABLE  Medico (  sid  INTEGER  NOT NULL,  blood_group  TEXT,  height  INTEGER ,  weight  INTEGER , eye_sight  TEXT,  pd  CHAR(3) DEFAULT 'No',  allergies  TEXT, injuries  TEXT, PRIMARY KEY( sid ), FOREIGN KEY( sid ) REFERENCES  Student ( sid ) )";
+    	tablesname[11] = "CREATE TABLE  AcadHistory  ( sid  INTEGER  NOT NULL,  class_no TEXT NOT NULL ,  subject  TEXT,  percentage  TEXT,  year  INTEGER,  school  TEXT NOT NULL,  board  TEXT, PRIMARY KEY(sid, class_no))";
+    	tablesname[12] = "CREATE TABLE  Notifications  ( nid  INTEGER  NOT NULL   PRIMARY KEY,  title  TEXT NOT NULL,  description  TEXT,  date  DATETIME NOT NULL)";
+    	tablesname[13] = "CREATE TABLE  GradeAnalysis  ( sid  INTEGER  NOT NULL PRIMARY KEY,  exam_type  TEXT,  subject  TEXT, marks TEXT,FOREIGN KEY( sid ) REFERENCES  Student ( sid ) )";
+    	tablesname[14] = "CREATE TABLE  TimeStampDetails (  table_name  TEXT,  time_stamp  TIMESTAMP,  flag  INTEGER, PRIMARY KEY( table_name ))";
+    	
+    	for(int i=0; i<tablesname.length;i++)
+    	{
+    		db.execSQL(tablesname[i]);
+    				
+    	}
+    
     	
     	
-		String TIMETABLE = "CREATE TABLE timeTable(class_no INTEGER, section TEXT, day TEXT,   teacher TEXT, subject TEXT ,kick  TEXT, finish TEXT, PRIMARY KEY(class_no, section, day, kick))";
-
-	//	String USER = "CREATE TABLE User( id INTEGER , table_name TEXT)";
-   /*   db.execSQL(STUDENT);
-        db.execSQL(PARENT);
-        db.execSQL(TEACHER);
-        db.execSQL(CLASS);
-        db.execSQL(BOOK);
-        db.execSQL(EVENT);
-        db.execSQL(SUBJECT);
-        db.execSQL(ATTENDANCE);
-        db.execSQL(TIMETABLE);
-        db.execSQL(CLASSTEACHER);
-        db.execSQL(STUDENTCLASS);
-        db.execSQL(STUDENTPARENT);
-        db.execSQL(SUBJECTBOOKCLASS);
-        db.execSQL(MEDICALRECORD);
-        db.execSQL(USER);
-    */
-		db.execSQL(TIMETABLE);
-    }
+    show("table creation done in sqlite------------------------");
+   }
      
     // Upgrading database
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Drop older table if existed
-  /*      db.execSQL("DROP TABLE IF EXISTS User");
+    	
+    	for(int i=0;i<tableList.length;i++)
+    	{
+    		db.execSQL("DROP TABLE IF EXISTS " +tableList[i]);
+    	}
+    	
+    	
+  /*    db.execSQL("DROP TABLE IF EXISTS User");
         db.execSQL("DROP TABLE IF EXISTS MedicalRecord");
         db.execSQL("DROP TABLE IF EXISTS SubjectBookClass");
         db.execSQL("DROP TABLE IF EXISTS StudentParent");
@@ -91,7 +105,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS Teacher");
         db.execSQL("DROP TABLE IF EXISTS Parent");
         db.execSQL("DROP TABLE IF EXISTS Student");
-    */    db.execSQL("DROP TABLE IF EXISTS timeTable");
+    */   
  
         // Create tables again
         onCreate(db);
@@ -369,7 +383,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     	JSONObject json = uf.getTtFromServer("timetable", class_no, section_no);
     
     	
-   
     	show("setting timetable sqlite database------------");
     
     	String result1="";
@@ -466,6 +479,76 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
     
     
+    /**************************************************************************************/
+    /*                                TABLE-SETUP                                         */                                 
+    /**************************************************************************************/
+    
+    public void setup(String[] tablelist)
+    {
+    	
+    	
+    	for(int i=0;i<tablelist.length;i++)
+    	{  
+    		show("table started : " + tablelist[i]);
+    		
+    		//deleting all tuples from table
+    		String deleteSQL = "DELETE FROM " + tablelist[i];
+    		db.execSQL(deleteSQL);
+    		show("old table deleted : " + tablelist[i]);
+    		
+    		//loading new tuples from server
+    		JSONObject json = uf.getTables(tablelist[i]);
+    		show("setting timetable sqlite database------------");
+    		JSONArray result1;
+
+    		try {
+    			if (json.getString("success") != null) {
+    				int res = json.getInt("success");
+        
+    				if(res == 1){
+    					
+    					result1 = json.getJSONArray("response");
+    					System.out.println("got result from localhost:-- " + result1);
+    					
+    					for (int j = 0; j < result1.length(); j++) {
+    						
+    						System.out.println("inner array start: ");
+    					    JSONArray innerJsonArray = (JSONArray) result1.get(j);
+    					    
+    					    
+    					    //System.out.println("inner array" + tablelist[i]);
+    					    String temp ="INSERT INTO " + tablelist[i]+ " VALUES (";
+    					    
+    					    System.out.println("inner array : "+innerJsonArray);
+    					    for (int k = 0; k < innerJsonArray.length()-1; k++) {
+    					        temp += innerJsonArray.get(k)+",";
+    					    }
+    					    temp += innerJsonArray.get(innerJsonArray.length()-1) + ")";
+    					   		
+    					   
+    					    
+    					    show(temp);
+    					  //  temp = "INSERT INTO SchoolName VALUES ('DAV22 PUBLIC SCHOOL, MUMBAI')"  ;
+    					    db.execSQL(temp);
+    					    show("inserted");
+    					    
+    					    
+    					    
+    					}
+    					
+    				}
+         }
+         System.out.println("data filled up in sqlite table--: " + tablelist[i]);
+	}
+    catch (JSONException e) {
+    //Toast.makeText(getApplicationContext(), "Error  null in retriving timetable ", Toast.LENGTH_LONG).show();
+       e.printStackTrace();
+   }
+  }
+    	
+    	show("setup done*****************************************************************");
+}
+  
     
     /***************************************************************************************/
     /*                              PHONE-LIST                                             */

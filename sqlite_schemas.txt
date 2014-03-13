@@ -1,0 +1,15 @@
+CREATE TABLE  SchoolName  ( name  TEXT PRIMARY KEY);
+CREATE TABLE  Parent (  pid  INTEGER    NOT NULL ,  first_name  TEXT NOT NULL,  last_name  TEXT NOT NULL,   phone_no  TEXT ,  email_id  TEXT ,  profession  TEXT,  relation  TEXT, PRIMARY KEY( pid , relation ));
+CREATE TABLE  Login  ( username  TEXT PRIMARY KEY,  pid  INTEGER  NOT NULL,  password  TEXT NOT NULL,  type  CHAR DEFAULT 'P',  no_child  INTEGER DEFAULT '1',  sec_password  TEXT,  conf_code  TEXT, FOREIGN KEY( pid ) REFERENCES  Parent ( pid )  );
+CREATE TABLE  Student ( sid  INTEGER  NOT NULL   PRIMARY KEY,  pid  INTEGER  NOT NULL, first_name  TEXT NOT NULL,  last_name  TEXT NOT NULL, roll  INTEGER NOT NULL,  class  TEXT NOT NULL,  section  TEXT NOT NULL,  dob  DATE,  phone_no  TEXT ,  email_id  TEXT,  address  TEXT,  achievements  TEXT,  INTEGERerests  TEXT, FOREIGN KEY( pid ) REFERENCES  Parent ( pid )   );
+CREATE TABLE  teacher  ( ID  INTEGER  NOT NULL  ,  NAME   TEXT NOT NULL,  SUBS  TEXT,  CLASSES  TEXT,  CONTACT  INTEGER,  EMAILID   TEXT, PRIMARY KEY );
+CREATE TABLE  TimeTable (  class_no  INTEGER  NOT NULL,  section  TEXT NOT NULL,  day  CHAR NOT NULL,  FROM  TIME NOT NULL,  TO  TIME NOT NULL,   ID  INTEGER  ,  subject  TEXT , PRIMARY KEY( class_no ,  section ,  day ,  FROM ), FOREIGN KEY REFERENCES  teacher );
+CREATE TABLE  phoneList  ( ID  INTEGER  NOT NULL  ,  NAME   TEXT NOT NULL,  POST  TEXT NOT NULL,  TAG  TEXT NOT NULL,  CON_PERSON  TEXT,  CONTACT  INTEGER,  EMAILID   TEXT, PRIMARY KEY );
+Create Table  Class (  class_no  INTEGER  NOT NULL,  section  CHAR NOT NULL,  subject  TEXT NOT NULL,  ID  INTEGER  ,  students  INTEGER  NOT NULL ,  classteacher  CHAR DEFAULT 'N', PRIMARY KEY( class_no , section ,  subject ), FOREIGN KEY REFERENCES  teacher  );
+CREATE Table  Event (  eid  INTEGER  NOT NULL   PRIMARY KEY,  title  TEXT NOT NULL,  description  TEXT,  start_time  DATETIME NOT NULL,  end_time  DATETIME ,  venue  TEXT,  special_guest  TEXT,  extra_details  TEXT);
+CREATE TABLE  Attendance (  sid  INTEGER  NOT NULL,  date  DATE NOT NULL,  status  CHAR NOT NULL, PRIMARY KEY( sid , date ), FOREIGN KEY( sid ) REFERENCES  Student ( sid ));
+CREATE TABLE  Medico (  sid  INTEGER  NOT NULL,  blood_group  TEXT,  height  INTEGER ,  weight  INTEGER , eye_sight  TEXT,  pd  CHAR DEFAULT 'No',  allergies  TEXT, injuries  TEXT, PRIMARY KEY( sid ), FOREIGN KEY( sid ) REFERENCES  Student ( sid ) );
+CREATE TABLE  AcadHistory  ( class_no  INTEGER NOT NULL PRIMARY KEY,  subject  TEXT,  percentage  TEXT,  year  INTEGER,  school  TEXT NOT NULL,  board  TEXT);
+CREATE TABLE  Notifications  ( nid  INTEGER  NOT NULL   PRIMARY KEY,  title  TEXT NOT NULL,  description  TEXT,  date  DATETIME NOT NULL);
+CREATE TABLE  GradeAnalysis  ( sid  INTEGER  NOT NULL PRIMARY KEY,  exam_type  TEXT,  subject  TEXT, marks TEXT,FOREIGN KEY( sid ) REFERENCES  Student ( sid ) );
+CREATE TABLE  TimeStampDetails (  table_name  TEXT,  time_stamp  TIMESTAMP,  flag  INTEGER, PRIMARY KEY( table_name ));
