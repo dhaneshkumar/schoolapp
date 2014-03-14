@@ -1,6 +1,8 @@
 package com.example.schoolapp;
 
-	import nav_drawer.*;
+	import com.example.schoolapp.R.color;
+
+import nav_drawer.*;
 	
 	import library.DatabaseHandler;
 import android.annotation.SuppressLint;
@@ -72,7 +74,7 @@ public class PhoneList extends commonDrawer {
 		result1 = db.getPhoneList(tag);
 		System.out.println("got result : " + result1);                 
 		
-		store = result1.split("~");
+		store = result1.split("###");
 
 		
 		
@@ -87,9 +89,12 @@ public class PhoneList extends commonDrawer {
 	        // In this case I want to fill its parent
 	        LinearLayout.LayoutParams rlp = new LinearLayout.LayoutParams(
 	        LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-	        rlp.setMargins(4, 0, 0, 0);
+	        rlp.setMargins(0, 2, 0, 0);
+	        
+	        //rlp.setMargins(left, top, right, bottom)
 	        rl.setLayoutParams(rlp);
-	        rl.setBackgroundColor(Color.WHITE);
+	        rl.setBackgroundColor(getResources().getColor(R.color.contact_back_color));
+	        
 	        l1.addView(rl);
 	        
 	       
@@ -100,17 +105,19 @@ public class PhoneList extends commonDrawer {
 	        LinearLayout.LayoutParams vp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 	        RelativeLayout.LayoutParams vp1 = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 	        vp1.addRule(RelativeLayout.RIGHT_OF, image.getId());
-	        vp.setMargins(2, 2, 2, 2);
-	        vp1.setMargins(4, 4, 4, 4);
+	      //  vp.setMargins(10, 2, 10, 2);
+	        vp1.setMargins(10, 8, 4, 2);
+	       // image.setBackgroundColor(color.contact_back_color);
 	        image.setLayoutParams(vp);
+	        image.setPadding(20, 4, 10, 4);
 	        rl.addView(image);
 	        
-	        Bitmap bMap = BitmapFactory.decodeResource(getResources(), R.drawable.dp);
+	        Bitmap bMap = BitmapFactory.decodeResource(getResources(), R.drawable.ab50);
 			Bitmap cmap = getRoundedShape(bMap);
 			image.setImageBitmap(cmap);
 		                	 
 	       
-	        String[] parts = store[i].split(",");
+	        String[] parts = store[i].split("~~");
 	        storestring =store[i];
 	        
 	        System.out.println("parts : -- " + parts[0]);
@@ -122,6 +129,7 @@ public class PhoneList extends commonDrawer {
 	        text1.setId(i+1000);
 	        text1.setText(parts[1]);
 	        text1.setLayoutParams(vp1);
+	        text1.setTextColor(getResources().getColor(R.color.contact_font_color));
 	        text1.setTextSize(15);
 	        rl.addView(text1);
 	        
@@ -129,12 +137,13 @@ public class PhoneList extends commonDrawer {
 	        TextView text2 = new TextView(this);
 	        RelativeLayout.LayoutParams vp2 = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 	        vp2.addRule(RelativeLayout.BELOW, text1.getId());
-	        vp2.setMargins(4, 4, 4, 4);
+	        vp2.setMargins(10, 0, 4, 2);
 	        vp2.addRule(RelativeLayout.RIGHT_OF, image.getId());
 	        text2.setText(parts[2]);
 	        text2.setLayoutParams(vp2);
 	        text2.setTypeface(Typeface.DEFAULT_BOLD);
 	        text2.setTextSize(13);
+	        //text2.setBackgroundColor(color.contact_back_color);
 	        text2.setPadding(0, 0, 0, 5);
 	        rl.addView(text2);
 	        

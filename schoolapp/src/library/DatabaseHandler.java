@@ -614,9 +614,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     //   String selectQuery = "SELECT  * FROM Parent WHERE id = " + id + " and relation = '" + relation + "'";
     	String result="";
     	String selectQuery="";
-    	if(tag=="Teacher")
+    	if(tag.trim().equals("Teacher"))
     	{
-    		selectQuery="select teacher.ID,NAME, class.subject, SUBS, CLASSES, CONTACT, EMAILID  FROM CLASS, TEACHER WHERE class.ID= teacher.ID";
+    		selectQuery="select teacher.ID,NAME, class.subject, SUBS, CLASSES, CONTACT, EMAILID  FROM class INNER JOIN teacher ON class.ID= teacher.ID";
+    		show(selectQuery);
     	}
     	else
     	{
@@ -630,22 +631,23 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         while(!cursor.isAfterLast())
         {
     	   if(cursor.getCount() > 0){
-        	result +=  cursor.getString(0) +",";
-            result +=  cursor.getString(1) +",";
-            result +=  cursor.getString(2) + ",";
-            result +=  cursor.getString(3) + ",";
-            result +=  cursor.getString(4) + ",";
-            result +=  cursor.getString(5) + ",";
+        	result +=  cursor.getString(0) +"~~";
+            result +=  cursor.getString(1) +"~~";
+            result +=  cursor.getString(2) + "~~";
+            result +=  cursor.getString(3) + "~~";
+            result +=  cursor.getString(4) + "~~";
+            result +=  cursor.getString(5) + "~~";
             result +=  cursor.getString(6);
             show(result);
         }
     	
         cursor.moveToNext();
-        result += "~";
+        result += "###";
        } 
        
-       show("data retrived");
+       show("data retrived  ------:  " + result);
         cursor.close();
+        
         db.close();
         return result;
     }

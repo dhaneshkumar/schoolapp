@@ -3,11 +3,13 @@ package com.example.schoolapp;
 import nav_drawer.commonDrawer;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Path;
 import android.graphics.Rect;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
@@ -26,6 +28,8 @@ public class PhoneList_ext extends commonDrawer {
 	TextView subjects;
 	TextView emailid;
 	TextView contactno;
+	TextView call;
+	String[] parts;
 		
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,7 @@ public class PhoneList_ext extends commonDrawer {
 		subjects=(TextView) findViewById(R.id.subjects);
 		contactno=(TextView) findViewById(R.id.contactno);
 		emailid=(TextView) findViewById(R.id.emailid);
+		call = (TextView) findViewById(R.id.callbutton);
 		ImageView iw=(ImageView) findViewById(R.id.imgView);
 	    
 	    
@@ -48,10 +53,13 @@ public class PhoneList_ext extends commonDrawer {
 		String tag = getIntent().getStringExtra("tag");
 		String details = getIntent().getStringExtra("details");
 		
-		String[] parts=details.split(",");
 		
-		if(tag=="Teacher")
+		System.out.println("Details ---------- : " +details);
+		parts=details.split("~~");
+		
+		if(tag.trim().equals("Teacher"))
 		{
+			
 			name.setText(parts[1]);
 			clas.setText("Class: " +parts[4]);
 			subjects.setText("Subject: " + parts[3]);
@@ -78,11 +86,25 @@ public class PhoneList_ext extends commonDrawer {
 		}
 		
 		
+		call.setClickable(true);
+		
+		
+		call.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+            	
+            //    Toast.makeText(getApplicationContext(), parts[1] + "+" + parts[4], Toast.LENGTH_SHORT).show();
+            	Intent callIntent = new Intent(Intent.ACTION_CALL);
+            	
+            	System.out.println("contact no -----------" + parts[5]);
+            	callIntent.setData(Uri.parse("tel:" + parts[5]));
+            	startActivity(callIntent);
+            }
+        });
 		
 		
 		
-		
-		Bitmap bMap = BitmapFactory.decodeResource(getResources(), R.drawable.dp);
+		Bitmap bMap = BitmapFactory.decodeResource(getResources(), R.drawable.ab100);
 		Bitmap cmap = getRoundedShape(bMap);
 		iw.setImageBitmap(cmap);
 		
