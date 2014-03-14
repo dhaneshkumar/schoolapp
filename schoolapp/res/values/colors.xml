@@ -15,5 +15,8 @@
     <color name="list_divider">#272727</color>
     <color name="counter_text_bg">#626262</color>
     <color name="counter_text_color">#c5c4c4</color>
+    <color name="contact_back_color">#7bc37a</color>
+    <color name="contact_font_color">#fff</color>
+     <color name="app_back_color">#F0F0F0</color>
     
 </resources>

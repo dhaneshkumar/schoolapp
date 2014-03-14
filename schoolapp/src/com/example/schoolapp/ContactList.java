@@ -19,6 +19,8 @@ public class ContactList extends commonDrawer implements View.OnClickListener{
 	    View contentView = inflater.inflate(R.layout.contactlist, null, false);
 	    mDrawerLayout.addView(contentView, 0);
 	    
+	    //setting action bar title
+	    getSupportActionBar().setTitle("Contact");
 	    
 	    Button teacher =  ( Button) findViewById(R.id.teacher);
 	    Button admin =  ( Button) findViewById(R.id.administration);
@@ -38,19 +40,19 @@ public class ContactList extends commonDrawer implements View.OnClickListener{
 		Intent myIntent = new Intent(ContactList.this, PhoneList.class);
 	       switch(v.getId()) {
 	           case R.id.teacher:
-	        	   myIntent.putExtra("tag", "teacher");
+	        	   myIntent.putExtra("tag", "Teacher");
 	           break;
 	           
 	           case R.id.administration:
-	        	   myIntent.putExtra("tag", "administration");
+	        	   myIntent.putExtra("tag", "Administration");
 	           break;
 	           
 	           case R.id.authority:
-	        	   myIntent.putExtra("tag", "authority");
+	        	   myIntent.putExtra("tag", "Authority");
 	           break;
 	           
 	           case R.id.others:
-	        	   myIntent.putExtra("tag", "others");
+	        	   myIntent.putExtra("tag", "Others");
 	           break;
 	           
 	       }

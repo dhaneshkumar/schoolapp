@@ -7,7 +7,12 @@ import android.annotation.SuppressLint;
 import android.app.ActionBar.LayoutParams;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Path;
+import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -26,11 +31,14 @@ import android.widget.Toast;
 import nav_drawer.*;
 
 
-public class PhoneList extends commonDrawer{		
+public class PhoneList extends commonDrawer {		
 		TableLayout table;
 		TextView text1;
 		TextView text2;
 		TextView text3;
+		String[] store;
+		String tag;
+		String storestring;
 		
 	@SuppressLint("NewApi")
 	@Override
@@ -45,17 +53,12 @@ public class PhoneList extends commonDrawer{
 	    //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		
 	    Intent intent = getIntent();
-	    String tag = intent.getStringExtra("tag");
+	     tag = intent.getStringExtra("tag");
 	
 
 		System.out.println("phonelist loading -----------tag :     " + tag + "     :---------.");
 		
-	//	commonDrawer cd=new commonDrawer();  //****************************************
-		
-		
-		
-		
-		//Initializing all variables
+		getSupportActionBar().setTitle(tag);
 		//table = ( TableLayout) findViewById(R.id.timeTable);
 		
 		LinearLayout l1 = (LinearLayout) findViewById(R.id.layout1);
@@ -65,10 +68,11 @@ public class PhoneList extends commonDrawer{
 		
 		DatabaseHandler db = new DatabaseHandler(this);
 		String result1="";	    
-		db.setPhoneList();
+		//db.setPhoneList();
 		result1 = db.getPhoneList(tag);
 		System.out.println("got result : " + result1);                 
-		String[] store = result1.split("~");
+		
+		store = result1.split("~");
 
 		
 		
@@ -83,7 +87,7 @@ public class PhoneList extends commonDrawer{
 	        // In this case I want to fill its parent
 	        LinearLayout.LayoutParams rlp = new LinearLayout.LayoutParams(
 	        LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-	        rlp.setMargins(2, 1, 2, 0);
+	        rlp.setMargins(4, 0, 0, 0);
 	        rl.setLayoutParams(rlp);
 	        rl.setBackgroundColor(Color.WHITE);
 	        l1.addView(rl);
@@ -92,7 +96,7 @@ public class PhoneList extends commonDrawer{
 	        
 	        ImageView image = new ImageView(this);
 	        image.setId(i+1);
-	        image.setBackgroundResource(R.drawable.ic_launcher);
+	       // image.setBackgroundResource(R.drawable.ic_launcher);
 	        LinearLayout.LayoutParams vp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 	        RelativeLayout.LayoutParams vp1 = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 	        vp1.addRule(RelativeLayout.RIGHT_OF, image.getId());
@@ -100,9 +104,14 @@ public class PhoneList extends commonDrawer{
 	        vp1.setMargins(4, 4, 4, 4);
 	        image.setLayoutParams(vp);
 	        rl.addView(image);
+	        
+	        Bitmap bMap = BitmapFactory.decodeResource(getResources(), R.drawable.dp);
+			Bitmap cmap = getRoundedShape(bMap);
+			image.setImageBitmap(cmap);
 		                	 
 	       
-	        final String[] parts = store[i].split(",");
+	        String[] parts = store[i].split(",");
+	        storestring =store[i];
 	        
 	        System.out.println("parts : -- " + parts[0]);
 	        
@@ -111,18 +120,18 @@ public class PhoneList extends commonDrawer{
 	        
 	        TextView text1 = new TextView(this);
 	        text1.setId(i+1000);
-	        text1.setText(parts[0]);
+	        text1.setText(parts[1]);
 	        text1.setLayoutParams(vp1);
 	        text1.setTextSize(15);
-	       
 	        rl.addView(text1);
+	        
 	        
 	        TextView text2 = new TextView(this);
 	        RelativeLayout.LayoutParams vp2 = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 	        vp2.addRule(RelativeLayout.BELOW, text1.getId());
 	        vp2.setMargins(4, 4, 4, 4);
 	        vp2.addRule(RelativeLayout.RIGHT_OF, image.getId());
-	        text2.setText(parts[1]);
+	        text2.setText(parts[2]);
 	        text2.setLayoutParams(vp2);
 	        text2.setTypeface(Typeface.DEFAULT_BOLD);
 	        text2.setTextSize(13);
@@ -136,11 +145,12 @@ public class PhoneList extends commonDrawer{
 	            	
 	            //    Toast.makeText(getApplicationContext(), parts[1] + "+" + parts[4], Toast.LENGTH_SHORT).show();
 	                Intent i=new Intent(getApplicationContext(), PhoneList_ext.class);
-	                i.putExtra("name", parts[0]);
-	                i.putExtra("post", parts[1]);
-	                i.putExtra("concPerson", parts[2]);
-	                i.putExtra("contact", parts[3]);
-	                i.putExtra("emailid", parts[4]);
+	                i.putExtra("tag", tag);
+	                i.putExtra("details", storestring);
+	                
+	                System.out.println("parts : -----------  " + storestring);
+
+	                
 	                startActivity(i);
 	            }
 	        });
@@ -148,6 +158,31 @@ public class PhoneList extends commonDrawer{
 		}
 		              		 
 		}
+	
+	public Bitmap getRoundedShape(Bitmap scaleBitmapImage) {
+		  // TODO Auto-generated method stub
+		  int targetWidth = scaleBitmapImage.getHeight();
+		  int targetHeight = scaleBitmapImage.getWidth();
+		  Bitmap targetBitmap = Bitmap.createBitmap(targetWidth, 
+		                            targetHeight,Bitmap.Config.ARGB_8888);
+		  
+		                Canvas canvas = new Canvas(targetBitmap);
+		  Path path = new Path();
+		  path.addCircle(((float) targetWidth - 1) / 2,
+		  ((float) targetHeight - 1) / 2,
+		  (Math.min(((float) targetWidth), 
+		                ((float) targetHeight)) / 2),
+		          Path.Direction.CCW);
+		  
+		                canvas.clipPath(path);
+		  Bitmap sourceBitmap = scaleBitmapImage;
+		  canvas.drawBitmap(sourceBitmap, 
+		                                new Rect(0, 0, sourceBitmap.getWidth(),
+		    sourceBitmap.getHeight()), 
+		                                new Rect(0, 0, targetWidth,
+		    targetHeight), null);
+		  return targetBitmap;
+		 }
 
 
 

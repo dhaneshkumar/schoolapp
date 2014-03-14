@@ -138,6 +138,7 @@ import com.example.schoolapp.profile;
 	}
 	
 	
+	
         
 	/**
 	 * Slide menu item click listener
@@ -149,6 +150,7 @@ import com.example.schoolapp.profile;
 				long id) {
 			// display view for selected nav drawer item
 			displayView(position);
+			
 		}
 	}   
 
@@ -206,8 +208,7 @@ import com.example.schoolapp.profile;
 		Intent fragment = null;
 		switch (position) {
 		case 0:
-			 fragment = new Intent(this,  Timetable.class);
-			
+			 fragment = new Intent(this,  Timetable.class);			
 			break;
 		case 1:
 			fragment = new Intent(this,  profile.class);

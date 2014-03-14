@@ -29,11 +29,11 @@ insert into Student values(1, 2,'Rahul', 'Khanna', 1, '1', 'A','26-05-2004', '89
 insert into Student values(2, 1,'Raj', 'Khanna',  2, '1', 'A', '26-01-2004', '8976322220' , 'raj@gmail.com', 'royal city, mumbai', 'Topper in class 6', 'cricket, music, movie'  );
 
 
-insert into phoneList(NAME, POST, TAG, CON_PERSON, CONTACT, EMAILID) values('S Khurana', 'principal', 'administration','roshan', '32324242', 'khuran@gmail.com');
-insert into phoneList(NAME, POST,  TAG, CON_PERSON, CONTACT, EMAILID) values('P PANDAY', 'vice-principal', 'administration', 'puja', '32324242', 'panday@gmail.com');
-insert into phoneList(NAME, POST,  TAG, CON_PERSON, CONTACT, EMAILID) values('shiva prasad', 'watch man','authority',' ', '43867862', 'prasad@gmail.com');
-insert into phoneList(NAME, POST,  TAG, CON_PERSON, CONTACT, EMAILID) values('milind sohni', 'security chief', 'authority','', '999324242', 'sohni@gmail.com');
-insert into phoneList(NAME, POST,  TAG, CON_PERSON, CONTACT, EMAILID) values('versa aapte', 'staff-head', 'others',' ', '7878324242', 'aapte@gmail.com');
+insert into phoneList(NAME, POST, TAG, CON_PERSON, CONTACT, EMAILID) values('S Khurana', 'principal', 'Administration','roshan', '32324242', 'khuran@gmail.com');
+insert into phoneList(NAME, POST,  TAG, CON_PERSON, CONTACT, EMAILID) values('P PANDAY', 'vice-principal', 'Administration', 'puja', '32324242', 'panday@gmail.com');
+insert into phoneList(NAME, POST,  TAG, CON_PERSON, CONTACT, EMAILID) values('shiva prasad', 'watch man','Authority','', '43867862', 'prasad@gmail.com');
+insert into phoneList(NAME, POST,  TAG, CON_PERSON, CONTACT, EMAILID) values('milind sohni', 'security chief', 'Authority','', '999324242', 'sohni@gmail.com');
+insert into phoneList(NAME, POST,  TAG, CON_PERSON, CONTACT, EMAILID) values('versa aapte', 'staff-head', 'Others','', '7878324242', 'aapte@gmail.com');
 
 
 insert into teacher(NAME, SUBS,  CLASSES, CONTACT, EMAILID) values('MR. Khander', 'PHY, MATH', '1A, 2B', '7878324242', 'aapte@gmail.com');

@@ -25,17 +25,16 @@ public class splash extends Activity{
 		db.setup(tableList);
 		
 		
-//		
-//		//Delaying for 1 sec.
-//		new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                final Intent mainIntent = new Intent(splash.this, Event.class);
-//                splash.this.startActivity(mainIntent);
-//                splash.this.finish();
-//            }
-//        }, 1000);
-//		
+		
+		//Delaying for 1 sec.
+		new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                final Intent mainIntent = new Intent(splash.this, ContactList.class);
+                splash.this.startActivity(mainIntent);
+                splash.this.finish();
+            }
+        }, 1000);		
 	}
-
 }
+

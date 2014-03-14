@@ -2,32 +2,45 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/app_back_color"
     android:orientation="vertical" >
 
     <Button
         android:id="@+id/teacher"
+      
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:textColor="@color/contact_font_color"
+        android:background="@color/contact_back_color"
         android:text="Teacher" />
 
    <Button
         android:id="@+id/administration"
+         android:layout_marginTop="4dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:textColor="@color/contact_font_color"
+        android:background="@color/contact_back_color"
         android:text="Administration" />
    <Button
         android:id="@+id/authority"
+         android:layout_marginTop="4dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:textColor="@color/contact_font_color"
+        android:background="@color/contact_back_color"
         android:text="Authority" />
    <Button
         android:id="@+id/others"
+         android:layout_marginTop="4dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:textColor="@color/contact_font_color"
+        android:background="@color/contact_back_color"
         android:text="Others" />
 
 </LinearLayout>

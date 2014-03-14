@@ -21,11 +21,11 @@ import android.widget.Toast;
 public class PhoneList_ext extends commonDrawer {
 		
 	
-	TextView text1;
-	TextView text2;
-	TextView text3;
-	TextView text4;
-	TextView text5;
+	TextView name;
+	TextView clas;
+	TextView subjects;
+	TextView emailid;
+	TextView contactno;
 		
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -36,41 +36,51 @@ public class PhoneList_ext extends commonDrawer {
 	    mDrawerLayout.addView(contentView, 0);
 		
 		
-		//contact details
-		String name = getIntent().getStringExtra("name");
-		String post = getIntent().getStringExtra("post");
-		String concPerson = getIntent().getStringExtra("concPerson");
-		String contact = getIntent().getStringExtra("contact");
-		String emailid = getIntent().getStringExtra("emailid");
-		
-		System.out.println( "extension :-------------- " + name + post + contact + emailid);
-		
-		
-		//intialising textviews
-		
-		text1=(TextView) findViewById(R.id.phoneText1);
-		text2=(TextView) findViewById(R.id.phoneTexxt2);
-		text3=(TextView) findViewById(R.id.concperson);
-		text4=(TextView) findViewById(R.id.cpdetails);
-		text5=(TextView) findViewById(R.id.emailid);
+		name=(TextView) findViewById(R.id.name);
+		clas=(TextView) findViewById(R.id.clas);
+		subjects=(TextView) findViewById(R.id.subjects);
+		contactno=(TextView) findViewById(R.id.contactno);
+		emailid=(TextView) findViewById(R.id.emailid);
 		ImageView iw=(ImageView) findViewById(R.id.imgView);
+	    
+	    
+		//contact details
+		String tag = getIntent().getStringExtra("tag");
+		String details = getIntent().getStringExtra("details");
 		
-		//table row to hide/display concernperson
-		TableRow r1 =(TableRow) findViewById(R.id.row1);
-		TableRow r2 =(TableRow) findViewById(R.id.row2);
+		String[] parts=details.split(",");
 		
-		text1.setText(post);
-		text2.setText(name);
-		text3.setText(concPerson);
-		text4.setText(contact);
-		text5.setText(emailid);
-		
-		if(concPerson.equals(""))
+		if(tag=="Teacher")
 		{
-			r1.setVisibility(View.GONE);
-			r2.setVisibility(View.GONE);
+			name.setText(parts[1]);
+			clas.setText("Class: " +parts[4]);
+			subjects.setText("Subject: " + parts[3]);
+			contactno.setText(parts[5]);
+			emailid.setText(parts[6]);
+			getSupportActionBar().setTitle("Teacher's Profile");
 			
 		}
+		else
+		{	
+			name.setText(parts[1]);
+			clas.setText(parts[2]);
+			if(parts[4].equals("") || parts[4].equals(" "))
+			{
+				subjects.setVisibility(View.GONE);
+				
+			}
+			
+			
+			subjects.setText("Conc. Person: " + parts[4]);
+			contactno.setText(parts[5]);
+			emailid.setText(parts[6]);
+			getSupportActionBar().setTitle(tag);
+		}
+		
+		
+		
+		
+		
 		
 		Bitmap bMap = BitmapFactory.decodeResource(getResources(), R.drawable.dp);
 		Bitmap cmap = getRoundedShape(bMap);

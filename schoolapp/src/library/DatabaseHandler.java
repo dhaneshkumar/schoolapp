@@ -36,9 +36,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
     
-    public final static String[] tableList={"Parent","Login","Student","teacher","TimeTable","phoneList","Class","Event","Attendance","Medico","AcadHistory","Notifications","GradeAnalysis","TimeStampDetails"};
+    //list of tables having contents
+    public final static String[] tableList={"SchoolName","Parent","Student","teacher","TimeTable","phoneList","Class"};
     String[] tablesname;
- 
+    
+    //final list of tables
+    //public final static String[] tableList={"SchoolName","Parent","Student","teacher","TimeTable","phoneList","Class","Event","Attendance","Medico","AcadHistory","Notifications","GradeAnalysis","TimeStampDetails"};
+    
    
     // Creating Tables
     @Override
@@ -482,10 +486,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     /**************************************************************************************/
     /*                                TABLE-SETUP                                         */                                 
     /**************************************************************************************/
-    
+   
+    /*
+     * fill contents in all sqlite data from server
+     */
     public void setup(String[] tablelist)
     {
-    	
     	
     	for(int i=0;i<tablelist.length;i++)
     	{  
@@ -494,7 +500,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     		//deleting all tuples from table
     		String deleteSQL = "DELETE FROM " + tablelist[i];
     		db.execSQL(deleteSQL);
-    		show("old table deleted : " + tablelist[i]);
+    		//show("old table deleted : " + tablelist[i]);
     		
     		//loading new tuples from server
     		JSONObject json = uf.getTables(tablelist[i]);
@@ -508,44 +514,29 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     				if(res == 1){
     					
     					result1 = json.getJSONArray("response");
-    					System.out.println("got result from localhost:-- " + result1);
+    	//				System.out.println("got result from localhost:-- " + result1);
     					
-    					for (int j = 0; j < result1.length(); j++) {
-    						
-    						System.out.println("inner array start: ");
+    					for (int j = 0; j < result1.length(); j++)
+    					{
     					    JSONArray innerJsonArray = (JSONArray) result1.get(j);
-    					    
-    					    
-    					    //System.out.println("inner array" + tablelist[i]);
     					    String temp ="INSERT INTO " + tablelist[i]+ " VALUES (";
-    					    
-    					    System.out.println("inner array : "+innerJsonArray);
     					    for (int k = 0; k < innerJsonArray.length()-1; k++) {
     					        temp += innerJsonArray.get(k)+",";
     					    }
     					    temp += innerJsonArray.get(innerJsonArray.length()-1) + ")";
     					   		
-    					   
-    					    
-    					    show(temp);
-    					  //  temp = "INSERT INTO SchoolName VALUES ('DAV22 PUBLIC SCHOOL, MUMBAI')"  ;
     					    db.execSQL(temp);
-    					    show("inserted");
-    					    
-    					    
-    					    
+    					   // show("inserted");
     					}
-    					
     				}
          }
-         System.out.println("data filled up in sqlite table--: " + tablelist[i]);
+         System.out.println("data filled up in sqlite table--: " + tablelist[i] + "\n\n\n");
 	}
     catch (JSONException e) {
     //Toast.makeText(getApplicationContext(), "Error  null in retriving timetable ", Toast.LENGTH_LONG).show();
        e.printStackTrace();
    }
   }
-    	
     	show("setup done*****************************************************************");
 }
   
@@ -616,30 +607,33 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 }
     /************************************************************************************/
    
+    
     // We need to store the id the student. From the id of student retrieve class & section of student.
     public String getPhoneList(String tag){
-      //  HashMap<String,String> user = new HashMap<String,String>();
-     //   String selectQuery = "SELECT  * FROM Parent WHERE id = " + id + " and relation = '" + relation + "'";
-        String selectQuery="SELECT * from phoneList  where tag = \"" + tag + "\"";
+    //  HashMap<String,String> user = new HashMap<String,String>();
+    //   String selectQuery = "SELECT  * FROM Parent WHERE id = " + id + " and relation = '" + relation + "'";
+    	String result="";
+    	String selectQuery="";
+    	if(tag=="Teacher")
+    	{
+    		selectQuery="select teacher.ID,NAME, class.subject, SUBS, CLASSES, CONTACT, EMAILID  FROM CLASS, TEACHER WHERE class.ID= teacher.ID";
+    	}
+    	else
+    	{
+    	
+    		selectQuery="SELECT * from phoneList  where tag = \"" + tag + "\"";
+    		
+    	}
         
-        show("retrieving data from phoneList sqlite database----------------");
-        //SQLiteDatabase db1 = this.getReadableDatabase();
-        show("cursor ------ check1");
         Cursor cursor = db1.rawQuery(selectQuery, null);
-        // Move to first row
-        String result="";
-        show("cursor ------ check2");
         cursor.moveToFirst();
-        
-        show("cursor ------ check3");
-        
-       while(!cursor.isAfterLast())
-       {
-    	   show("no of colulmns :  --  "+cursor.getColumnCount());
-    	   
+        while(!cursor.isAfterLast())
+        {
     	   if(cursor.getCount() > 0){
-        	result +=  cursor.getString(1) +",";
-            result +=  cursor.getString(2) +",";
+        	result +=  cursor.getString(0) +",";
+            result +=  cursor.getString(1) +",";
+            result +=  cursor.getString(2) + ",";
+            result +=  cursor.getString(3) + ",";
             result +=  cursor.getString(4) + ",";
             result +=  cursor.getString(5) + ",";
             result +=  cursor.getString(6);
@@ -648,15 +642,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     	
         cursor.moveToNext();
         result += "~";
-       }
-       
+       } 
        
        show("data retrived");
         cursor.close();
         db.close();
-        // return user
         return result;
     }
+    
     
    void show(String st)
    {
