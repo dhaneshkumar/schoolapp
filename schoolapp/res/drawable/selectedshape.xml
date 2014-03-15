@@ -2,7 +2,7 @@
 
 <shape xmlns:android="http://schemas.android.com/apk/res/android" 
     android:shape="rectangle"> 
-    <gradient android:startColor="@color/contact_back_color" android:endColor="@color/contact_back_color" 
+    <gradient android:startColor="@color/profile_selected" android:endColor="@color/profile_selected" 
         android:angle="180"/> 
 
     <corners android:bottomRightRadius="4dp" android:bottomLeftRadius="4dp" 

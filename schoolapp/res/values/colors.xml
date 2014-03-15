@@ -17,6 +17,9 @@
     <color name="counter_text_color">#c5c4c4</color>
     <color name="contact_back_color">#7bc37a</color>
     <color name="contact_font_color">#fff</color>
-     <color name="app_back_color">#F0F0F0</color>
+    <color name="app_back_color">#F0F0F0</color>
+    <color name="profile_font_color">#808080</color>
+    <color name="profile_selected">#C0C0C0</color>
+    
     
 </resources>

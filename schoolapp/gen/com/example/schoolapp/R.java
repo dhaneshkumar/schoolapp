@@ -804,7 +804,7 @@ containing a value of this type.
         public static final int abc_split_action_bar_is_narrow=0x7f060002;
     }
     public static final class color {
-        public static final int abc_search_url_text_holo=0x7f070015;
+        public static final int abc_search_url_text_holo=0x7f070017;
         public static final int abc_search_url_text_normal=0x7f070000;
         public static final int abc_search_url_text_pressed=0x7f070002;
         public static final int abc_search_url_text_selected=0x7f070001;
@@ -822,6 +822,8 @@ containing a value of this type.
         public static final int list_background_pressed=0x7f07000e;
         public static final int list_divider=0x7f07000f;
         public static final int list_item_title=0x7f07000c;
+        public static final int profile_font_color=0x7f070015;
+        public static final int profile_selected=0x7f070016;
         public static final int red=0x7f070003;
         public static final int silver=0x7f070006;
         public static final int slateGrey=0x7f070009;
@@ -1033,8 +1035,9 @@ containing a value of this type.
         public static final int list_selector=0x7f02006d;
         public static final int medico=0x7f02006e;
         public static final int rounded=0x7f02006f;
-        public static final int timetable=0x7f020070;
-        public static final int titleshape=0x7f020071;
+        public static final int selectedshape=0x7f020070;
+        public static final int timetable=0x7f020071;
+        public static final int titleshape=0x7f020072;
     }
     public static final class id {
         public static final int LinearLayout=0x7f050073;
@@ -1052,20 +1055,20 @@ containing a value of this type.
         public static final int action_search=0x7f050079;
         public static final int action_settings=0x7f05007a;
         public static final int activity_chooser_view_content=0x7f050025;
+        public static final int addguardian=0x7f05006b;
+        public static final int address=0x7f050070;
         public static final int administration=0x7f05003d;
         public static final int always=0x7f05000b;
         public static final int authority=0x7f05003e;
         public static final int beginning=0x7f050011;
-        public static final int callbutton=0x7f050071;
+        public static final int callbutton=0x7f050067;
         public static final int checkbox=0x7f05002d;
-        public static final int clas=0x7f05006e;
+        public static final int clas=0x7f050064;
+        public static final int classteacher=0x7f05006e;
         public static final int collapseActionView=0x7f05000d;
-        public static final int concern=0x7f050067;
-        public static final int concernperson=0x7f050066;
-        public static final int contactno=0x7f050070;
+        public static final int contactdetails=0x7f050071;
+        public static final int contactno=0x7f050066;
         public static final int counter=0x7f050040;
-        public static final int cpdetails=0x7f050065;
-        public static final int cson=0x7f050064;
         public static final int default_activity_button=0x7f050028;
         public static final int dialog=0x7f05000e;
         public static final int disableHome=0x7f050008;
@@ -1078,29 +1081,26 @@ containing a value of this type.
         public static final int ending_date_txt=0x7f050050;
         public static final int expand_activities_button=0x7f050026;
         public static final int expanded_menu=0x7f05002c;
-        public static final int fatherContacts=0x7f050063;
-        public static final int fatherName=0x7f050061;
-        public static final int fatherProfession=0x7f050062;
         public static final int home=0x7f050014;
         public static final int homeAsUp=0x7f050005;
         public static final int icon=0x7f05002a;
         public static final int ifRoom=0x7f05000a;
         public static final int image=0x7f050027;
         public static final int imageView1=0x7f05004d;
-        public static final int imgView=0x7f05006c;
-        public static final int layout1=0x7f05006b;
+        public static final int imgView=0x7f050062;
+        public static final int layout1=0x7f050061;
         public static final int left_drawer=0x7f05004a;
         public static final int listMode=0x7f050001;
         public static final int list_item=0x7f050029;
         public static final int medicoView1=0x7f05004b;
         public static final int middle=0x7f050012;
-        public static final int motherContacts=0x7f05006a;
-        public static final int motherName=0x7f050069;
-        public static final int name=0x7f05006d;
+        public static final int name=0x7f050063;
         public static final int never=0x7f050009;
         public static final int none=0x7f050010;
+        public static final int noofstudents=0x7f05006f;
         public static final int normal=0x7f050000;
         public static final int others=0x7f05003f;
+        public static final int parents=0x7f05006a;
         public static final int phoneText1=0x7f050042;
         public static final int phoneText23=0x7f050043;
         public static final int phoneTexxt2=0x7f050044;
@@ -1109,6 +1109,8 @@ containing a value of this type.
         public static final int progress_horizontal=0x7f050019;
         public static final int radio=0x7f05002f;
         public static final int s1=0x7f050072;
+        public static final int school=0x7f050069;
+        public static final int schoolname=0x7f05006c;
         public static final int search_badge=0x7f050032;
         public static final int search_bar=0x7f050031;
         public static final int search_button=0x7f050033;
@@ -1119,6 +1121,7 @@ containing a value of this type.
         public static final int search_plate=0x7f050036;
         public static final int search_src_text=0x7f050037;
         public static final int search_voice_btn=0x7f05003b;
+        public static final int section=0x7f05006d;
         public static final int selectdays=0x7f050045;
         public static final int shortcut=0x7f05002e;
         public static final int showCustom=0x7f050007;
@@ -1128,7 +1131,7 @@ containing a value of this type.
         public static final int spinner_text=0x7f050052;
         public static final int split_action_bar=0x7f05001e;
         public static final int starting_date_txt=0x7f05004f;
-        public static final int subjects=0x7f05006f;
+        public static final int subjects=0x7f050065;
         public static final int submit_area=0x7f050039;
         public static final int tabMode=0x7f050002;
         public static final int tableRow2=0x7f050046;
@@ -1220,10 +1223,10 @@ containing a value of this type.
         public static final int leaveapp=0x7f03001e;
         public static final int medico=0x7f03001f;
         public static final int nav_drawer=0x7f030020;
-        public static final int parentdetails=0x7f030021;
-        public static final int phonelist=0x7f030022;
-        public static final int phonelist_ext=0x7f030023;
-        public static final int profile=0x7f030024;
+        public static final int phonelist=0x7f030021;
+        public static final int phonelist_ext=0x7f030022;
+        public static final int profile_parent=0x7f030023;
+        public static final int profile_student=0x7f030024;
         public static final int splash=0x7f030025;
         public static final int support_simple_spinner_dropdown_item=0x7f030026;
         public static final int timetable=0x7f030027;

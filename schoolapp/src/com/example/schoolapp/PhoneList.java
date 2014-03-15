@@ -5,6 +5,7 @@ package com.example.schoolapp;
 import nav_drawer.*;
 	
 	import library.DatabaseHandler;
+import library.utils;
 import android.annotation.SuppressLint;
 import android.app.ActionBar.LayoutParams;
 import android.content.Context;
@@ -80,7 +81,6 @@ public class PhoneList extends commonDrawer {
 		
 		for(int i=0; i<store.length;i++)
 		{
-			
 			// Creating a new RelativeLayout
 	        RelativeLayout rl = new RelativeLayout(this);
 	        rl.setId(i+2000);
@@ -113,7 +113,7 @@ public class PhoneList extends commonDrawer {
 	        rl.addView(image);
 	        
 	        Bitmap bMap = BitmapFactory.decodeResource(getResources(), R.drawable.ab50);
-			Bitmap cmap = getRoundedShape(bMap);
+			Bitmap cmap = utils.getRoundedShape(bMap);
 			image.setImageBitmap(cmap);
 		                	 
 	       
@@ -168,32 +168,7 @@ public class PhoneList extends commonDrawer {
 		              		 
 		}
 	
-	public Bitmap getRoundedShape(Bitmap scaleBitmapImage) {
-		  // TODO Auto-generated method stub
-		  int targetWidth = scaleBitmapImage.getHeight();
-		  int targetHeight = scaleBitmapImage.getWidth();
-		  Bitmap targetBitmap = Bitmap.createBitmap(targetWidth, 
-		                            targetHeight,Bitmap.Config.ARGB_8888);
-		  
-		                Canvas canvas = new Canvas(targetBitmap);
-		  Path path = new Path();
-		  path.addCircle(((float) targetWidth - 1) / 2,
-		  ((float) targetHeight - 1) / 2,
-		  (Math.min(((float) targetWidth), 
-		                ((float) targetHeight)) / 2),
-		          Path.Direction.CCW);
-		  
-		                canvas.clipPath(path);
-		  Bitmap sourceBitmap = scaleBitmapImage;
-		  canvas.drawBitmap(sourceBitmap, 
-		                                new Rect(0, 0, sourceBitmap.getWidth(),
-		    sourceBitmap.getHeight()), 
-		                                new Rect(0, 0, targetWidth,
-		    targetHeight), null);
-		  return targetBitmap;
-		 }
-
-
+	
 
 	}
 

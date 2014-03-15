@@ -1,5 +1,6 @@
 package com.example.schoolapp;
 
+import library.utils;
 import nav_drawer.commonDrawer;
 import android.app.Activity;
 import android.content.Context;
@@ -92,11 +93,7 @@ public class PhoneList_ext extends commonDrawer {
 		call.setOnClickListener( new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-            	
-            //    Toast.makeText(getApplicationContext(), parts[1] + "+" + parts[4], Toast.LENGTH_SHORT).show();
             	Intent callIntent = new Intent(Intent.ACTION_CALL);
-            	
-            	System.out.println("contact no -----------" + parts[5]);
             	callIntent.setData(Uri.parse("tel:" + parts[5]));
             	startActivity(callIntent);
             }
@@ -105,7 +102,7 @@ public class PhoneList_ext extends commonDrawer {
 		
 		
 		Bitmap bMap = BitmapFactory.decodeResource(getResources(), R.drawable.ab100);
-		Bitmap cmap = getRoundedShape(bMap);
+		Bitmap cmap = utils.getRoundedShape(bMap);
 		iw.setImageBitmap(cmap);
 		
 		
@@ -114,30 +111,6 @@ public class PhoneList_ext extends commonDrawer {
 	//	Toast.makeText(getApplicationContext()," ogt new pare", Toast.LENGTH_LONG).show();
 	}
 	
-	public Bitmap getRoundedShape(Bitmap scaleBitmapImage) {
-		  // TODO Auto-generated method stub
-		  int targetWidth = scaleBitmapImage.getHeight();
-		  int targetHeight = scaleBitmapImage.getWidth();
-		  Bitmap targetBitmap = Bitmap.createBitmap(targetWidth, 
-		                            targetHeight,Bitmap.Config.ARGB_8888);
-		  
-		                Canvas canvas = new Canvas(targetBitmap);
-		  Path path = new Path();
-		  path.addCircle(((float) targetWidth - 1) / 2,
-		  ((float) targetHeight - 1) / 2,
-		  (Math.min(((float) targetWidth), 
-		                ((float) targetHeight)) / 2),
-		          Path.Direction.CCW);
-		  
-		                canvas.clipPath(path);
-		  Bitmap sourceBitmap = scaleBitmapImage;
-		  canvas.drawBitmap(sourceBitmap, 
-		                                new Rect(0, 0, sourceBitmap.getWidth(),
-		    sourceBitmap.getHeight()), 
-		                                new Rect(0, 0, targetWidth,
-		    targetHeight), null);
-		  return targetBitmap;
-		 }
 	
 	
 }

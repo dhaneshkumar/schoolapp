@@ -21,13 +21,8 @@ import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
-import com.example.schoolapp.ContactList;
-import com.example.schoolapp.Home;
-import com.example.schoolapp.Medico;
+import com.example.schoolapp.*;
 import com.example.schoolapp.R;
-import com.example.schoolapp.Timetable;
-import com.example.schoolapp.profile;
-
 @SuppressLint("NewApi")
 	public class commonDrawer extends ActionBarActivity {
 	public String[] navigationList;
@@ -50,26 +45,18 @@ import com.example.schoolapp.profile;
 		setContentView(R.layout.nav_drawer);
 		
 		CONTENT_LAYOUT_ID =R.layout.phonelist;
-		show("starting 1------------------"+ CONTENT_LAYOUT_ID);
-		
 		mTitle = mDrawerTitle = getTitle();
 		navigationList = getResources().getStringArray(R.array.navigationList);
-		
-		show("starting 2------------------");
 		linearLayout = (LinearLayout) findViewById(R.id.LinearLayout);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
         int j=R.id.left_drawer;
         
-        show("starting 3------------------" + j + mDrawerList);
-        show("starting 3------------------" + j + mDrawerLayout);
         navMenuIcons = getResources()
 				.obtainTypedArray(R.array.nav_drawer_icons);
         navDrawerItems = new ArrayList<NavDrawerItem>();
         
-        show("starting 4------------------");
      // adding nav drawer items to array
-     		// Home
      		navDrawerItems.add(new NavDrawerItem(navigationList[0], navMenuIcons.getResourceId(0, -1)));
      		navDrawerItems.add(new NavDrawerItem(navigationList[1], navMenuIcons.getResourceId(1, -1)));
      		navDrawerItems.add(new NavDrawerItem(navigationList[2], navMenuIcons.getResourceId(2, -1)));
@@ -77,26 +64,20 @@ import com.example.schoolapp.profile;
      		navDrawerItems.add(new NavDrawerItem(navigationList[4], navMenuIcons.getResourceId(4, -1)));
      		navDrawerItems.add(new NavDrawerItem(navigationList[5], navMenuIcons.getResourceId(5, -1), true, "50+"));
      		
-     		show("starting 5------------------");
      	// Recycle the typed array
     		navMenuIcons.recycle();
-    		show("starting 51------------------");
     		
     		//if(mDrawerList != null)
     		mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
-    		//mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
-    		show("starting 6------------------");
     		// setting the nav drawer list adapter
     		adapter = new NavDrawerListAdapter(getApplicationContext(),
     				navDrawerItems);
     		mDrawerList.setAdapter(adapter);
-    		show("starting 7------------------");
     		// enabling action bar app icon and behaving it as toggle button
     		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     		getSupportActionBar().setHomeButtonEnabled(true);
     		
-    		show("starting 8------------------");
     		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
     				R.drawable.ic_drawer, //nav menu toggle icon
     				R.string.app_name, // nav drawer open - description for accessibility
@@ -116,25 +97,16 @@ import com.example.schoolapp.profile;
     		};
     		mDrawerLayout.setDrawerListener(mDrawerToggle);
 
-    		//if (savedInstanceState == null) {
-    			// on first time display view for first nav item
-    			//displayView(0);
-    		//}
-    		show("starting 4------------------finshed");
     }
 
 	protected void setContentLayout(int sourceId) {
-		show("starting 1------------------"+ CONTENT_LAYOUT_ID);
 	    View contentLayout = findViewById(CONTENT_LAYOUT_ID);
-	    show("starting 1------------------"+ contentLayout);
 	    ViewGroup parent = (ViewGroup) contentLayout.getParent();
 	    int index = parent.indexOfChild(contentLayout);
 
 	    parent.removeView(contentLayout);
 	    contentLayout = getLayoutInflater().inflate(sourceId, parent, false);
 	    parent.addView(contentLayout, index);
-	    
-	    show("layout change------------------");
 	}
 	
 	
@@ -208,10 +180,10 @@ import com.example.schoolapp.profile;
 		Intent fragment = null;
 		switch (position) {
 		case 0:
-			 fragment = new Intent(this,  Timetable.class);			
+			 fragment = new Intent(this,  profile_student.class);			
 			break;
 		case 1:
-			fragment = new Intent(this,  profile.class);
+			fragment = new Intent(this,  profile_student.class);
 			break;
 		case 2:
 			fragment = new Intent(this, Medico.class);
