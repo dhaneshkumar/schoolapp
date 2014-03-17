@@ -40,10 +40,10 @@ import com.example.schoolapp.R;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.nav_drawer);
-		
+
 		CONTENT_LAYOUT_ID =R.layout.phonelist;
 		mTitle = mDrawerTitle = getTitle();
 		navigationList = getResources().getStringArray(R.array.navigationList);
@@ -108,9 +108,9 @@ import com.example.schoolapp.R;
 	    contentLayout = getLayoutInflater().inflate(sourceId, parent, false);
 	    parent.addView(contentLayout, index);
 	}
-	
-	
-	
+
+
+
         
 	/**
 	 * Slide menu item click listener
@@ -122,7 +122,7 @@ import com.example.schoolapp.R;
 				long id) {
 			// display view for selected nav drawer item
 			displayView(position);
-			
+
 		}
 	}   
 
@@ -171,7 +171,7 @@ import com.example.schoolapp.R;
     /* *
 	 * Called when invalidateOptionsMenu() is triggered
 	 */
-	
+
 	/**
 	 * Diplaying fragment view for selected nav drawer list item
 	 * */
@@ -189,10 +189,10 @@ import com.example.schoolapp.R;
 			fragment = new Intent(this, Medico.class);
 			break;
 		case 3:
-			fragment = new Intent(this, Timetable.class);
+			fragment = new Intent(this, TimetableSetup.class);
 			break;
 		case 4:
-			fragment = new Intent(this, Timetable.class);
+			fragment = new Intent(this, TimetableSetup.class);
 			break;
 		case 5:
 			fragment = new Intent(this, ContactList.class);
@@ -240,11 +240,11 @@ import com.example.schoolapp.R;
 		// Pass any configuration change to the drawer toggls
 		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
-	
+
 	public void show(String str)
 	{
 		System.out.println(str);
-		
+
 	}
 
 }

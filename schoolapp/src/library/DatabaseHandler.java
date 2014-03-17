@@ -112,6 +112,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	/**
 	 * Storing user details in database
 	 * */
+	
+	
+	UserFunctions uf = new UserFunctions();
+	SQLiteDatabase db = this.getWritableDatabase();
+	SQLiteDatabase db1 = this.getReadableDatabase();
 
 	public void addUser(int id, String table) {
 		SQLiteDatabase db = this.getWritableDatabase();
@@ -409,108 +414,61 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	}
 
 	
-	/***************************************************************************************/
-	/* Timetable */
-	/***************************************************************************************/
-
-	UserFunctions uf = new UserFunctions();
-	SQLiteDatabase db = this.getWritableDatabase();
-	SQLiteDatabase db1 = this.getReadableDatabase();
-
-	public void setTimeTable(String class_no, String section_no) {
-		JSONObject json = uf.getTtFromServer("timetable", class_no, section_no);
-
-		show("setting timetable sqlite database------------");
-
-		String result1 = "";
-
-		try {
-			if (json.getString("success") != null) {
-				int res = json.getInt("success");
-
-				if (res == 1) {
-					result1 = json.getString("response");
-
-					System.out.println("got result from localhost:-- "
-							+ result1);
-
-					String[] store = result1.split("~");
-					// System.out.println( "qqq" + "--- line----" );
-
-					db.execSQL("DROP TABLE IF EXISTS timeTable");
-
-					String TIMETABLE = "CREATE TABLE timeTable(class_no INTEGER, section TEXT, day TEXT, startTime  TEXT, endTime TEXT,  subject TEXT, teacher TEXT , PRIMARY KEY(class_no, section, day, startTime))";
-
-					db.execSQL(TIMETABLE);
-
-					// System.out.println( "www" + "--- line----" );
-					for (int i = 0; i < store.length; i++) {
-						// System.out.println( i + "--- line----" + store[i]);
-						String[] input = store[i].split(",");
-
-						ContentValues insertValues = new ContentValues();
-						insertValues.put("class_no", input[0]);
-						insertValues.put("section", input[1]);
-						insertValues.put("day", input[2]);
-						insertValues.put("startTime", input[3]);
-						insertValues.put("endTime", input[4]);
-						insertValues.put("subject", input[5]);
-						insertValues.put("teacher", input[6]);
-						db.insert("timeTable", null, insertValues);
-					}
-				}
-			}
-			System.out.println("data filled up in sqlite table------");
-		} catch (JSONException e) {
-			// Toast.makeText(getApplicationContext(),
-			// "Error  null in retriving timetable ", Toast.LENGTH_LONG).show();
-			e.printStackTrace();
-		}
-
-	}
-
-	/************************************************************************************/
-
-	// We need to store the id the student. From the id of student retrieve
-	// class & section of student.
-	public String getTimeTable(String day) {
-		// HashMap<String,String> user = new HashMap<String,String>();
-		// String selectQuery = "SELECT  * FROM Parent WHERE id = " + id +
-		// " and relation = '" + relation + "'";
-		String selectQuery = "SELECT * from timeTable where day = \"" + day
-				+ "\"";
-
-		show("retrieving data from timetable sqlite database----------------");
-		// SQLiteDatabase db = this.getReadableDatabase();
-		// show("cursor ------ check1");
-		Cursor cursor = db1.rawQuery(selectQuery, null);
+	/************************************< TIME TABLE >***************************************************/
+	
+	String[] week={"MON", "TUE","WED", "THU", "FRI","SAT","SUN"};
+	
+	public List<HashMap<String, String>> getTimeTable(int index) {
+		show("timetable for requested day : --" + week[index]);
+		
+		HashMap<String, String> userDetails = new HashMap<String, String>();
+		
+		String selectQuery = "SELECT * FROM Student WHERE sid = " + currentSid;
+		Cursor cursor = db.rawQuery(selectQuery, null);
 		// Move to first row
-		String result = "";
-		// show("cursor ------ check2");
 		cursor.moveToFirst();
-
-		// show("cursor ------ check3");
-
-		while (!cursor.isAfterLast()) {
-			// show("no of colulmns :  --  "+cursor.getColumnCount());
-
-			if (cursor.getCount() > 0) {
-				result += cursor.getString(3) + ",";
-				result += cursor.getString(4) + ",";
-				result += cursor.getString(5) + ",";
-				result += cursor.getString(6);
-				show(result);
-			}
-
-			cursor.moveToNext();
-			result += "~";
+		if (cursor.getCount() > 0) {
+			userDetails.put("class", cursor.getString(5));
+			userDetails.put("section", cursor.getString(6));
 		}
-
-		show("data retrived");
 		cursor.close();
-		db.close();
-		// return user
-		return result;
+
+		selectQuery = "SELECT * FROM timeTable WHERE class_no =\""+ userDetails.get("class")+"\" AND section =\""+ userDetails.get("section")+"\" AND day = \"" + week[index]+  "\"";
+		show("timetable query :---- " + selectQuery);
+		
+		List<HashMap<String, String>> timeTable = new ArrayList<HashMap<String, String>>();
+		
+		cursor = db.rawQuery(selectQuery, null);
+		cursor.moveToFirst();
+		while (!cursor.isAfterLast()) {
+			HashMap<String, String> user = new HashMap<String, String>();
+			//show("no of colulmns :  --  "+cursor.getColumnCount() +"   "+ cursor.getCount());
+			if (cursor.getCount() > 0) {
+				user.put("from", cursor.getString(3));
+				user.put("to", cursor.getString(4));
+				user.put("id", cursor.getString(5));
+				user.put("subject", cursor.getString(6));
+			}
+			
+			show("excuting a query inside other query");
+			
+			String teachername="";
+			selectQuery = "SELECT NAME FROM teacher WHERE ID ="+ user.get("id");
+			Cursor cursor1 = db.rawQuery(selectQuery, null);
+			cursor1.moveToFirst();
+			if (cursor1.getCount() > 0) {
+				teachername= cursor1.getString(0);
+				show(" classteacher name : --" + cursor1.getString(0));
+			}
+			cursor1.close();
+			show("excuting a query inside other query : excuted");
+			user.put("teachername", teachername);
+			
+			cursor.moveToNext();
+			timeTable.add(user);
+		}
+		cursor.close();
+		return timeTable;
 	}
 
 	/**************************************************************************************/
@@ -569,7 +527,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				e.printStackTrace();
 			}
 		}
-		setDefaultID();
+		//setDefaultID();
 		show("setup done*****************************************************************");
 	}
 

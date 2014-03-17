@@ -1,192 +1,131 @@
 package com.example.schoolapp;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Vector;
 
 import nav_drawer.commonDrawer;
 
 import library.DatabaseHandler;
+import library.utils;
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
+import android.app.ActionBar.LayoutParams;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar.OnNavigationListener;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
-import android.widget.ArrayAdapter;
+import android.widget.*;
+import com.example.schoolapp.R;
+import android.annotation.SuppressLint;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
-import android.widget.SpinnerAdapter;
+import android.widget.RelativeLayout;
 import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
-@SuppressLint("NewApi")
-public class Timetable extends commonDrawer{
-	
-	TableLayout table;
-	TextView text1;
-	TextView text2;
-	TextView text3;
-	String currentDay="MON";
-	DatabaseHandler db;
-	
+	@SuppressLint("ValidFragment")
+	public class Timetable extends Fragment {
+		
+		int index=0;
+		
+		
+		public Timetable(int i)
+		{
+			index=i;
+		}
+		
+		
+		@Override
+		public View onCreateView(LayoutInflater inflater, ViewGroup container,
+				Bundle savedInstanceState) {
 
-@SuppressLint("NewApi")
-@Override
-public void onCreate(Bundle savedInstanceState) {
-	super.onCreate(savedInstanceState);
-	//setContentView(R.layout.timetable);
-	
-	
-	
-	
-	
-	LayoutInflater inflater = (LayoutInflater) this
-            .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    View contentView = inflater.inflate(R.layout.timetable, null, false);
-    mDrawerLayout.addView(contentView, 0);
-	
-	
-	
-	
-	
-	db = new DatabaseHandler(this);
-	db.setTimeTable("1", "A");
-	table = ( TableLayout) findViewById(R.id.timeTable);
-	
-	System.out.println("table : ---   "+table);
-	
-	System.out.println("db started");
-	//display(currentDay);
-	
-	System.out.println("db working");
-	/*
-	 * Action bar actions
-	 */
-	getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-	SpinnerAdapter mSpinnerAdapter = ArrayAdapter.createFromResource(this, R.array.days,
-	          android.R.layout.simple_spinner_dropdown_item);
-	getSupportActionBar().setNavigationMode(1);
-	
-	
-	
-	
-	OnNavigationListener mOnNavigationListener = new OnNavigationListener() {
-		  // Get the same strings provided for the drop-down's ArrayAdapter
-		  String[] strings = getResources().getStringArray(R.array.days);
-		 
-		  @Override
-		  public boolean onNavigationItemSelected(int position, long itemId) {
+			View rootView = inflater.inflate(R.layout.timetable, container, false);
+			return rootView;
+		}
+		
+		@Override
+		public void onActivityCreated(Bundle savedInstanceState) {
+		    super.onActivityCreated(savedInstanceState);
+		    
+		   LinearLayout l1 = (LinearLayout) getView().findViewById(R.id.LinearLayout);
 		   
-			 final String s =strings[position];
-			 //System.out.println("today timetable : ----" + s);
-			  display(s);
-			 // Toast.makeText(getApplicationContext(), strings[position], Toast.LENGTH_SHORT).show(); 
-		    return true;
-		  }
-		  
-		  
-		};
-	
-		getSupportActionBar().setListNavigationCallbacks(mSpinnerAdapter, mOnNavigationListener);
-		//getSupportActionBar().LayoutParams(right);
-	
-	/**************************************************/
-              // Toast.makeText(getApplicationContext(), result1, Toast.LENGTH_LONG).show();     
-    
-}
-
-	public void display(String currentDay)
-	{
-		db = new DatabaseHandler(this);
-		//System.out.println("display called : " + currentDay);
-		
-		
-		table.removeAllViews();
-		//Initializing all variables
-		String result1 =db.getTimeTable(currentDay);
-		
-		/*
-		 *	
-		 *	getTimetable(); + refreshing options
-		 *	setTimetable(class, section , day, timestamp);----check timestamp
-		 *	getTimetable(day, changeFlag) : ---check setchanged 
-		 */
-		
-		// Calling getTimeTable function to get timetable details of a specific day.
-		//db.init();
-		//init start= new init();
-		
-	                 String[] store = result1.split("~");
-	          
-	                 
-	       
 	        
-	                 for(int i=0; i<store.length;i++)
-	                 {
-	                	 //create a new table row
-	                	 TableRow row= new TableRow(this);
-	                	 TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT );
-	                	 TableRow.LayoutParams lp5 = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT,5 );
-	                	 TableRow.LayoutParams lp4 = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT,4 );
-	                     row.setLayoutParams(lp);
-	                	 
-	                	 String[] parts = store[i].split(",");
-	              		 
-	                	 //text1 details
-	                	 text1 = new TextView(this);
-	              		 text1.setText(parts[0]+ " - " + parts[1]);
-	                	 text1.setLayoutParams(lp5);
-	                	 text1.setPadding(10, 10, 0, 10);
-	                	 //text1.setWidth(1);
-	                	 row.addView(text1);
-	                	 
-	                	//text2 details
-	                	 text2 = new TextView(this);
-	              		 text2.setText(parts[2]);
-	                	 text2.setLayoutParams(lp4);
-	                	 text2.setPadding(0,10,0,10);
-	                	 row.addView(text2);
-	                	 
-	                	//text3 details
-	                	 text3 = new TextView(this);
-	              		 text3.setText(parts[3]);
-	                	 text3.setLayoutParams(lp5);
-	                	 text3.setPadding(0, 10, 10, 10);
-	                	 row.addView(text3);
-	                	 
-	                	 table.addView(row);
-	                	 
-	                	 //a new row for displaying space
-	                	 TableRow row1= new TableRow(this);
-	                	 TableRow.LayoutParams lp11 = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, 1 );
-	                     row1.setLayoutParams(lp11);
-	                     row1.setBackgroundColor(Color.parseColor("#BDBDBD"));
-	                     
-	                     TextView text4 = new TextView(this);
-	                     text4.setHeight(1);
-	                     text4.setText("");
-	                     row1.addView(text4);
-	                     
-	                     table.addView(row1);
-	                     
-	                 }
-	                 
+	        List<HashMap<String, String>> timetableDetails = new ArrayList<HashMap<String, String>>();
+			DatabaseHandler db = new DatabaseHandler(getActivity());
+			timetableDetails = db.getTimeTable(index);
+	        
+	        Iterator<HashMap<String, String>> k=timetableDetails.iterator();
+			while(k.hasNext())
+			{
+		        HashMap<String, String> user = new HashMap<String, String>();
+		        user =k.next();
+		        
+	           	LinearLayout.LayoutParams rlp = new LinearLayout.LayoutParams(
+	        	        LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+	           	LinearLayout.LayoutParams rlp1 = new LinearLayout.LayoutParams(0, LayoutParams.WRAP_CONTENT,3);
+	           	LinearLayout.LayoutParams rlp2 = new LinearLayout.LayoutParams(0 , LayoutParams.WRAP_CONTENT,4);
+	           	LinearLayout.LayoutParams rlp3 = new LinearLayout.LayoutParams(0, LayoutParams.WRAP_CONTENT, 5);
+	        	rlp.setMargins(0, 4, 0, 3);
+	        	LinearLayout linear = new LinearLayout(getActivity());      
+	        	linear.setLayoutParams(rlp);
+	           	 
+	         
+           	 
+           	 //text1 details
+             TextView text1 = new TextView(getActivity());
+         	 text1.setText(user.get("from"));
+           	 text1.setPadding(10, 5, 10, 0);
+           	 text1.setWidth(0);
+           	 text1.setTextSize(15);
+           	 text1.setLayoutParams(rlp1);
+           	 text1.setTextColor(getResources().getColor(R.color.profile_font_color));
+           	 linear.addView(text1);
+           	 
+           	//text2 details
+           	TextView text2 = new TextView(getActivity());
+         	text2.setText(user.get("subject"));
+         	text2.setWidth(0);
+         	 text1.setTextSize(15);
+          	 text2.setLayoutParams(rlp2);
+          	 text2.setTextColor(getResources().getColor(R.color.profile_font_color));
+           	 text2.setPadding(0,5,0,0);
+           	 linear.addView(text2);
+           	 
+           	//text3 details
+           	TextView text3 = new TextView(getActivity());
+           	text3.setText(user.get("teachername"));
+           	text3.setWidth(0);
+        	text3.setTextSize(15);
+         	text3.setLayoutParams(rlp3);
+         	text3.setTextColor(getResources().getColor(R.color.profile_font_color));
+           	text3.setPadding(0, 5, 0, 0);
+           	linear.addView(text3);
+           	 
+           	l1.addView(linear);
+           	 
+          //showing horizontal line
+           	TextView text4 = new TextView(getActivity());
+           	LinearLayout.LayoutParams rlp4 = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 1);
+           	text4.setText("");
+         	text4.setLayoutParams(rlp4);
+         	text4.setBackgroundColor(getResources().getColor(R.color.contact_back_color));
+           	l1.addView(text4);
+			}
+		}
+		
 	}
-
-        
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		//getMenuInflater().inflate(R.menu.main_activity_actions, menu);
-		 return super.onCreateOptionsMenu(menu);
-	}
-
-
-
-}
-

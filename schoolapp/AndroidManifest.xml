@@ -68,6 +68,7 @@
         <activity android:name="com.example.schoolapp.PhoneList_ext"></activity>
         <activity android:name="com.example.schoolapp.profile_student"></activity>
         <activity android:name="com.example.schoolapp.profile_parent"></activity>
+        <activity android:name="com.example.schoolapp.TimetableSetup"></activity>
     </application>
 
 </manifest>

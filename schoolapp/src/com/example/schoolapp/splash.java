@@ -23,6 +23,7 @@ public class splash extends Activity{
 				
 		String[] tableList=DatabaseHandler.tableList;
 		db.setup(tableList);
+		db.setDefaultID();
 		
 		
 		
