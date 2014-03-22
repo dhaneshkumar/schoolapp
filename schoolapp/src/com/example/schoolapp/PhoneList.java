@@ -89,7 +89,7 @@ public class PhoneList extends commonDrawer {
 	        // In this case I want to fill its parent
 	        LinearLayout.LayoutParams rlp = new LinearLayout.LayoutParams(
 	        LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-	        rlp.setMargins(0, 2, 0, 0);
+	        rlp.setMargins(0, 4, 0, 0);
 	        
 	        //rlp.setMargins(left, top, right, bottom)
 	        rl.setLayoutParams(rlp);
@@ -143,7 +143,7 @@ public class PhoneList extends commonDrawer {
 	        text2.setLayoutParams(vp2);
 	        text2.setTypeface(Typeface.DEFAULT_BOLD);
 	        text2.setTextSize(13);
-	        //text2.setBackgroundColor(color.contact_back_color);
+	        text2.setTextColor(getResources().getColor(R.color.profile_selected));
 	        text2.setPadding(0, 0, 0, 5);
 	        rl.addView(text2);
 	        

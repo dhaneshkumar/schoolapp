@@ -7,7 +7,7 @@
 
     <Button
         android:id="@+id/teacher"
-      
+       android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -17,7 +17,7 @@
 
    <Button
         android:id="@+id/administration"
-         android:layout_marginTop="4dp"
+         android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -26,7 +26,7 @@
         android:text="Administration" />
    <Button
         android:id="@+id/authority"
-         android:layout_marginTop="4dp"
+         android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -35,7 +35,7 @@
         android:text="Authority" />
    <Button
         android:id="@+id/others"
-         android:layout_marginTop="4dp"
+         android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

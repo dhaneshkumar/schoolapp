@@ -13,61 +13,6 @@
     android:background="@color/app_back_color"
     android:orientation="vertical" >
    
-<LinearLayout
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:layout_marginTop="4dp" 
-    >
- 
-      <TextView
-         android:layout_width="0dip"
-         android:layout_height="wrap_content"
-         android:padding="10dip"
-         android:layout_weight="3"
-         android:textStyle="bold"
-         android:textSize="15sp"
-         android:textColor="@color/contact_back_color"
-         android:text="SLOT" />
-      
-          
-    
-      
-      <TextView
-         android:layout_width="0dip"
-         android:layout_height="wrap_content"
-        android:textStyle="bold"
-         android:textSize="15sp"
-         android:textColor="@color/contact_back_color"
-         android:paddingTop="10dip"
-         android:paddingBottom="10dip"
-         android:layout_marginTop="4dip"
-          android:layout_marginBottom="4dip"
-         android:layout_weight="4"
-         android:text="SUBJECT" />
-      
-      <TextView
-         android:layout_width="0dip"
-         android:layout_height="wrap_content"
-          android:textStyle="bold"
-         android:textSize="15sp"
-         android:textColor="@color/contact_back_color"
-         android:paddingTop="10dip"
-         android:paddingBottom="10dip"
-         android:layout_marginTop="4dip"
-         android:layout_weight="5"
-         android:text="TEACHER" />
-      
-</LinearLayout>  
-
-	<TextView
-         android:layout_width="match_parent"
-         android:layout_height="1dp"
-         android:background="@color/contact_back_color"
-         android:paddingBottom="10dip"
-         android:text="" />
-
-
-
 
 </LinearLayout>
 </ScrollView>

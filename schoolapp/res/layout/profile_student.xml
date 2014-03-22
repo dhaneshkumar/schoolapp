@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res/com.example.schoolapp"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -11,32 +12,49 @@
         android:layout_height="match_parent"
         android:background="@color/app_back_color"
         android:orientation="vertical" >
-
-        <ImageView
-            android:id="@+id/imgView"
+        
+         <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-          
-            android:adjustViewBounds="true"
-            android:background="@color/contact_back_color"
-            android:paddingBottom="3dp"
-            android:paddingTop="3dp" />
+            android:layout_height="15dp"
+            android:text=""
+            android:background="@color/profile_selected" ></TextView>
+         
+        <LinearLayout
+        	android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:orientation="vertical"
+            android:background="@drawable/profile_background"   >
+           
+
+        <com.example.schoolapp.CircularImageView
+            android:id="@+id/imgView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+		    app:border="true"
+	        app:border_color="@color/GrayLight"
+	        app:border_width="4"
+	        app:shadow="true"  
+	        android:layout_gravity="center_horizontal"
+            android:src="@drawable/jaideep100"
+            android:background="@drawable/profile_background" 
+            />
+        
+        </LinearLayout>
 
         <TextView
             android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:gravity="center"
-            android:text="Rahul"
+            android:text="Jaideep"
             android:textColor="@color/profile_font_color"
+            android:layout_marginTop="-10dp"
             android:textSize="15sp" />
 
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp" >
+            android:layout_marginTop="10dp" >
 
             <TableRow
                 android:layout_width="match_parent"
@@ -50,8 +68,8 @@
                     android:gravity="center"
                     android:padding="5dp"
                     android:text="School"
-                    android:background="@drawable/selectedshape"
-                    android:textColor="@color/contact_font_color"
+                    android:background="@drawable/customshape"
+                    android:textColor="#fff"
                     android:textSize="15sp" />
 
                 <TextView
@@ -61,9 +79,9 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:background="@drawable/customshape"
+                    android:background="@drawable/selectedshape"
                     android:text="Parents"
-                    android:textColor="@color/contact_font_color"
+                    android:textColor="#fff"
                     android:textSize="15sp" />
             </TableRow>
 
@@ -188,9 +206,9 @@
                     android:padding="5dp"
                     android:layout_weight="1"
                     android:layout_marginBottom="10dp"
-                    android:background="@drawable/customshape"
+                    android:background="@drawable/selectedshape"
                     android:text="Contact Details"
-                    android:textColor="@color/contact_font_color"
+                    android:textColor="#fff"
                     android:textSize="15sp" />
             </TableRow>
         </TableLayout>

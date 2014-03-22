@@ -15,11 +15,18 @@
     <color name="list_divider">#272727</color>
     <color name="counter_text_bg">#626262</color>
     <color name="counter_text_color">#c5c4c4</color>
-    <color name="contact_back_color">#7bc37a</color>
-    <color name="contact_font_color">#fff</color>
-    <color name="app_back_color">#F0F0F0</color>
-    <color name="profile_font_color">#808080</color>
-    <color name="profile_selected">#C0C0C0</color>
+    <color name="contact_back_color">#f7f7f7</color>
+    <color name="contact_font_color">#4c4c4a</color>
+    <color name="app_back_color">#c2c8d6</color>
+    <color name="profile_font_color">#000</color>
+    <color name="profile_selected">#58a533</color>
+    <color name="Blue">#2980b9</color>
+    <color name="Black">#000000</color>
+    <color name="green">#7bc37a</color>
+    <color name="Gray">#c9c9c9</color>
+    <color name="GrayLight">#eeeeee</color>
+    <color name="GrayHot">#272727</color>
+   
     
     
 </resources>

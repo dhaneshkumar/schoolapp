@@ -13,12 +13,13 @@
     
      <!-- Nav Drawer Menu Items -->
     <string-array name="navigationList">
-        <item>Home</item>
-        <item>profile</item>
-        <item>Medico</item>
-        <item>Leave App</item>
-        <item>Timetable</item>
-        <item>Phonelist</item>
+        <item>Profile</item>
+        <item>TimeTable</item>
+        <item>Academic Calender</item>
+        <item>Contact List</item>
+        <item>Setting</item>
+        <item>Leave-APP</item>
+        <item>Report Card</item>
        
         
     </string-array>

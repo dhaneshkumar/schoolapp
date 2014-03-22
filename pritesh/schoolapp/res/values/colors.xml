@@ -8,9 +8,10 @@
     <color name="slateGrey">#6D7B8D</color>
     <color name="lightGrey">#F0F0F0</color>
     <color name="darkBlue">#0099FF</color>
-    <color name="green">#8FCC85</color>
+    <color name="green">#7bc37a</color>
     <color name="blue">#ff33b5e5</color>
     <color name="white">#ffffff</color>
+    <color name="offwhite">#e7e7e7</color>
     
     
 </resources>

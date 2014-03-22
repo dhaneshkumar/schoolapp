@@ -44,11 +44,11 @@ public class profile_parent extends commonDrawer {
 		school=(TextView) findViewById(R.id.school);
 		ImageView iw=(ImageView) findViewById(R.id.imgView);
 		addguardian=(TextView) findViewById(R.id.addguardian);
-		
+		/*
 		Bitmap bMap = BitmapFactory.decodeResource(getResources(), R.drawable.ab100);
 		Bitmap cmap = utils.getRoundedShape(bMap);
 		iw.setImageBitmap(cmap);
-		
+		*/
 		List<HashMap<String, String>> parentDetails = new ArrayList<HashMap<String, String>>();
 		DatabaseHandler db = new DatabaseHandler(this);
 		parentDetails = db.getParentProfile();
@@ -74,21 +74,30 @@ public class profile_parent extends commonDrawer {
 	        rl.setBackgroundColor(getResources().getColor(R.color.app_back_color));
 	        l1.addView(rl);
 	        
-	        ImageView image = new ImageView(this);
+	        com.example.schoolapp.CircularImageView image = new com.example.schoolapp.CircularImageView(this);
+	      //  ImageView image = new ImageView(this);
 	        image.setId(i+1);
+	        image.setImageResource(R.drawable.tushar100);
 	       // image.setBackgroundResource(R.drawable.ic_launcher);
-	        LinearLayout.LayoutParams vp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+	        LinearLayout.LayoutParams vp = new LinearLayout.LayoutParams(80, 80);
 	        RelativeLayout.LayoutParams vp1 = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 	        vp1.addRule(RelativeLayout.RIGHT_OF, image.getId());
 	        vp1.setMargins(10, 5, 4, 2);
+	        vp.setMargins(10, 20, 0, 0);
 	       // image.setBackgroundColor(color.contact_back_color);
+	        image.setBorderColor(getResources().getColor(R.color.GrayLight));
+	        image.setBorderWidth(2);
+	        image.addShadow();
 	        image.setLayoutParams(vp);
-	        image.setPadding(20, 20, 10, 4);
+	        //image.setPadding(20, 20, 10, 4);
+	       
 	        rl.addView(image);
 	        
-	        Bitmap bMap1 = BitmapFactory.decodeResource(getResources(), R.drawable.ab50);
+	       /* Bitmap bMap1 = BitmapFactory.decodeResource(getResources(), R.drawable.ab50);
 			Bitmap cmap1 = utils.getRoundedShape(bMap1);
-			image.setImageBitmap(cmap1);
+			image.setImageBitmap(cmap1);*/
+	        
+	        
 		                	 
 	        HashMap<String, String> user = new HashMap<String, String>();
 	        user =k.next();

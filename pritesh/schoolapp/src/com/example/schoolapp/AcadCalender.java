@@ -70,11 +70,17 @@ public class AcadCalender extends FragmentActivity{
 			for(int i=0;i<date_start_array.size() ;++i){
 				if (caldroidFragment != null) {
 					blueDate = formatter.parse(date_start_array.get(i));
-					caldroidFragment.setBackgroundResourceForDate(R.color.blue,
-							blueDate);
-				//	caldroidFragment.setBackgroundResourceForDate(R.color.green,
+				//	caldroidFragment.setBackgroundResourceForDate(R.color.blue,
+					//		blueDate);
+					
+					//	caldroidFragment.setBackgroundResourceForDate(R.color.green,
 					//		greenDate);
-					caldroidFragment.setTextColorForDate(R.color.white, blueDate);
+					
+					caldroidFragment.setTextColorForDate(R.color.grey, blueDate);
+					caldroidFragment.setBackgroundResourceForDate(R.drawable.absent,
+							blueDate);
+				//	caldroidFragment.refreshView();
+					
 				//	caldroidFragment.setTextColorForDate(R.color.white, greenDate);
 				}
 			}

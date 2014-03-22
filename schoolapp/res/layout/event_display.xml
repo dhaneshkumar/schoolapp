@@ -1,0 +1,178 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/heading_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.17"
+            android:text="Title" />
+
+        <TextView
+            android:id="@+id/title_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.36"
+            android:text="Enter Title"
+            
+            />
+
+    </LinearLayout>
+  
+         <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+             <TextView
+                 android:id="@+id/start_date_fixed"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_weight="0.01"
+                 android:text="Date" />
+
+             <TextView
+                 android:id="@+id/start_date_txt"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_weight="0.01"
+                 android:text="Start Date" />
+
+             <TextView
+                 android:id="@+id/Strat_time"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_weight="0.01"
+                 android:text="Start Time" />
+
+        <TextView
+            android:id="@+id/start_time_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.01"
+            android:text="Enter Start Time" />
+
+    </LinearLayout>
+       <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+             <TextView
+                 android:id="@+id/end_date_fixed"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_weight="0.01"
+                 android:text="End Date" />
+
+             <TextView
+                 android:id="@+id/end_date_txt"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_weight="0.01"
+                 android:text="End Date" />
+
+             <TextView
+                 android:id="@+id/End_time"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_weight="0.01"
+                 android:text="End Time" />
+
+        <TextView
+            android:id="@+id/end_time_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.01"
+            android:text="Enter End Time" />
+
+    </LinearLayout>
+          <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/heading_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.17"
+            android:text="Description" />
+
+        <TextView
+            android:id="@+id/description_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.47"
+            android:text="Enter Description" />
+
+    </LinearLayout>
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/heading_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.17"
+            android:text="Special Guest" />
+
+        <TextView
+            android:id="@+id/special_guest_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.47"
+            android:text="Enter Special Guest" />
+
+    </LinearLayout>
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/heading_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.17"
+            android:text="Venue" />
+
+        <TextView
+            android:id="@+id/venue_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.47"
+            android:text="Enter Venue" />
+
+    </LinearLayout>
+       <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/heading_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.17"
+            android:text="Extra Details" />
+
+        <TextView
+            android:id="@+id/extra_details_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.47"
+            android:text="Enter Extra Details" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:bottom="40dp">
+        <shape android:shape="rectangle" >
+            <size android:height="40dp" />
+            <solid android:color="@color/profile_selected" />
+        </shape>
+    </item>
+
+    <item android:top="60dp">
+        <shape android:shape="rectangle" >
+            <size android:height="60dp" />
+            <solid android:color="@color/app_back_color" />
+        </shape>
+    </item>
+</layer-list>

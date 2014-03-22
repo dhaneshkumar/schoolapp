@@ -80,9 +80,9 @@ public class JSONParser extends AsyncTask<List<NameValuePair>, Void, JSONObject>
             
            json = sb.toString();
            
-           // System.out.println("segment12 :"  + json  + " ---json created");
+            System.out.println("segment12 :"  + json  + " ---json created");
             jObj = new JSONObject(json);  
-            //System.out.println("result1111-- : "+ jObj + "--json obj");
+           System.out.println("result1111-- : "+ jObj + "--json obj");
             Log.e("JSON", json);
         } catch (Exception e) {
             Log.e("Buffer Error", "Error converting result123 " + e.toString());

@@ -4,8 +4,11 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Path;
 import android.graphics.Rect;
+import android.graphics.drawable.ColorDrawable;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 
-public class utils {
+public class utils extends ActionBarActivity{
 	public static Bitmap getRoundedShape(Bitmap scaleBitmapImage) {
 		  // TODO Auto-generated method stub
 		  int targetWidth = scaleBitmapImage.getHeight();
@@ -35,5 +38,6 @@ public class utils {
 	{
 		System.out.println(str);
 	}
-
+	
+	
 }

@@ -35,9 +35,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 	// list of tables having contents
 	public final static String[] tableList = { "SchoolName", "Parent",
-			"Student", "teacher", "TimeTable", "phoneList", "Class" };
+			"Student", "teacher", "TimeTable", "phoneList", "class", "EventTable"};
 	String[] tablesname;
 
+	
+	
 	// final list of tables
 	// public final static String[]
 	// tableList={"SchoolName","Parent","Student","teacher","TimeTable","phoneList","Class","Event","Attendance","Medico","AcadHistory","Notifications","GradeAnalysis","TimeStampDetails"};
@@ -62,9 +64,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		tablesname[4] = "CREATE TABLE  teacher  ( ID  INTEGER  NOT NULL  ,  NAME   TEXT NOT NULL,  SUBS  TEXT,  CLASSES  TEXT,  CONTACT  INTEGER,  EMAILID   TEXT, PRIMARY KEY (ID))";
 		tablesname[5] = "CREATE TABLE  TimeTable (  class_no TEXT  NOT NULL,  section  TEXT NOT NULL,  day  CHAR(3) NOT NULL,  startTime  TEXT NOT NULL,  endTime  TEXT NOT NULL,   ID  INTEGER  ,  subject  TEXT , PRIMARY KEY( class_no ,  section ,  day ,  startTime ), FOREIGN KEY(ID) REFERENCES teacher (ID) )";
 		tablesname[6] = "CREATE TABLE  phoneList  ( ID  INTEGER  NOT NULL  ,  NAME   TEXT NOT NULL,  POST  TEXT NOT NULL,  TAG  TEXT NOT NULL,  CON_PERSON  TEXT,  CONTACT  INTEGER,  EMAILID   TEXT, PRIMARY KEY (ID))";
-		tablesname[7] = "Create TABLE  Class (  class_no TEXT  NOT NULL,  section  CHAR(2) NOT NULL,  subject  TEXT NOT NULL,  ID  INTEGER  ,  students  INTEGER  NOT NULL ,  classteacher  CHAR(1) DEFAULT 'N', PRIMARY KEY( class_no , section ,  subject ), FOREIGN KEY(ID) REFERENCES teacher (ID)  )";
-		tablesname[8] = "CREATE TABLE  Event (  eid  INTEGER  NOT NULL   PRIMARY KEY,  title  TEXT NOT NULL,  description  TEXT,  start_time  DATETIME NOT NULL,  end_time  DATETIME ,  venue  TEXT,  special_guest  TEXT,  extra_details  TEXT)";
-		tablesname[9] = "CREATE TABLE  Attendance (  sid  INTEGER  NOT NULL,  date  DATE NOT NULL,  status  CHAR(1) NOT NULL, PRIMARY KEY( sid , date ), FOREIGN KEY( sid ) REFERENCES  Student ( sid ))";
+		tablesname[7] = "Create TABLE  class (  class_no TEXT  NOT NULL,  section  CHAR(2) NOT NULL,  subject  TEXT NOT NULL,  ID  INTEGER  ,  students  INTEGER  NOT NULL ,  classteacher  CHAR(1) DEFAULT 'N', PRIMARY KEY( class_no , section ,  subject ), FOREIGN KEY(ID) REFERENCES teacher (ID)  )";
+		tablesname[8] = "CREATE TABLE  EventTable ( eid  INTEGER  NOT NULL   PRIMARY KEY,  title  TEXT NOT NULL,  description  TEXT,  start_time  DATETIME NOT NULL,  end_time  DATETIME ,  venue  TEXT,  special_guest  TEXT,  extra_details  TEXT)";
+		tablesname[9] = "CREATE TABLE  Attendance ( sid  INTEGER  NOT NULL,  date  DATE NOT NULL,  status  CHAR(1) NOT NULL, PRIMARY KEY( sid , date ), FOREIGN KEY( sid ) REFERENCES  Student ( sid ))";
 		tablesname[10] = "CREATE TABLE  Medico (  sid  INTEGER  NOT NULL,  blood_group  TEXT,  height  INTEGER ,  weight  INTEGER , eye_sight  TEXT,  pd  CHAR(3) DEFAULT 'No',  allergies  TEXT, injuries  TEXT, PRIMARY KEY( sid ), FOREIGN KEY( sid ) REFERENCES  Student ( sid ) )";
 		tablesname[11] = "CREATE TABLE  AcadHistory  ( sid  INTEGER  NOT NULL,  class_no TEXT NOT NULL ,  subject  TEXT,  percentage  TEXT,  year  INTEGER,  school  TEXT NOT NULL,  board  TEXT, PRIMARY KEY(sid, class_no))";
 		tablesname[12] = "CREATE TABLE  Notifications  ( nid  INTEGER  NOT NULL   PRIMARY KEY,  title  TEXT NOT NULL,  description  TEXT,  date  DATETIME NOT NULL)";
@@ -486,7 +488,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			// deleting all tuples from table
 			String deleteSQL = "DELETE FROM " + tablelist[i];
 			db.execSQL(deleteSQL);
-			// show("old table deleted : " + tablelist[i]);
+			 show("old table deleted : " + tablelist[i]);
 
 			// loading new tuples from server
 			JSONObject json = uf.getTables(tablelist[i]);
@@ -500,8 +502,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					if (res == 1) {
 
 						result1 = json.getJSONArray("response");
-						// System.out.println("got result from localhost:-- " +
-						// result1);
+						 System.out.println("got result from localhost:-- " +
+						 result1);
 
 						for (int j = 0; j < result1.length(); j++) {
 							JSONArray innerJsonArray = (JSONArray) result1
@@ -593,4 +595,49 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		System.out.println(st);
 	}
 
+	
+	/*************************************<Acad-Calender >**************************************************/
+   
+    public String getAcadCalender(){
+        //  HashMap<String,String> user = new HashMap<String,String>();
+       //   String selectQuery = "SELECT  * FROM Parent WHERE id = " + id + " and relation = '" + relation + "'";
+          String selectQuery="SELECT * from EventTable;";
+          
+          show("retrieving data from event sqlite database----------------");
+          //SQLiteDatabase db1 = this.getReadableDatabase();
+          show("cursor ------ check1");
+          Cursor cursor = db1.rawQuery(selectQuery, null);
+          // Move to first row
+          String result="";
+          show("cursor ------ check2");
+          cursor.moveToFirst();
+          
+          show("cursor ------ check3");
+          
+         while(!cursor.isAfterLast())
+         {
+      	   show("no of colulmns :  --  "+cursor.getColumnCount());
+      	   
+      	   if(cursor.getCount() > 0){
+          	result +=  cursor.getString(1) +",";
+              result +=  cursor.getString(2) +",";
+              result +=  cursor.getString(3) + ",";
+              result +=  cursor.getString(4) + ",";
+              result +=  cursor.getString(5) + ",";
+              result +=  cursor.getString(6) + ",";
+              result +=  cursor.getString(7);
+              show(result);
+          }
+      	
+          cursor.moveToNext();
+          result += "~";
+         }
+         
+         
+         show("data retrived");
+          cursor.close();
+          db.close();
+          // return user
+          return result;
+      }
 }

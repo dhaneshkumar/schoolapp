@@ -69,6 +69,18 @@
         <activity android:name="com.example.schoolapp.profile_student"></activity>
         <activity android:name="com.example.schoolapp.profile_parent"></activity>
         <activity android:name="com.example.schoolapp.TimetableSetup"></activity>
-    </application>
+        <activity android:name="com.example.schoolapp.TeacherAttandance"></activity>
+       <activity  android:name="com.example.schoolapp.AcadCalender"></activity>
+       
+       <activity  android:name="com.example.schoolapp.Leaveapp"></activity>
+       <activity  android:name="com.example.schoolapp.Attendance"></activity>
+       <activity  android:name="com.example.schoolapp.AttendanceView"></activity>
+       <activity  android:name="com.example.schoolapp.EventDisplayAcadCal"></activity>
+       <activity  android:name="com.example.schoolapp.report_card"></activity>
+       <activity  android:name="com.example.schoolapp.settings_page"></activity>
+       
+       <!--   <activity android:screenOrientation="landscape" android:configChanges="orientation|keyboardHidden" android:name="com.example.schoolapp.TeacherAttendanceSetup"></activity>
+       -->
+        </application>
 
 </manifest>

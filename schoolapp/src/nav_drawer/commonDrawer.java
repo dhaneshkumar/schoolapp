@@ -7,6 +7,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
+import android.media.audiofx.BassBoost.Settings;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
@@ -22,7 +23,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.example.schoolapp.*;
-import com.example.schoolapp.R;
 @SuppressLint("NewApi")
 	public class commonDrawer extends ActionBarActivity {
 	public String[] navigationList;
@@ -60,9 +60,10 @@ import com.example.schoolapp.R;
      		navDrawerItems.add(new NavDrawerItem(navigationList[0], navMenuIcons.getResourceId(0, -1)));
      		navDrawerItems.add(new NavDrawerItem(navigationList[1], navMenuIcons.getResourceId(1, -1)));
      		navDrawerItems.add(new NavDrawerItem(navigationList[2], navMenuIcons.getResourceId(2, -1)));
-     		navDrawerItems.add(new NavDrawerItem(navigationList[3], navMenuIcons.getResourceId(3, -1), true, "22"));
+     		navDrawerItems.add(new NavDrawerItem(navigationList[3], navMenuIcons.getResourceId(3, -1)));
      		navDrawerItems.add(new NavDrawerItem(navigationList[4], navMenuIcons.getResourceId(4, -1)));
-     		navDrawerItems.add(new NavDrawerItem(navigationList[5], navMenuIcons.getResourceId(5, -1), true, "50+"));
+     		navDrawerItems.add(new NavDrawerItem(navigationList[5], navMenuIcons.getResourceId(5, -1)));
+     		navDrawerItems.add(new NavDrawerItem(navigationList[6], navMenuIcons.getResourceId(5, -1)));
      		
      	// Recycle the typed array
     		navMenuIcons.recycle();
@@ -183,21 +184,23 @@ import com.example.schoolapp.R;
 			 fragment = new Intent(this,  profile_student.class);			
 			break;
 		case 1:
-			fragment = new Intent(this,  profile_student.class);
+			fragment = new Intent(this,  TimetableSetup.class);
 			break;
 		case 2:
-			fragment = new Intent(this, Medico.class);
+			fragment = new Intent(this, AcadCalender.class);
 			break;
 		case 3:
-			fragment = new Intent(this, TimetableSetup.class);
-			break;
-		case 4:
-			fragment = new Intent(this, TimetableSetup.class);
-			break;
-		case 5:
 			fragment = new Intent(this, ContactList.class);
 			break;
-
+		case 4:
+			fragment = new Intent(this, settings_page.class);
+			break;
+		case 5:
+			fragment = new Intent(this, Leaveapp.class);
+			break;
+		case 6:
+			fragment = new Intent(this, report_card.class);
+			break;
 		default:
 			break;
 		}

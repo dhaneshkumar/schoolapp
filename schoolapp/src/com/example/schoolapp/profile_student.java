@@ -9,7 +9,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -40,8 +43,12 @@ public class profile_student extends commonDrawer {
 		View contentView = inflater.inflate(R.layout.profile_student, null,
 				false);
 		mDrawerLayout.addView(contentView, 0);
-		getSupportActionBar().setTitle("Student Profile");
 		
+		//Setting action bar title and background color
+		ActionBar bar = getSupportActionBar();
+	/*	bar.setTitle("Student Profile");
+		bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.profile_selected)));
+		*/
 		utils.ls("Entered in student profile");
 		name=(TextView) findViewById(R.id.name);
 		clas=(TextView) findViewById(R.id.clas);
@@ -55,9 +62,9 @@ public class profile_student extends commonDrawer {
 		address=(TextView) findViewById(R.id.address);
 		contactdetails=(TextView) findViewById(R.id.contactdetails);
 		
-		Bitmap bMap = BitmapFactory.decodeResource(getResources(), R.drawable.ab100);
-		Bitmap cmap = utils.getRoundedShape(bMap);
-		iw.setImageBitmap(cmap);
+	//	Bitmap bMap = BitmapFactory.decodeResource(getResources(), R.drawable.ab100);
+	//	Bitmap cmap = utils.getRoundedShape(bMap);
+	//	iw.setImageBitmap(cmap);
 		
 		HashMap<String, String> userDetails = new HashMap<String, String>();
 		DatabaseHandler db = new DatabaseHandler(this);
