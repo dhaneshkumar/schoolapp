@@ -17,6 +17,7 @@ import android.graphics.Color;
 import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
@@ -53,7 +54,8 @@ public class PhoneList extends commonDrawer {
 	    View contentView = inflater.inflate(R.layout.phonelist, null, false);
 	    mDrawerLayout.addView(contentView, 0);
 
-	    //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+	    getSupportActionBar().setBackgroundDrawable(new 
+				   ColorDrawable(Color.parseColor("#58a533"))); 
 		
 	    Intent intent = getIntent();
 	     tag = intent.getStringExtra("tag");
@@ -77,7 +79,7 @@ public class PhoneList extends commonDrawer {
 		
 		store = result1.split("###");
 
-		
+		Typeface tf= Typeface.createFromAsset(getAssets(), "museo-300.ttf");
 		
 		for(int i=0; i<store.length;i++)
 		{
@@ -99,10 +101,12 @@ public class PhoneList extends commonDrawer {
 	        
 	       
 	        
-	        ImageView image = new ImageView(this);
+	        //ImageView image = new ImageView(this);
+	        com.example.schoolapp.CircularImageView image = new com.example.schoolapp.CircularImageView(this);
+		     
 	        image.setId(i+1);
 	       // image.setBackgroundResource(R.drawable.ic_launcher);
-	        LinearLayout.LayoutParams vp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+	        LinearLayout.LayoutParams vp = new LinearLayout.LayoutParams(70, 70);
 	        RelativeLayout.LayoutParams vp1 = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 	        vp1.addRule(RelativeLayout.RIGHT_OF, image.getId());
 	      //  vp.setMargins(10, 2, 10, 2);
@@ -111,10 +115,10 @@ public class PhoneList extends commonDrawer {
 	        image.setLayoutParams(vp);
 	        image.setPadding(20, 4, 10, 4);
 	        rl.addView(image);
-	        
-	        Bitmap bMap = BitmapFactory.decodeResource(getResources(), R.drawable.ab50);
-			Bitmap cmap = utils.getRoundedShape(bMap);
-			image.setImageBitmap(cmap);
+	        image.setImageResource(R.drawable.ab100);
+	        image.setBorderColor(getResources().getColor(R.color.GrayLight));
+	        image.setBorderWidth(3);
+	        image.addShadow();
 		                	 
 	       
 	        String[] parts = store[i].split("~~");
@@ -131,6 +135,7 @@ public class PhoneList extends commonDrawer {
 	        text1.setLayoutParams(vp1);
 	        text1.setTextColor(getResources().getColor(R.color.contact_font_color));
 	        text1.setTextSize(15);
+	        text1.setTypeface(tf);
 	        rl.addView(text1);
 	        
 	        
@@ -143,6 +148,7 @@ public class PhoneList extends commonDrawer {
 	        text2.setLayoutParams(vp2);
 	        text2.setTypeface(Typeface.DEFAULT_BOLD);
 	        text2.setTextSize(13);
+	        text2.setTypeface(tf);
 	        text2.setTextColor(getResources().getColor(R.color.profile_selected));
 	        text2.setPadding(0, 0, 0, 5);
 	        rl.addView(text2);

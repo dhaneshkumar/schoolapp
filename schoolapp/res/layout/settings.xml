@@ -1,110 +1,177 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:background="@color/contact_back_color"
+   >
+
+<LinearLayout 
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/offwhite" >
+    android:orientation="vertical"
+    android:background="@color/contact_back_color" >
 
-    <TextView
-        android:id="@+id/settings_tx"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="40dp"
-        android:text="Settings"
-        android:textAppearance="?android:attr/textAppearanceLarge" 
-        />
+    
 
-    <TextView
-        android:id="@+id/notification_tx"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/settings_tx"
-        android:layout_marginLeft="36dp"
-        android:layout_marginTop="24dp"
-        android:text="Notification" 
-         android:textAppearance="?android:attr/textAppearanceMedium"/>
-
-    <TextView
-        android:id="@+id/event_tx"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/grades_tx"
-        android:layout_below="@+id/grades_tx"
-        android:layout_marginTop="24dp"
-        android:text="Events" />
-
-    <TextView
-        android:id="@+id/blog_tx"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/event_tx"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="30dp"
-        android:text="Blog" />
-
-    <SeekBar
-        android:id="@+id/seekBar3"
-        android:layout_width="70dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/event_tx"
-        android:layout_alignLeft="@+id/seekBar2"
-        android:thumb="@drawable/onoffcircle" />
-
-    <SeekBar
-        android:id="@+id/seekBar4"
-        android:layout_width="70dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/blog_tx"
-        android:layout_alignLeft="@+id/seekBar3"
-        android:thumb="@drawable/onoffcircle"
-/>
-    <TextView
-        android:id="@+id/daily_attendance_tx"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/blog_tx"
-        android:layout_below="@+id/blog_tx"
-        android:layout_marginTop="30dp"
-        android:text="Daily Attendance" />
-
-    <SeekBar
-        android:id="@+id/seekBar5"
-        android:layout_width="70dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/daily_attendance_tx"
-        android:layout_alignLeft="@+id/seekBar4"
-        android:layout_alignRight="@+id/seekBar4"
-        android:thumb="@drawable/onoffcircle"
-        />
-
-    <TextView
-        android:id="@+id/grades_tx"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/notification_tx"
-        android:layout_below="@+id/seekBar1"
-        android:layout_marginTop="25dp"
-        android:text="Grades" />
-
-    <SeekBar
-        android:id="@+id/seekBar2"
-        android:layout_width="70dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/event_tx"
-        android:layout_marginLeft="34dp"
-        android:layout_toRightOf="@+id/daily_attendance_tx"
-        android:thumb="@drawable/onoffcircle" 
-       />
-
-    <SeekBar
-        android:id="@+id/seekBar1"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/seekBar2"
-        android:layout_alignTop="@+id/notification_tx"
-        android:thumb="@drawable/onoffcircle"
+    
+<TableLayout 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="30dp">
+    
+    <TableRow 
         
-         />
-
-</RelativeLayout>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    	<TextView
+        android:id="@+id/notification_tx"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:textSize="20sp"
+        android:text="Notification" 
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+    	
+    	 <SeekBar
+        android:id="@+id/seekBar1"
+         android:layout_width="0dp"
+         android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:thumb="@drawable/onoffcircle" />
+        
+    </TableRow>
+    <TableRow 
+        android:layout_width="match_parent"
+        android:layout_marginTop="8dp"
+         android:layout_marginBottom="10dp">
+        <TextView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="1dp"
+        android:text=""
+        android:background="@color/profile_selected"
+         />    
+        
+    </TableRow>
+   
+   
+    <TableRow 
+        
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content">
+    	<TextView
+        android:id="@+id/grades_tx"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:textSize="15sp"
+        android:text="Grades" 
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+    	
+    	 <SeekBar
+        android:id="@+id/seekBar2"
+         android:layout_width="0dp"
+         android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:thumb="@drawable/onoffcircle" />
+        
+    </TableRow>
+   
+    
+    <TableRow 
+        
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content">
+    	<TextView
+        android:id="@+id/event_tx"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:textSize="15sp"
+        android:text="Events" 
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+    	
+    	 <SeekBar
+        android:id="@+id/seekBar3"
+         android:layout_width="0dp"
+         android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:thumb="@drawable/onoffcircle" />
+        
+    </TableRow>
+    
+    
+	<TableRow 
+        
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content">
+    	<TextView
+        android:id="@+id/blog_tx"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:textSize="15sp"
+        android:text="Blog" 
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+    	
+    	 <SeekBar
+        android:id="@+id/seekBar4"
+         android:layout_width="0dp"
+         android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:thumb="@drawable/onoffcircle" />
+        
+    </TableRow>
+    
+	
+	
+    
+    
+	<TableRow 
+        
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content">
+    	<TextView
+        android:id="@+id/daily_attendance_tx"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:textSize="15sp"
+        android:text="Daily Attendance" 
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+    	
+    	 <SeekBar
+        android:id="@+id/seekBar5"
+         android:layout_width="0dp"
+         android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:thumb="@drawable/onoffcircle" />
+        
+    </TableRow>
+    
+	<TableRow 
+        android:layout_width="match_parent"
+        android:layout_marginTop="15dp"
+         android:layout_marginBottom="15dp">
+        <TextView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="1dp"
+        android:text=""
+         android:background="@color/profile_selected"
+         />    
+        
+    </TableRow>
+    
+</TableLayout>
+</LinearLayout>
+</ScrollView>

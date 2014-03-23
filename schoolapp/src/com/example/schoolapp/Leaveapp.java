@@ -1,13 +1,20 @@
 package com.example.schoolapp;
 import java.util.Calendar;
 
+import nav_drawer.commonDrawer;
+
 import library.DatabaseHandler;
 import library.Mail;
+import library.utils;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -15,6 +22,7 @@ import android.text.Html;
 import android.text.InputType;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -30,14 +38,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Leaveapp extends ActionBarActivity{
+public class Leaveapp extends commonDrawer{
 
 	
 	EditText starting_date;
 	EditText ending_date;
 	EditText reason;
 	String msg;
-	String receiver_prof_email="pncooldude91@gmail.com";  // recepient email-id
+	String receiver_prof_email="dhaneshkr26@gmail.com";  // recepient email-id
 	Mail m;
 	String[] store;
 	Spinner select;
@@ -78,11 +86,23 @@ public class Leaveapp extends ActionBarActivity{
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.leaveapp_updated);
+		LayoutInflater inflater = (LayoutInflater) this
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		View contentView = inflater.inflate(R.layout.leaveapp_updated, null,
+				false);
+		mDrawerLayout.addView(contentView, 0);
+		
+		getSupportActionBar().setTitle("Leave Application");
+		getSupportActionBar().setBackgroundDrawable(new 
+				   ColorDrawable(Color.parseColor("#58a533"))); 
+		
 		Typeface tf= Typeface.createFromAsset(getAssets(), "museo-300.ttf");
 		  TextView mTextView =(TextView) findViewById(R.id.textView1);
+		  
+		  utils.ls("try to set typeface--");
 		    mTextView.setTypeface(tf);
 		    
+		    utils.ls("try to set typeface--settled");
 		    TextView mTextView1 =(TextView) findViewById(R.id.textView2);
 		    mTextView1.setTypeface(tf);
 		    Button p_b =(Button) findViewById(R.id.preview);
@@ -117,6 +137,24 @@ public class Leaveapp extends ActionBarActivity{
                      return false;              
                  }
              });
+		     
+		     TextView school= (TextView) findViewById(R.id.submit);
+		     TextView hool= (TextView) findViewById(R.id.preview);
+		    	school.setClickable(true);
+				school.setOnClickListener( new View.OnClickListener(){
+					@Override
+					public void onClick(View v) {
+						submit_leaveapp(v);
+					}
+				});
+				hool.setClickable(true);
+				hool.setOnClickListener( new View.OnClickListener(){
+					@Override
+					public void onClick(View v) {
+						preview_leaveapp(v);
+					}
+				});
+				
 		//Updating spinner dynamically
 		/*DatabaseHandler db = new DatabaseHandler(this);
 		String result1="";	    
@@ -181,12 +219,12 @@ public void preview_leaveapp(View v){
 public void clicked_on_check(View v){
 	count_of_clicks_on_check=!count_of_clicks_on_check;
 	if(count_of_clicks_on_check){
-	ImageView im1=(ImageView)findViewById(R.id.check_img);
-	im1.setImageResource(R.drawable.checkdone);
+//	ImageView im1=(ImageView)findViewById(R.id.check_img);
+	//im1.setImageResource(R.drawable.checkdone);
 	}
 	else{
-		ImageView im1=(ImageView)findViewById(R.id.check_img);
-		im1.setImageResource(R.drawable.check);
+		//ImageView im1=(ImageView)findViewById(R.id.check_img);
+		//im1.setImageResource(R.drawable.check);
 	}
 	}
 /*public void clicked_on_uncheck(View v){

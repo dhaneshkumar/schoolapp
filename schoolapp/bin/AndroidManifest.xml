@@ -25,27 +25,7 @@
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
         
          
-          <activity android:name="com.example.schoolapp.Home" 
-            >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        
-        </activity>
          
-         
-         <activity android:name="com.example.schoolapp.Timetable"
-             android:label="@string/timeTable" 
-            >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        
-        </activity>
         
         <activity
             android:name="com.example.schoolapp.splash"
@@ -60,8 +40,8 @@
         
          <activity
             android:name="nav_drawer.commonDrawer"></activity>
-       
-        <activity android:name="com.example.schoolapp.Event"></activity>
+         
+           <activity android:name="com.example.schoolapp.Event"></activity>
         <activity android:name="com.example.schoolapp.Medico"></activity>
         <activity android:name="com.example.schoolapp.ContactList"></activity>
         <activity android:name="com.example.schoolapp.PhoneList"></activity>
@@ -78,7 +58,12 @@
        <activity  android:name="com.example.schoolapp.EventDisplayAcadCal"></activity>
        <activity  android:name="com.example.schoolapp.report_card"></activity>
        <activity  android:name="com.example.schoolapp.settings_page"></activity>
+        <activity  android:name="com.example.schoolapp.Home"></activity>
+         <activity  android:name="com.example.schoolapp.Timetable"></activity>
+
+        
        
+      
        <!--   <activity android:screenOrientation="landscape" android:configChanges="orientation|keyboardHidden" android:name="com.example.schoolapp.TeacherAttendanceSetup"></activity>
        -->
         </application>

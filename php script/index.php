@@ -57,7 +57,7 @@
             echo json_encode($response);
         }
     } 
-
+/*
     else if($tag == 'details')
     {
     	$id = $_POST['id'];
@@ -92,6 +92,62 @@
         }
 
     }
+*/	
+	//*********************************************< all tables details>*****************
+	 else if($tag == 'details')
+     {
+		$table = $_POST['table'];
+        $currentPid = $_POST['pid'];
+
+		
+		$details="false";
+		$details = $db->getTable($table, $currentPid);
+		
+        if ($details != false) {
+            // user found
+            // echo json with success = 1
+            $response["success"] = 1;
+            $response["response"] = $details;
+
+            //echo ($table);
+            echo json_encode( $response);
+     }
+        else {
+			echo json_encode("Can't Access Table :  ".$table);
+        }
+    } 
+	
+	
+	//**************************************************< PROFILE>**************************************************************************
+     else if($tag == 'profileDetails')
+     {
+        $pid = $_POST['pid'];
+		$flag = $_POST['flag'];
+		
+		$details="false";
+		
+		if($flag==0)
+		{
+			$details = $db->showProfile($pid);
+		}
+		else if($flag==1)
+		{
+			$details = $db->updateProfile($pid);
+		}
+			
+        if ($details != false) {
+            // user found
+            // echo json with success = 1
+            $response["success"] = 1;
+            $response["response"] = $details;
+
+            echo json_encode($response);
+     }
+        else {
+        echo json_encode("Invalid Request");
+        }
+    } 
+
 
     //**************************************************< timeTable>**************************************************************************
      else if($tag == 'timeTableDetails')
@@ -115,7 +171,7 @@
         }
     } 
 
-    //******************************************< phone List>************************************************************
+//******************************************< phone List>************************************************************
      else if($tag == 'phoneListDetails')
      {
         $table = $_POST['table'];
@@ -133,27 +189,30 @@
         echo json_encode("Invalid Request");
         }
     } 
-   
-    //******************************************< Acad Calendar List>************************************************************
-     else if($tag == 'event')
-     {
-        $table = $_POST['table'];
 
-        $details = $db->showAcadCalender($table);
+
+
+}    
+    else {
+
+
+        $table = "Class";
+        $currentPid = "2";
+        $details = $db->getTable($table, $currentPid);
+        
         if ($details != false) {
             // user found
             // echo json with success = 1
             $response["success"] = 1;
             $response["response"] = $details;
 
-            echo json_encode($response);
+            echo json_encode( $response);
      }
-       
- 
-    else {
+        else {
+            echo json_encode("Can't Access Table :  ".$table);
+        }
     echo json_encode("Access Denied");
-		}
-	} 
-}
+    }  
+
 
 ?>

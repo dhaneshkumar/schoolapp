@@ -3,7 +3,7 @@
     <item android:bottom="40dp">
         <shape android:shape="rectangle" >
             <size android:height="40dp" />
-            <solid android:color="@color/profile_selected" />
+            <solid android:color="@color/contact_back_color" />
         </shape>
     </item>
 

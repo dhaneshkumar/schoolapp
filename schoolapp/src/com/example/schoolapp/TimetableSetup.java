@@ -8,6 +8,7 @@ import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -39,6 +40,8 @@ import android.view.View;
 			viewPager = (ViewPager) findViewById(R.id.pager);
 			actionBar = getActionBar();
 			actionBar.setTitle("Timetable");
+			getActionBar().setBackgroundDrawable(new 
+					   ColorDrawable(Color.parseColor("#58a533"))); 
 			//ActionBar bar = getSupportActionBar();
 			//bar.setTitle("Student Profile");
 			//actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.profile_selected)));

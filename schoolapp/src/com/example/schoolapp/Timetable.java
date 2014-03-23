@@ -75,6 +75,7 @@ import android.widget.TextView;
 		        HashMap<String, String> user = new HashMap<String, String>();
 		        user =k.next();
 		        
+		        
 	           	LinearLayout.LayoutParams rlp = new LinearLayout.LayoutParams(
 	        	        LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 	           	LinearLayout.LayoutParams rlp1 = new LinearLayout.LayoutParams(0, LayoutParams.WRAP_CONTENT,3);

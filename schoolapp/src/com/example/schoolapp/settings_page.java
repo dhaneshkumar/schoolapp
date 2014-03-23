@@ -1,14 +1,20 @@
 package com.example.schoolapp;
 
+import nav_drawer.commonDrawer;
 import library.utils;
 import android.app.Activity;
+import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.ActionMode;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-public class settings_page extends Activity {
+public class settings_page extends commonDrawer {
 	TextView mTextView1 ;
 	TextView mTextView2 ;
 	TextView mTextView3 ;
@@ -25,18 +31,36 @@ public class settings_page extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.settings);
+		LayoutInflater inflater = (LayoutInflater) this
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		View contentView = inflater.inflate(R.layout.settings, null,
+				false);
+		mDrawerLayout.addView(contentView, 0);
+		
+		getSupportActionBar().setTitle("Settings");
+		getSupportActionBar().setBackgroundDrawable(new 
+				   ColorDrawable(Color.parseColor("#58a533"))); 
 		
 		utils.ls("Entered in setting page  : ---");
 		Typeface tf= Typeface.createFromAsset(getAssets(), "museo-300.ttf");
 		
 		utils.ls("Entered in setting page  : ---2222");
-		 mTextView1 =(TextView) findViewById(R.id.settings_tx);
 		 mTextView2 =(TextView) findViewById(R.id.blog_tx);
 		 mTextView3 =(TextView) findViewById(R.id.notification_tx);
 		 mTextView4 =(TextView) findViewById(R.id.event_tx);
 		 mTextView5 =(TextView) findViewById(R.id.daily_attendance_tx);
 		 mTextView6 =(TextView) findViewById(R.id.grades_tx);
+		 
+		
+		 utils.ls("Entered in setting page  : ---55");
+		 
+			 mTextView2.setTypeface(tf);
+			 mTextView3.setTypeface(tf);
+			 mTextView4.setTypeface(tf);
+			 mTextView5.setTypeface(tf);
+			 mTextView6.setTypeface(tf);
+			 utils.ls("Entered in setting page  : ---66665");
+		 
 		 s_bar1=(SeekBar) findViewById(R.id.seekBar1);
 		 s_bar2=(SeekBar) findViewById(R.id.seekBar2);
 		 s_bar3=(SeekBar) findViewById(R.id.seekBar3);
@@ -99,14 +123,7 @@ public class settings_page extends Activity {
 				}
 			    
 			});
-		 utils.ls("Entered in setting page  : ---55");
-		 
-		 mTextView1.setTypeface(tf);
-		 mTextView2.setTypeface(tf);
-		 mTextView3.setTypeface(tf);
-		 mTextView4.setTypeface(tf);
-		 mTextView5.setTypeface(tf);
-		 mTextView6.setTypeface(tf);
+		
 	}
 
 

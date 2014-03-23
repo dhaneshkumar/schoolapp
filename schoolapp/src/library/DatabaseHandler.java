@@ -34,8 +34,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	}
 
 	// list of tables having contents
-	public final static String[] tableList = { "SchoolName", "Parent",
-			"Student", "teacher", "TimeTable", "phoneList", "class", "EventTable"};
+	public final static String[] tableList = {"SchoolName", "Parent","Student","teacher","TimeTable","phoneList", "class",};
+		//"EventTable"};
+		//
+	//	
+		
 	String[] tablesname;
 
 	

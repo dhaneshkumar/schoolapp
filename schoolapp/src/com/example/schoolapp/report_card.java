@@ -4,15 +4,21 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import nav_drawer.commonDrawer;
+
 import android.app.Activity;
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.TypedValue;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
-public class report_card extends Activity {
+public class report_card extends commonDrawer {
 	ExpandableListAdapter listAdapter;
     ExpandableListView expListView;
     private List<String> _h_quiz_type; // header titles
@@ -23,11 +29,25 @@ public class report_card extends Activity {
     private HashMap<String, List<String>> _c_chapter;
     private HashMap<String, List<String>> _c_rank;
     private HashMap<String, List<String>> _c_remark;
+    
+    
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.reportcard);
+		//setContentView(R.layout.reportcard);
+		
+		
+		LayoutInflater inflater = (LayoutInflater) this
+	            .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+	    View contentView = inflater.inflate(R.layout.reportcard, null, false);
+	    mDrawerLayout.addView(contentView, 0);
+	    
+	    //setting action bar title
+	    getSupportActionBar().setTitle("Report Card");
+	    getSupportActionBar().setBackgroundDrawable(new 
+				   ColorDrawable(Color.parseColor("#58a533"))); 
+		
 		//View rLayout =  findViewById(R.id.r_layout1);
         //LinearLayout layout = (LinearLayout) findViewById(R.id.info);
 		expListView = (ExpandableListView) findViewById(R.id.lvExp);

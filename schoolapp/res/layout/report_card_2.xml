@@ -1,9 +1,9 @@
-
     <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/offwhite" >
+        android:layout_marginTop="5dp"
+        android:background="@color/contact_back_color" >
 
         <TextView
             android:id="@+id/chapter_txt"
@@ -39,9 +39,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/chapter_txt"
             android:layout_marginLeft="18dp"
-            android:layout_marginTop="74dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
             android:layout_toRightOf="@+id/textView5"
-            android:text="Remarks" />
+            android:text="Remarks " />
 
         <TextView
             android:id="@+id/textView5"
@@ -50,7 +51,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="40dp"
-            android:layout_marginTop="78dp"
+            android:layout_marginTop="20dp"
             android:text="chapters" />
 
         <TextView

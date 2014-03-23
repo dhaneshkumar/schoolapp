@@ -13,7 +13,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,7 +40,9 @@ public class profile_parent extends commonDrawer {
 				false);
 		mDrawerLayout.addView(contentView, 0);
 		getSupportActionBar().setTitle("Parent Profile");
-		
+		getSupportActionBar().setBackgroundDrawable(new 
+				   ColorDrawable(Color.parseColor("#58a533"))); 
+		Typeface tf= Typeface.createFromAsset(getAssets(), "museo-300.ttf");
 		utils.ls("Entered in parent profile");
 		name=(TextView) findViewById(R.id.name);
 		school=(TextView) findViewById(R.id.school);
@@ -86,7 +90,7 @@ public class profile_parent extends commonDrawer {
 	        vp.setMargins(10, 20, 0, 0);
 	       // image.setBackgroundColor(color.contact_back_color);
 	        image.setBorderColor(getResources().getColor(R.color.GrayLight));
-	        image.setBorderWidth(2);
+	        image.setBorderWidth(3);
 	        image.addShadow();
 	        image.setLayoutParams(vp);
 	        //image.setPadding(20, 20, 10, 4);
@@ -108,10 +112,12 @@ public class profile_parent extends commonDrawer {
 	        text1.setLayoutParams(vp1);
 	        text1.setTextColor(getResources().getColor(R.color.profile_font_color));
 	        text1.setTextSize(15);
-	        text1.setTypeface(Typeface.DEFAULT_BOLD);
+	        text1.setTypeface(tf);
+	        
 	        rl.addView(text1);
 	        
 	        TextView text2 = new TextView(this);
+	        text2.setTypeface(tf);
 	        text2.setId(i+1001);
 	        RelativeLayout.LayoutParams vp2 = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 	        RelativeLayout.LayoutParams vp3 = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
@@ -134,6 +140,7 @@ public class profile_parent extends commonDrawer {
 	        
 	        TextView text3 = new TextView(this);
 	        text3.setId(i+1002);
+	        text3.setTypeface(tf);
 	        vp3.addRule(RelativeLayout.BELOW, text2.getId());
 	        text3.setText("Occupation : "+user.get("profession"));
 	        text3.setLayoutParams(vp3);
@@ -143,6 +150,7 @@ public class profile_parent extends commonDrawer {
 	        
 	        TextView text4 = new TextView(this);
 	        text4.setId(i+1003);
+	        text4.setTypeface(tf);
 	        vp4.addRule(RelativeLayout.BELOW, text3.getId());
 	        text4.setText(user.get("emailid"));
 	        text4.setTextColor(getResources().getColor(R.color.profile_font_color));
@@ -152,6 +160,7 @@ public class profile_parent extends commonDrawer {
 	        
 	        TextView text5 = new TextView(this);
 	        text5.setId(i+1004);
+	        text5.setTypeface(tf);
 	        text5.setTextColor(getResources().getColor(R.color.profile_font_color));
 	        vp5.addRule(RelativeLayout.BELOW, text4.getId());
 	        text5.setText(user.get("contactno"));
@@ -165,6 +174,7 @@ public class profile_parent extends commonDrawer {
 	        
 	        TextView text6 = new TextView(this);
 	        text6.setText("");
+	        text6.setTypeface(tf);
 	        text6.setPadding(0, 3, 0, 0);
 	        text6.setHeight(1);
 	        text6.setBackgroundColor(getResources().getColor(R.color.contact_back_color));

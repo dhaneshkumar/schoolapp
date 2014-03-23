@@ -1,2 +1,0 @@
-setTeacher()
-getTeacher(clas, section)

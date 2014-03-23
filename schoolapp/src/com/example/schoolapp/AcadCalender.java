@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import android.support.v7.*;
+import android.support.v4.*;
 
 import library.DatabaseHandler;
 import library.utils;
@@ -17,6 +19,8 @@ import com.roomorama.caldroid.CaldroidListener;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
@@ -32,7 +36,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-@SuppressLint("SimpleDateFormat")
+@SuppressLint({ "SimpleDateFormat", "NewApi" })
 public class AcadCalender extends FragmentActivity{
 	TextView display_event;
 	String [] store;
@@ -109,11 +113,18 @@ public class AcadCalender extends FragmentActivity{
 	}
 	
 	
+	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.acadcalender);
+		
+		getActionBar().setTitle("Academic Calender");
+		getActionBar().setBackgroundDrawable(new 
+				   ColorDrawable(Color.parseColor("#58a533"))); 
+		
+		
 		display_event=(TextView)findViewById(R.id.textview);
 		list=(ListView)findViewById(R.id.list);
 		
@@ -280,6 +291,7 @@ public void month_clicked(View v){
 	
 		
 	}
+
 public void all_clicked(View v){
 	calenderview=(LinearLayout)findViewById(R.id.calendar1);
 	calenderview.setVisibility(View.GONE);
@@ -287,9 +299,8 @@ public void all_clicked(View v){
 	//final MySimpleArrayAdapter list_adapter =new MySimpleArrayAdapter(this, date_start_array, title_array, date_start_array.size());
 	//list.setAdapter(list_adapter);
 	list.setVisibility(View.VISIBLE);
-	
-	
 }
+
 public class MySimpleArrayAdapter extends ArrayAdapter<String> {
 	private final Context context;
 	private final ArrayList<String> dates_array_dummy;
@@ -320,6 +331,8 @@ public class MySimpleArrayAdapter extends ArrayAdapter<String> {
 		return rowView;
 	}
 }
+
+
 @Override
 	protected void onSaveInstanceState(Bundle outState) {
 		// TODO Auto-generated method stub

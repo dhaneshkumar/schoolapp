@@ -8,8 +8,11 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Path;
 import android.graphics.Rect;
+import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -41,6 +44,7 @@ public class PhoneList_ext extends commonDrawer {
 	    mDrawerLayout.addView(contentView, 0);
 		
 		
+	    Typeface tf= Typeface.createFromAsset(getAssets(), "museo-300.ttf");
 		name=(TextView) findViewById(R.id.name);
 		clas=(TextView) findViewById(R.id.clas);
 		subjects=(TextView) findViewById(R.id.subjects);
@@ -49,6 +53,12 @@ public class PhoneList_ext extends commonDrawer {
 		call = (TextView) findViewById(R.id.callbutton);
 		ImageView iw=(ImageView) findViewById(R.id.imgView);
 	    
+		name.setTypeface(tf);
+		clas.setTypeface(tf);
+		subjects.setTypeface(tf);
+		contactno.setTypeface(tf);
+		emailid.setTypeface(tf);
+		call.setTypeface(tf);
 	    
 		//contact details
 		String tag = getIntent().getStringExtra("tag");
@@ -84,6 +94,8 @@ public class PhoneList_ext extends commonDrawer {
 			contactno.setText(parts[5]);
 			emailid.setText(parts[6]);
 			getSupportActionBar().setTitle(tag);
+			getSupportActionBar().setBackgroundDrawable(new 
+					   ColorDrawable(Color.parseColor("#58a533"))); 
 		}
 		
 		
@@ -100,11 +112,11 @@ public class PhoneList_ext extends commonDrawer {
         });
 		
 		
-		
+		/*
 		Bitmap bMap = BitmapFactory.decodeResource(getResources(), R.drawable.ab100);
 		Bitmap cmap = utils.getRoundedShape(bMap);
 		iw.setImageBitmap(cmap);
-		
+		*/
 		
 		
 		//Toast.makeText(getApplicationContext(), name + "+" + post+" "+ concPerson + " " + contact + " " + emailid, Toast.LENGTH_SHORT).show();

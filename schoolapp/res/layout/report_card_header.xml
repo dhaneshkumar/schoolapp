@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:padding="8dp"
-    android:background="@color/offwhite">
+    android:background="@color/contact_back_color">
 
     <TextView
         android:id="@+id/quiz_type_txt"

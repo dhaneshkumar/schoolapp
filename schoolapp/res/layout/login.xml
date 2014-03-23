@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_back_color"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:src="@drawable/hashlogo" />
+    
+    <LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/contact_back_color"
+    android:layout_marginLeft="20dp"
+     android:layout_marginTop="-20dp"
+    android:layout_marginRight="20dp"
+    android:orientation="vertical" >
+    	
+    	
+    	<EditText 
+    	    android:layout_margin="10dp"
+    	    android:layout_width="match_parent"
+       		android:layout_height="wrap_content"
+        	android:gravity="center"
+        	android:paddingTop="10dp"
+        	android:textColor="#fff"
+        	android:paddingBottom="10dp"
+        	android:background="@drawable/customshape"
+        	android:hint="Username"
+    	    />
+    	
+    	<EditText
+    	    android:layout_marginLeft="10dp" 
+    	     android:layout_marginRight="10dp"
+    	     android:layout_marginTop="-5dp" 
+    	     android:textColor="#fff"
+    	    android:layout_width="match_parent"
+       		android:layout_height="wrap_content"
+        	android:gravity="center"
+        	android:password="true"
+        	android:paddingTop="10dp"
+        	android:paddingBottom="10dp"
+        	android:background="@drawable/customshape"
+        	android:hint="Password"
+    	    />
+    	
+    	<TextView 
+    	     android:id="@+id/signin"
+    	    android:layout_marginRight="10dp"
+    	     android:layout_marginLeft="10dp" 
+    	      android:layout_marginBottom="10dp" 
+    	    android:layout_marginTop="20dp"
+    	    android:layout_width="match_parent"
+       		android:layout_height="wrap_content"
+        	android:gravity="center"
+        	android:paddingTop="10dp"
+        	android:paddingBottom="10dp"
+        	android:textColor="#fff"
+        	android:textSize="18sp"
+        	android:text="Sign In"
+        	android:background="@drawable/buttonshape"
+    	    />
+		
+    	
+    	<TextView 
+    	   
+    	    android:layout_marginRight="25dp"
+    	    android:layout_marginBottom="10dp" 
+    	    android:layout_width="wrap_content"
+       		android:layout_height="wrap_content"
+        	android:layout_gravity="right"
+        	android:textSize="14sp"
+        	android:text="Need Help"
+        	android:textColor="@color/profile_selected"
+    	    />
+        
+    </LinearLayout>
+        
+    
+    
+    
+    
+    
+    
+
+</LinearLayout>

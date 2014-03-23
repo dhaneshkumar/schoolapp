@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -44,11 +45,14 @@ public class profile_student extends commonDrawer {
 				false);
 		mDrawerLayout.addView(contentView, 0);
 		
+		
+		
 		//Setting action bar title and background color
-		ActionBar bar = getSupportActionBar();
-	/*	bar.setTitle("Student Profile");
-		bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.profile_selected)));
-		*/
+		getSupportActionBar().setTitle("Student Profile");
+		getSupportActionBar().setBackgroundDrawable(new 
+				   ColorDrawable(Color.parseColor("#58a533"))); 
+		
+		Typeface tf= Typeface.createFromAsset(getAssets(), "museo-300.ttf");
 		utils.ls("Entered in student profile");
 		name=(TextView) findViewById(R.id.name);
 		clas=(TextView) findViewById(R.id.clas);
@@ -61,6 +65,19 @@ public class profile_student extends commonDrawer {
 		noofstudents=(TextView) findViewById(R.id.noofstudents);
 		address=(TextView) findViewById(R.id.address);
 		contactdetails=(TextView) findViewById(R.id.contactdetails);
+		
+		
+		name.setTypeface(tf);
+		clas.setTypeface(tf);
+		school.setTypeface(tf);
+		parents.setTypeface(tf);
+		schoolname.setTypeface(tf);
+		section.setTypeface(tf);
+		classteacher.setTypeface(tf);
+		noofstudents.setTypeface(tf);
+		address.setTypeface(tf);
+		contactdetails.setTypeface(tf);
+		
 		
 	//	Bitmap bMap = BitmapFactory.decodeResource(getResources(), R.drawable.ab100);
 	//	Bitmap cmap = utils.getRoundedShape(bMap);

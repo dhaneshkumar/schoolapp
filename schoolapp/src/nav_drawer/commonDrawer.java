@@ -193,13 +193,13 @@ import com.example.schoolapp.*;
 			fragment = new Intent(this, ContactList.class);
 			break;
 		case 4:
-			fragment = new Intent(this, settings_page.class);
+			fragment = new Intent(this, report_card.class);
 			break;
 		case 5:
 			fragment = new Intent(this, Leaveapp.class);
 			break;
 		case 6:
-			fragment = new Intent(this, report_card.class);
+			fragment = new Intent(this, settings_page.class);
 			break;
 		default:
 			break;

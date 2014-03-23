@@ -2,6 +2,7 @@
 
 <ScrollView
   xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:app="http://schemas.android.com/apk/res/com.example.schoolapp"
   android:layout_width="fill_parent"
   android:background="@color/app_back_color"
   android:layout_height="fill_parent">
@@ -9,31 +10,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
    android:background="@color/app_back_color" 
+   android:paddingTop="20dp"
     android:orientation="vertical" >
 
      <TextView
             android:layout_width="match_parent"
-            android:layout_height="10dp"
-             android:layout_marginTop="10dp"
+            android:layout_height="15dp"
             android:text=""
-            android:background="@color/contact_back_color"          />
-    
-  <ImageView
+            android:background="@color/contact_back_color" ></TextView>
+         
+        <LinearLayout
+        	android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:orientation="vertical"
+            android:background="@drawable/profile_background"   >
+           
+
+        <com.example.schoolapp.CircularImageView
             android:id="@+id/imgView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"  
-            android:background="@drawable/teacher_background" 
-            android:paddingTop="3dp"
-            android:paddingBottom="3dp"   
-            android:adjustViewBounds="true"
-           />
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+		    app:border="true"
+	        app:border_color="@color/GrayLight"
+	        app:border_width="4"
+	        app:shadow="true"  
+	        android:layout_gravity="center_horizontal"
+            android:src="@drawable/ab100"
+            android:background="@drawable/profile_background" 
+            />
+        
+        </LinearLayout>
    
       <TextView 
           android:id="@+id/name"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_marginTop="10dp"
+          android:layout_marginTop="-10dp"
           android:textSize="15sp"
           android:gravity="center"
           android:text="Amitabh Bachhan"

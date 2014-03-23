@@ -3,6 +3,9 @@ package com.example.schoolapp;
 import nav_drawer.commonDrawer;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +24,8 @@ public class ContactList extends commonDrawer implements View.OnClickListener{
 	    
 	    //setting action bar title
 	    getSupportActionBar().setTitle("Contact");
+	    getSupportActionBar().setBackgroundDrawable(new 
+				   ColorDrawable(Color.parseColor("#58a533"))); 
 	    
 	    Button teacher =  ( Button) findViewById(R.id.teacher);
 	    Button admin =  ( Button) findViewById(R.id.administration);
@@ -31,6 +36,12 @@ public class ContactList extends commonDrawer implements View.OnClickListener{
         admin.setOnClickListener(this);
         auth.setOnClickListener(this);
         others.setOnClickListener(this);
+        
+        Typeface tf= Typeface.createFromAsset(getAssets(), "museo-300.ttf");
+        teacher.setTypeface(tf);
+        admin.setTypeface(tf);
+        auth.setTypeface(tf);
+        others.setTypeface(tf);
 	    
 	}
 	

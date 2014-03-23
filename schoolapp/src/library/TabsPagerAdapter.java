@@ -14,6 +14,8 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
 	@Override
 	public Fragment getItem(int index) {
 			return new Timetable(index);
+			//----------------change it for timetable-----------------------------------
+		//return new Fragment();
 	}
 
 	@Override
