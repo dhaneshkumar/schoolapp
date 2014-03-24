@@ -25,7 +25,7 @@ public class ContactList extends commonDrawer implements View.OnClickListener{
 	    //setting action bar title
 	    getSupportActionBar().setTitle("Contact");
 	    getSupportActionBar().setBackgroundDrawable(new 
-				   ColorDrawable(Color.parseColor("#58a533"))); 
+				   ColorDrawable(getResources().getColor(R.color.profile_selected)));  
 	    
 	    Button teacher =  ( Button) findViewById(R.id.teacher);
 	    Button admin =  ( Button) findViewById(R.id.administration);

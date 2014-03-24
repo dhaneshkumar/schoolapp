@@ -24,9 +24,9 @@ public class splash extends ActionBarActivity{
 		 * Intialising all tables
 		 */
 		
-		getSupportActionBar().setTitle("Log In");
+		getSupportActionBar().setTitle("Hashtagkid");
 		getSupportActionBar().setBackgroundDrawable(new 
-				   ColorDrawable(Color.parseColor("#58a533"))); 
+				   ColorDrawable(getResources().getColor(R.color.profile_selected))); 
 		
 		DatabaseHandler db = new DatabaseHandler(this);
 				

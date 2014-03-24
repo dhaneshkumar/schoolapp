@@ -21,6 +21,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -55,7 +56,7 @@ public class PhoneList extends commonDrawer {
 	    mDrawerLayout.addView(contentView, 0);
 
 	    getSupportActionBar().setBackgroundDrawable(new 
-				   ColorDrawable(Color.parseColor("#58a533"))); 
+				   ColorDrawable(getResources().getColor(R.color.profile_selected))); 
 		
 	    Intent intent = getIntent();
 	     tag = intent.getStringExtra("tag");
@@ -87,11 +88,12 @@ public class PhoneList extends commonDrawer {
 	        RelativeLayout rl = new RelativeLayout(this);
 	        rl.setId(i+2000);
 	        rl.setClickable(true);
+	        rl.setPadding(10, 5, 5, 5);
 	        // Defining the RelativeLayout layout parameters.
 	        // In this case I want to fill its parent
 	        LinearLayout.LayoutParams rlp = new LinearLayout.LayoutParams(
 	        LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-	        rlp.setMargins(0, 4, 0, 0);
+	        rlp.setMargins(0, 8, 0, 0);
 	        
 	        //rlp.setMargins(left, top, right, bottom)
 	        rl.setLayoutParams(rlp);
@@ -136,21 +138,22 @@ public class PhoneList extends commonDrawer {
 	        text1.setTextColor(getResources().getColor(R.color.contact_font_color));
 	        text1.setTextSize(15);
 	        text1.setTypeface(tf);
+	        text1.setPadding(10, 0, 0, 5);
 	        rl.addView(text1);
 	        
 	        
 	        TextView text2 = new TextView(this);
 	        RelativeLayout.LayoutParams vp2 = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 	        vp2.addRule(RelativeLayout.BELOW, text1.getId());
-	        vp2.setMargins(10, 0, 4, 2);
+	        vp2.setMargins(10, 3, 4, 2);
 	        vp2.addRule(RelativeLayout.RIGHT_OF, image.getId());
 	        text2.setText(parts[2]);
 	        text2.setLayoutParams(vp2);
 	        text2.setTypeface(Typeface.DEFAULT_BOLD);
-	        text2.setTextSize(13);
+	        text2.setTextSize(12);
 	        text2.setTypeface(tf);
 	        text2.setTextColor(getResources().getColor(R.color.profile_selected));
-	        text2.setPadding(0, 0, 0, 5);
+	        text2.setPadding(10, 0, 0, 5);
 	        rl.addView(text2);
 	        
 	        
@@ -174,7 +177,13 @@ public class PhoneList extends commonDrawer {
 		              		 
 		}
 	
-	
+	/*public void onBackPressed() {
+		   Log.i("HA", "Finishing");
+		   Intent intent = new Intent(Intent.ACTION_MAIN);
+		   intent.addCategory(Intent.CATEGORY_HOME);
+		   intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		   startActivity(intent);
+		 }*/
 
 	}
 

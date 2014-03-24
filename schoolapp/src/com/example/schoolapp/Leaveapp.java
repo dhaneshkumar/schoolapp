@@ -82,6 +82,7 @@ public class Leaveapp extends commonDrawer{
              ending_date.setText(date_selected);
          }
      };
+     
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -94,7 +95,7 @@ public class Leaveapp extends commonDrawer{
 		
 		getSupportActionBar().setTitle("Leave Application");
 		getSupportActionBar().setBackgroundDrawable(new 
-				   ColorDrawable(Color.parseColor("#58a533"))); 
+				   ColorDrawable(getResources().getColor(R.color.profile_selected))); 
 		
 		Typeface tf= Typeface.createFromAsset(getAssets(), "museo-300.ttf");
 		  TextView mTextView =(TextView) findViewById(R.id.textView1);
@@ -105,10 +106,10 @@ public class Leaveapp extends commonDrawer{
 		    utils.ls("try to set typeface--settled");
 		    TextView mTextView1 =(TextView) findViewById(R.id.textView2);
 		    mTextView1.setTypeface(tf);
-		    Button p_b =(Button) findViewById(R.id.preview);
-		    p_b.setTypeface(tf);
-		    Button s_b =(Button) findViewById(R.id.submit);
-		    s_b.setTypeface(tf);
+		   // Button p_b =(Button) findViewById(R.id.preview);
+		    //p_b.setTypeface(tf);
+		   // Button s_b =(Button) findViewById(R.id.submit);
+		   // s_b.setTypeface(tf);
 		starting_date=(EditText)findViewById(R.id.starting_date_txt);
 		starting_date.setTypeface(tf);
 		ending_date=(EditText)findViewById(R.id.ending_date_txt);

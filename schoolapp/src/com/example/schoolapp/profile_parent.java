@@ -39,9 +39,13 @@ public class profile_parent extends commonDrawer {
 		View contentView = inflater.inflate(R.layout.profile_parent, null,
 				false);
 		mDrawerLayout.addView(contentView, 0);
+		
+		
+		
 		getSupportActionBar().setTitle("Parent Profile");
 		getSupportActionBar().setBackgroundDrawable(new 
-				   ColorDrawable(Color.parseColor("#58a533"))); 
+				   ColorDrawable(getResources().getColor(R.color.profile_selected))); 
+		
 		Typeface tf= Typeface.createFromAsset(getAssets(), "museo-300.ttf");
 		utils.ls("Entered in parent profile");
 		name=(TextView) findViewById(R.id.name);

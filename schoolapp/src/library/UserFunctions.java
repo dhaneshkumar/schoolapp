@@ -12,8 +12,8 @@ import android.os.AsyncTask;
  
 public class UserFunctions {
      
-    private static String loginURL = "http://10.0.2.2/schoolapp/index.php";
-    //private static String loginURL = "http://www.trumplab.com/schoolapp/index.php";
+    //private static String loginURL = "http://10.0.2.2/schoolapp/index.php";
+    private static String loginURL = "http://www.trumplab.com/schoolapp/index.php";
     private static String login_tag = "login";
     private static String details_tag = "details";
     private static String children_tag = "children";

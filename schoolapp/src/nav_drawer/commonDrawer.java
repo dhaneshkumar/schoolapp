@@ -63,7 +63,7 @@ import com.example.schoolapp.*;
      		navDrawerItems.add(new NavDrawerItem(navigationList[3], navMenuIcons.getResourceId(3, -1)));
      		navDrawerItems.add(new NavDrawerItem(navigationList[4], navMenuIcons.getResourceId(4, -1)));
      		navDrawerItems.add(new NavDrawerItem(navigationList[5], navMenuIcons.getResourceId(5, -1)));
-     		navDrawerItems.add(new NavDrawerItem(navigationList[6], navMenuIcons.getResourceId(5, -1)));
+     		navDrawerItems.add(new NavDrawerItem(navigationList[6], navMenuIcons.getResourceId(6, -1)));
      		
      	// Recycle the typed array
     		navMenuIcons.recycle();
@@ -85,7 +85,7 @@ import com.example.schoolapp.*;
     				R.string.app_name // nav drawer close - description for accessibility
     		) {
     			public void onDrawerClosed(View view) {
-    				getActionBar().setTitle(mTitle);
+    				//getActionBar().setTitle(mTitle);
     				// calling onPrepareOptionsMenu() to show action bar icons
     				invalidateOptionsMenu();
     			}
@@ -139,33 +139,8 @@ import com.example.schoolapp.*;
     public boolean onPrepareOptionsMenu(Menu menu) {
         // If the nav drawer is open, hide action items related to the content view
         boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-       menu.findItem(R.id.action_search).setVisible(!drawerOpen);
+     //  menu.findItem(R.id.action_search).setVisible(!drawerOpen);
         return super.onPrepareOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-         // The action bar home/up action should open or close the drawer.
-         // ActionBarDrawerToggle will take care of this.
-        if (mDrawerToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-        // Handle action buttons
-        switch(item.getItemId()) {
-        case R.id.action_search:
-            // create intent to perform web search for this planet
-//            Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
-//            intent.putExtra(SearchManager.QUERY, getSupportActionBar().getTitle());
-//            // catch event that there's no activity to handle intent
-//            if (intent.resolveActivity(getPackageManager()) != null) {
-//                startActivity(intent);
-//            } else {
-//                Toast.makeText(this, R.string.app_not_available, Toast.LENGTH_LONG).show();
-//            }
-            return true;
-        default:
-            return super.onOptionsItemSelected(item);
-        }
     }
 
     

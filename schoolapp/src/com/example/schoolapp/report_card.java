@@ -46,7 +46,7 @@ public class report_card extends commonDrawer {
 	    //setting action bar title
 	    getSupportActionBar().setTitle("Report Card");
 	    getSupportActionBar().setBackgroundDrawable(new 
-				   ColorDrawable(Color.parseColor("#58a533"))); 
+				   ColorDrawable(getResources().getColor(R.color.profile_selected))); 
 		
 		//View rLayout =  findViewById(R.id.r_layout1);
         //LinearLayout layout = (LinearLayout) findViewById(R.id.info);

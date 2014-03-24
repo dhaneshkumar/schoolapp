@@ -41,7 +41,7 @@ import android.view.View;
 			actionBar = getActionBar();
 			actionBar.setTitle("Timetable");
 			getActionBar().setBackgroundDrawable(new 
-					   ColorDrawable(Color.parseColor("#58a533"))); 
+					   ColorDrawable(getResources().getColor(R.color.profile_selected)));  
 			//ActionBar bar = getSupportActionBar();
 			//bar.setTitle("Student Profile");
 			//actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.profile_selected)));

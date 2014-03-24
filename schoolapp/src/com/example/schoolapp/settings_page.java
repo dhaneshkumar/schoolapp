@@ -39,7 +39,7 @@ public class settings_page extends commonDrawer {
 		
 		getSupportActionBar().setTitle("Settings");
 		getSupportActionBar().setBackgroundDrawable(new 
-				   ColorDrawable(Color.parseColor("#58a533"))); 
+				   ColorDrawable(getResources().getColor(R.color.profile_selected)));  
 		
 		utils.ls("Entered in setting page  : ---");
 		Typeface tf= Typeface.createFromAsset(getAssets(), "museo-300.ttf");

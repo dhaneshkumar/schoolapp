@@ -122,8 +122,7 @@ public class AcadCalender extends FragmentActivity{
 		
 		getActionBar().setTitle("Academic Calender");
 		getActionBar().setBackgroundDrawable(new 
-				   ColorDrawable(Color.parseColor("#58a533"))); 
-		
+				   ColorDrawable(getResources().getColor(R.color.profile_selected))); 
 		
 		display_event=(TextView)findViewById(R.id.textview);
 		list=(ListView)findViewById(R.id.list);

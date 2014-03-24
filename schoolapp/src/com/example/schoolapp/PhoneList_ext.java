@@ -43,6 +43,8 @@ public class PhoneList_ext extends commonDrawer {
 	    View contentView = inflater.inflate(R.layout.phonelist_ext, null, false);
 	    mDrawerLayout.addView(contentView, 0);
 		
+	    getSupportActionBar().setBackgroundDrawable(new 
+				   ColorDrawable(getResources().getColor(R.color.profile_selected))); 
 		
 	    Typeface tf= Typeface.createFromAsset(getAssets(), "museo-300.ttf");
 		name=(TextView) findViewById(R.id.name);
@@ -94,8 +96,7 @@ public class PhoneList_ext extends commonDrawer {
 			contactno.setText(parts[5]);
 			emailid.setText(parts[6]);
 			getSupportActionBar().setTitle(tag);
-			getSupportActionBar().setBackgroundDrawable(new 
-					   ColorDrawable(Color.parseColor("#58a533"))); 
+			
 		}
 		
 		

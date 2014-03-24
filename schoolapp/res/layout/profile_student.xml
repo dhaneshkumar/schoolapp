@@ -66,7 +66,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:padding="5dp"
+                    android:paddingTop="10dp"
+                     android:paddingBottom="10dp"
                     android:text="School"
                     android:background="@drawable/customshape"
                     android:textColor="#fff"
@@ -78,13 +79,25 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:padding="5dp"
+                    android:paddingTop="10dp"
+                     android:paddingBottom="10dp"
                     android:background="@drawable/selectedshape"
                     android:text="Parents"
                     android:textColor="#fff"
                     android:textSize="15sp" />
             </TableRow>
-
+           
+           </TableLayout>
+                   
+       <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/studentLayout"
+        android:orientation="vertical" > 
+           <TableLayout
+                android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
@@ -203,7 +216,8 @@
                     android:layout_gravity="center"
                      android:gravity="center"
                     android:layout_marginTop="20dp"
-                    android:padding="5dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
                     android:layout_weight="1"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/selectedshape"
@@ -212,6 +226,37 @@
                     android:textSize="15sp" />
             </TableRow>
         </TableLayout>
+        </LinearLayout>
+        
+       <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/parentLayout"
+        android:orientation="vertical" >
+           <LinearLayout
+            android:id="@+id/layout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/app_back_color"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+      
+         <TextView
+                    android:id="@+id/addguardian"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                     android:gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:padding="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/selectedshape"
+                    android:text="Add Guardian"
+                    android:textColor="#fff"
+                    android:textSize="15sp" />
+           </LinearLayout>
+       
     </LinearLayout>
 
 </ScrollView>
