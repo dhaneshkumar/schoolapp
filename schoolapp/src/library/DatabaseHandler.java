@@ -34,8 +34,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	}
 
 	// list of tables having contents
-	public final static String[] tableList = {"SchoolName", "Parent","Student","teacher","TimeTable","phoneList", "class",};
-		//"EventTable"};
+	public final static String[] tableList = {"SchoolName", "Parent","Student","teacher","TimeTable","phoneList", "class","EventTable"};
 		//
 	//	
 		
@@ -74,8 +73,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		tablesname[11] = "CREATE TABLE  AcadHistory  ( sid  INTEGER  NOT NULL,  class_no TEXT NOT NULL ,  subject  TEXT,  percentage  TEXT,  year  INTEGER,  school  TEXT NOT NULL,  board  TEXT, PRIMARY KEY(sid, class_no))";
 		tablesname[12] = "CREATE TABLE  Notifications  ( nid  INTEGER  NOT NULL   PRIMARY KEY,  title  TEXT NOT NULL,  description  TEXT,  date  DATETIME NOT NULL)";
 		tablesname[13] = "CREATE TABLE  GradeAnalysis  ( sid  INTEGER  NOT NULL PRIMARY KEY,  exam_type  TEXT,  subject  TEXT, marks TEXT,FOREIGN KEY( sid ) REFERENCES  Student ( sid ) )";
-		tablesname[14] = "CREATE TABLE  TimeStampDetails (  table_name  TEXT,  time_stamp  TIMESTAMP,  flag  INTEGER, PRIMARY KEY( table_name ))";
-
+		//tablesname[14] = "CREATE TABLE  TimeStampDetails (  table_name  TEXT,  time_stamp  TIMESTAMP,  flag  INTEGER, PRIMARY KEY( table_name ))";
+		tablesname[14] = "CREATE TABLE  logincheck ( id  INTEGER  NOT NULL PRIMARY KEY,  COUNT  INTEGER)"; 
+		
 		for (int i = 0; i < tablesname.length; i++) {
 			db.execSQL(tablesname[i]);
 
@@ -331,6 +331,48 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.close();
 	}
 
+	//****************************< AFTER LOGIN>****************************************************
+	  public void updateCount()
+	  {
+		  String deleteSQL = "DELETE FROM logincheck";
+		  db.execSQL(deleteSQL);
+		  
+		Log.e("DB", "Inserting Row in Teacher");
+		SQLiteDatabase db = this.getWritableDatabase();
+		ContentValues values = new ContentValues();
+		values.put("id", 1);
+		values.put("COUNT", 1);
+		// Inserting Row
+		db.insert("logincheck", null, values);
+		db.close(); // Closing database connection
+	}
+	 
+	  
+	  public int getCount()
+	  {
+		 
+		//SQLiteDatabase db = this.getWritableDatabase();
+		int i=0;
+		
+		String selectQuery = "SELECT * FROM logincheck WHERE id = 1";
+
+		Cursor cursor = db.rawQuery(selectQuery, null);
+		// Move to first row
+		String tt="";
+		cursor.moveToFirst();
+		if (cursor.getCount() > 0) {
+			tt =cursor.getString(1);
+			i =  Integer.parseInt(tt);
+		}
+		cursor.close();
+		
+		
+		System.out.println("count value : " + tt);
+		return i;
+	}
+	
+	
+	
 /***********************************< STUDENT PROFILE >****************************************************/
 
 	public HashMap<String, String> getStudentProfile() {

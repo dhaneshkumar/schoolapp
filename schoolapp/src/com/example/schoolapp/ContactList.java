@@ -37,7 +37,7 @@ public class ContactList extends commonDrawer implements View.OnClickListener{
         auth.setOnClickListener(this);
         others.setOnClickListener(this);
         
-        Typeface tf= Typeface.createFromAsset(getAssets(), "museo-300.ttf");
+        Typeface tf= Typeface.createFromAsset(getAssets(), getString(R.string.fontname));
         teacher.setTypeface(tf);
         admin.setTypeface(tf);
         auth.setTypeface(tf);
@@ -71,4 +71,8 @@ public class ContactList extends commonDrawer implements View.OnClickListener{
 	       startActivity(myIntent);
 	}
 
+	public void onBackPressed() {
+		   Intent intent = new Intent(this, Home.class);
+		   startActivity(intent);
+		 }
 }

@@ -5,11 +5,14 @@
     <color name="green">#7bc37a</color>
     <color name="caldroid_black">#000000</color>
     <color name="caldroid_transparent">#00000000</color>
+    
     <!-- For settings framework -->
     <color name="caldroid_lighter_gray">#ddd</color>
     <color name="caldroid_gray">#CCC</color>
     <color name="caldroid_darker_gray">#aaa</color>
      <color name="cgray">#aba8a8</color>
+     <color name="profile_selected">#0091c1</color>
+      <color name="app_back_color">#c2c8d6</color>
      <color name="offwhite">#e7e7e7</color>
     <!-- A light Holo shade of blue -->
     <color name="caldroid_holo_blue_light">#ff33b5e5</color>

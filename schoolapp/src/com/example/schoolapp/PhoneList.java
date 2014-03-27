@@ -80,8 +80,7 @@ public class PhoneList extends commonDrawer {
 		
 		store = result1.split("###");
 
-		Typeface tf= Typeface.createFromAsset(getAssets(), "museo-300.ttf");
-		
+		Typeface tf= Typeface.createFromAsset(getAssets(), getString(R.string.fontname));		
 		for(int i=0; i<store.length;i++)
 		{
 			// Creating a new RelativeLayout
@@ -177,14 +176,7 @@ public class PhoneList extends commonDrawer {
 		              		 
 		}
 	
-	/*public void onBackPressed() {
-		   Log.i("HA", "Finishing");
-		   Intent intent = new Intent(Intent.ACTION_MAIN);
-		   intent.addCategory(Intent.CATEGORY_HOME);
-		   intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		   startActivity(intent);
-		 }*/
-
+	
 	}
 
 			

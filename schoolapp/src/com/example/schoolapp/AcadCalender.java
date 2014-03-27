@@ -47,6 +47,8 @@ public class AcadCalender extends FragmentActivity{
 	Boolean month_selected=true;
 	private CaldroidFragment caldroidFragment;
 	Date date1;
+	int display_event_flag=0;
+	
 	SimpleDateFormat formatter=new SimpleDateFormat("yyyy-MM-dd");
 	ListView list;
 	int size=0;
@@ -225,6 +227,29 @@ public class AcadCalender extends FragmentActivity{
 		// Setup Caldroid
 		
 		caldroidFragment.setCaldroidListener(setuplistener());
+		
+		
+		
+		display_event.setClickable(true);		
+		display_event.setOnClickListener( new View.OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				
+				if(display_event.getText() !=""){
+					int j= display_event_flag;
+				Intent myIntent=new Intent(AcadCalender.this,EventDisplayAcadCal.class);
+				String [] print =new String[] {title_array.get(j),date_start_array.get(j),
+						time_start_array.get(j),date_end_array.get(j),time_end_array.get(j),
+						description_array.get(j),special_guest_array.get(j),venue_array.get(j),
+						extra_details_array.get(j)};
+				myIntent.putExtra("firstKeyName",print);
+			
+				startActivity(myIntent);
+				
+				display_event.setText("");
+				}
+			}
+		});
 
 }
 	public CaldroidListener setuplistener(){
@@ -238,14 +263,17 @@ public class AcadCalender extends FragmentActivity{
 				for(int j=0;j<date_start_array.size();++j){
 				if(temp.equals(date_start_array.get(j))){
 					display_event.setText(title_array.get(j));
-					Intent myIntent=new Intent(AcadCalender.this,EventDisplayAcadCal.class);
+					
+					
+					display_event_flag=j;
+					/*Intent myIntent=new Intent(AcadCalender.this,EventDisplayAcadCal.class);
 					String [] print =new String[] {title_array.get(j),date_start_array.get(j),
 							time_start_array.get(j),date_end_array.get(j),time_end_array.get(j),
 							description_array.get(j),special_guest_array.get(j),venue_array.get(j),
 							extra_details_array.get(j)};
 					myIntent.putExtra("firstKeyName",print);
 				
-					startActivity(myIntent);
+					startActivity(myIntent);*/
 					break;
 				}
 				
@@ -343,5 +371,9 @@ public class MySimpleArrayAdapter extends ArrayAdapter<String> {
 
 	}
 	
+public void onBackPressed() {
+	   Intent intent = new Intent(this, Home.class);
+	   startActivity(intent);
+	 }
 	
 }

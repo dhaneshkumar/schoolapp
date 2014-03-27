@@ -8,7 +8,9 @@ import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -33,13 +35,18 @@ import android.view.View;
 		protected void onCreate(Bundle savedInstanceState) {
 			super.onCreate(savedInstanceState);
 			setContentView(R.layout.timetablesetup);
-			
-			
+		
+			Typeface tf= Typeface.createFromAsset(getAssets(), getString(R.string.fontname));
 
 			// Initilization
 			viewPager = (ViewPager) findViewById(R.id.pager);
 			actionBar = getActionBar();
 			actionBar.setTitle("Timetable");
+			actionBar.setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.app_back_color)));
+			//actionBar.setStackedBackgroundDrawable(getResources().getDrawable(
+		       //     R.drawable.profile_background));
+			
+			
 			getActionBar().setBackgroundDrawable(new 
 					   ColorDrawable(getResources().getColor(R.color.profile_selected)));  
 			//ActionBar bar = getSupportActionBar();
@@ -53,9 +60,10 @@ import android.view.View;
 			actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);		
 
 			// Adding Tabs
+			
+			
 			for (String tab_name : tabs) {
-				actionBar.addTab(actionBar.newTab().setText(tab_name)
-						.setTabListener(this));
+				actionBar.addTab(actionBar.newTab().setText(tab_name).setTabListener(this));
 			}
 
 			/**
@@ -88,11 +96,17 @@ import android.view.View;
 		public void onTabSelected(Tab tab, FragmentTransaction ft) {
 			// on tab selected
 			// show respected fragment view
+			
 			viewPager.setCurrentItem(tab.getPosition());
 		}
 
 		@Override
 		public void onTabUnselected(Tab tab, FragmentTransaction ft) {
 		}
+		
+		public void onBackPressed() {
+			   Intent intent = new Intent(this, Home.class);
+			   startActivity(intent);
+			 }
 
 	}

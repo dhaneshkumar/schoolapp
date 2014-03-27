@@ -7,35 +7,50 @@
 
     <Button
         android:id="@+id/teacher"
-       android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textColor="@color/contact_font_color"
         android:background="@color/contact_back_color"
         android:text="Teacher" />
-
+ <TextView
+			        android:layout_width="match_parent"
+			        android:layout_height="2dp"
+			        android:text=""
+			        android:background="#999998"
+			        ></TextView>
+    
    <Button
         android:id="@+id/administration"
-         android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textColor="@color/contact_font_color"
         android:background="@color/contact_back_color"
         android:text="Administration" />
+ <TextView
+			        android:layout_width="match_parent"
+			        android:layout_height="2dp"
+			        android:text=""
+			        android:background="#999998"
+			        ></TextView>
+ 
    <Button
         android:id="@+id/authority"
-         android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textColor="@color/contact_font_color"
         android:background="@color/contact_back_color"
         android:text="Authority" />
+ <TextView
+			        android:layout_width="match_parent"
+			        android:layout_height="2dp"
+			        android:text=""
+			        android:background="#999998"
+			        ></TextView>
    <Button
         android:id="@+id/others"
-         android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

@@ -1,0 +1,97 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+     xmlns:app="http://schemas.android.com/apk/res/com.example.schoolapp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_back_color">
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:paddingTop="10dp"
+	    android:paddingBottom="10dp"
+	    android:background="@color/app_back_color"
+	    android:orientation="vertical">
+	    
+	    
+	    <LinearLayout 
+	        android:layout_width="match_parent"
+	    	android:layout_height="wrap_content"
+	    	android:paddingBottom="12dp"
+	    	android:layout_margin="5dp"
+	        android:orientation="vertical"
+	    	android:background="#ffffff"
+	        >
+	        <RelativeLayout
+	        android:layout_width="match_parent"
+	    	android:layout_height="wrap_content"
+	    	android:padding="5dp">
+	        
+	        
+	          <TextView
+	             	android:id="@+id/attitle1"
+			        android:layout_toRightOf="@+id/attendanceimg1"
+	             	android:paddingLeft="6dp"
+	             	 android:paddingTop="3dp"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:gravity="left"
+			        android:layout_alignTop="@+id/attendanceimg1"
+			        android:text="Attendance Report"
+			        android:textSize="20sp" />
+	        <ImageView
+				    android:id="@+id/attendanceimg1"
+				    android:src="@drawable/jaideep100"
+				    android:paddingTop="3dp"
+				    android:layout_width="60dp"
+				    android:layout_height="60dp" />
+
+	        <RelativeLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_alignBottom="@+id/attendanceimg1"
+	            android:layout_alignLeft="@+id/attitle1" >
+	            
+	            <TextView
+	                android:id="@+id/asender1"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="left"
+	                android:paddingLeft="6dp"
+	                android:text="Sent by Rajesh Khanna"
+	                android:textSize="11sp" />
+
+	            <TextView
+	                android:id="@+id/adate1"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_alignParentRight="true"
+	                android:layout_alignParentTop="true"
+	                android:paddingRight="6dp"
+	                android:text="23 jan 2014"
+	                android:textSize="11sp" />
+	            
+	        </RelativeLayout>
+	        
+	    </RelativeLayout>
+	    	<TextView 
+	    	    	android:layout_marginTop="-2dp"
+	            	android:layout_height="1dp"
+	            	android:background="@color/profile_selected"
+	            	android:layout_width="match_parent"/>
+	    	<TextView 
+	    	    	android:id="@+id/adetails1"
+	    	    	android:paddingLeft="12dp"
+	    			android:paddingRight="6dp"
+	    	    	android:paddingTop="10dp"
+	            	android:layout_height="wrap_content"
+	            	android:layout_width="match_parent"
+	            	android:textColor="#7c7d7d"
+	            	android:text="Rahul was not present today"
+			        android:textSize="15sp"/>
+	    </LinearLayout>
+	  
+	  
+	    
+	    
+	    </LinearLayout>
+</ScrollView>

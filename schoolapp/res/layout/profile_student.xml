@@ -241,7 +241,7 @@
             android:orientation="vertical" >
         </LinearLayout>
 
-      
+      <!-- 
          <TextView
                     android:id="@+id/addguardian"
                     android:layout_width="wrap_content"
@@ -254,7 +254,7 @@
                     android:background="@drawable/selectedshape"
                     android:text="Add Guardian"
                     android:textColor="#fff"
-                    android:textSize="15sp" />
+                    android:textSize="15sp" /> -->
            </LinearLayout>
        
     </LinearLayout>

@@ -9,6 +9,7 @@ import java.util.HashMap;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,7 @@ import com.caldroid.R;
  * @author thomasdao
  * 
  */
+
 public class CaldroidGridAdapter extends BaseAdapter {
 	protected ArrayList<DateTime> datetimeList;
 	protected int month;
@@ -42,6 +44,7 @@ public class CaldroidGridAdapter extends BaseAdapter {
 	protected int startDayOfWeek;
 	protected boolean sixWeeksInCalendar;
 	protected Resources resources;
+	
 
 	/**
 	 * caldroidData belongs to Caldroid
@@ -193,7 +196,10 @@ public class CaldroidGridAdapter extends BaseAdapter {
 
 			// Set it
 			if (backgroundResource != null) {
-				textView.setBackgroundResource(backgroundResource.intValue());
+				//textView.setBackgroundResource(backgroundResource.intValue()); //****************************< ALL EVENT'S  BACKGROUND COLOR>************************************************************************************
+				textView.setBackgroundResource(R.color.profile_selected);
+			
+				
 			}
 		}
 
@@ -206,8 +212,8 @@ public class CaldroidGridAdapter extends BaseAdapter {
 
 			// Set it
 			if (textColorResource != null) {
-				textView.setTextColor(resources.getColor(textColorResource
-						.intValue()));
+				textView.setTextColor(resources.getColor(R.color.caldroid_white)); //****************************< ALL EVENT'S TEXT COLOR >*****************************************
+				
 			}
 		}
 	}
@@ -222,7 +228,7 @@ public class CaldroidGridAdapter extends BaseAdapter {
 	 * @param cellView
 	 */
 	protected void customizeTextView(int position, TextView cellView) {
-		cellView.setTextColor(Color.BLACK);
+		cellView.setTextColor(Color.BLACK);							//****************************< SET TEXT COLOR OF SELECTED MONTH >****************
 
 		// Get dateTime of this cell
 		DateTime dateTime = this.datetimeList.get(position);
@@ -230,7 +236,7 @@ public class CaldroidGridAdapter extends BaseAdapter {
 		// Set color of the dates in previous / next month
 		if (dateTime.getMonth() != month) {
 			cellView.setTextColor(resources
-					.getColor(R.color.caldroid_darker_gray));
+					.getColor(R.color.caldroid_darker_gray));            //****************************< SET TEXT COLOR OF DISABLED MONTH >****************
 		}
 
 		boolean shouldResetDiabledView = false;
@@ -272,14 +278,23 @@ public class CaldroidGridAdapter extends BaseAdapter {
 
 		if (shouldResetDiabledView && shouldResetSelectedView) {
 			// Customize for today
+			
+			System.out.println(getToday() + "  :------------------ ");
+			
 			if (dateTime.equals(getToday())) {
-				cellView.setBackgroundResource(R.drawable.red_border);
+				cellView.setBackgroundResource(R.drawable.red_border);    //****************************< SET BACKGROUND COLOR OF TODAY >***************
+				//cellView.setBackgroundColor(resources
+					//	.getColor(R.color.profile_selected));  //****************************< SET text COLOR OF TODAY >***************
+				cellView.setTextColor(resources
+						.getColor(R.color.profile_selected));
+				
 			} else {
 				cellView.setBackgroundResource(R.drawable.cell_bg);
 			}
 		}
 
 		cellView.setText("" + dateTime.getDay());
+		
 
 		// Set custom color if required
 		setCustomResources(dateTime, cellView);
@@ -302,7 +317,7 @@ public class CaldroidGridAdapter extends BaseAdapter {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
+	
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		LayoutInflater inflater = (LayoutInflater) context
@@ -312,6 +327,7 @@ public class CaldroidGridAdapter extends BaseAdapter {
 		// For reuse
 		if (convertView == null) {
 			cellView = (TextView) inflater.inflate(R.layout.date_cell, null);
+			
 		}
 
 		customizeTextView(position, cellView);

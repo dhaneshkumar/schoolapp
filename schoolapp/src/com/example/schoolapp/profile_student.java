@@ -63,7 +63,7 @@ public class profile_student extends commonDrawer {
 		getSupportActionBar().setBackgroundDrawable(new 
 				   ColorDrawable(getResources().getColor(R.color.profile_selected))); 
 		
-		Typeface tf= Typeface.createFromAsset(getAssets(), "museo-300.ttf");
+		Typeface tf= Typeface.createFromAsset(getAssets(), getString(R.string.fontname));
 		utils.ls("Entered in student profile");
 		name=(TextView) findViewById(R.id.name);
 		clas=(TextView) findViewById(R.id.clas);
@@ -78,7 +78,7 @@ public class profile_student extends commonDrawer {
 		contactdetails=(TextView) findViewById(R.id.contactdetails);
 		studentLayout =(LinearLayout) findViewById(R.id.studentLayout);
 		parentLayout =(LinearLayout) findViewById(R.id.parentLayout);
-		addguardian =(TextView) findViewById(R.id.addguardian);
+		//addguardian =(TextView) findViewById(R.id.addguardian);
 		
 		parentLayout.setVisibility(View.GONE);
 		
@@ -158,10 +158,10 @@ public class profile_student extends commonDrawer {
 		
 		getSupportActionBar().setTitle("Parent Profile");
 		
-		Typeface tf= Typeface.createFromAsset(getAssets(), "museo-300.ttf");
+		Typeface tf= Typeface.createFromAsset(getAssets(), getString(R.string.fontname));
 		utils.ls("Entered in parent profile");
 		//name=(TextView) findViewById(R.id.name);
-		addguardian=(TextView) findViewById(R.id.addguardian);
+	//	addguardian=(TextView) findViewById(R.id.addguardian);
 		
 		
 		
@@ -296,7 +296,7 @@ public class profile_student extends commonDrawer {
 		
 		//Setting button action.
 		
-		//forwarding to Add guardian page
+	/*	//forwarding to Add guardian page
 		addguardian.setClickable(true);
 		//final Intent intent = new Intent(this, addGuardian.class);
 		addguardian.setOnClickListener( new View.OnClickListener(){
@@ -304,10 +304,13 @@ public class profile_student extends commonDrawer {
             public void onClick(View v) {
             	//startActivity(intent);
             }
-        });
+        });*/
 		
 		
 	}
-	
+	public void onBackPressed() {
+		   Intent intent = new Intent(this, Home.class);
+		   startActivity(intent);
+		 }
 	
 }

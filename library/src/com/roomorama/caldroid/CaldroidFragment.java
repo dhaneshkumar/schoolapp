@@ -105,6 +105,7 @@ public class CaldroidFragment extends DialogFragment {
 	/**
 	 * To customize the selected background drawable and text color
 	 */
+	
 	public static int selectedBackgroundDrawable = -1;
 	public static int selectedTextColor = Color.BLACK;
 
@@ -1081,6 +1082,8 @@ public class CaldroidFragment extends DialogFragment {
 
 		// For the left arrow button
 		leftArrowButton = (Button) view.findViewById(R.id.calendar_left_arrow);
+		
+		
 		rightArrowButton = (Button) view
 				.findViewById(R.id.calendar_right_arrow);
 

@@ -45,8 +45,7 @@ public class PhoneList_ext extends commonDrawer {
 		
 	    getSupportActionBar().setBackgroundDrawable(new 
 				   ColorDrawable(getResources().getColor(R.color.profile_selected))); 
-		
-	    Typeface tf= Typeface.createFromAsset(getAssets(), "museo-300.ttf");
+	    Typeface tf= Typeface.createFromAsset(getAssets(), getString(R.string.fontname));
 		name=(TextView) findViewById(R.id.name);
 		clas=(TextView) findViewById(R.id.clas);
 		subjects=(TextView) findViewById(R.id.subjects);

@@ -10,10 +10,14 @@
      <string name="vborder">8dp</string>
     <string name="phoneList">Phone List</string>
     <string name="timeTable">Time Table</string>
+    <string name="fontname">font.ttf</string>
+   
     
      <!-- Nav Drawer Menu Items -->
     <string-array name="navigationList">
+        <item>Home</item>
         <item>Profile</item>
+        <item>Messages</item>
         <item>TimeTable</item>
         <item>Academic Calender</item>
         <item>Contact List</item>
@@ -28,7 +32,9 @@
     <!-- Nav Drawer List Item Icons -->
     <!-- Keep them in order as the titles are in -->
     <array name="nav_drawer_icons">
+         <item>@drawable/home</item>
         <item>@drawable/profile</item>
+        <item>@drawable/message</item>
         <item>@drawable/message</item>
         <item>@drawable/calender</item>
         <item>@drawable/contact</item>

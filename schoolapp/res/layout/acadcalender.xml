@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@color/app_back_color"
     android:orientation="vertical" >
      <!--   <LinearLayout
         android:id="@+id/button_layout"
@@ -27,20 +28,19 @@
     android:background="@drawable/customshape"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
    >
       <TableRow
             android:id="@+id/tableRow4"
-           android:background="@drawable/buttonshape"
+           android:background="#fff"
             
              android:padding="8dp"
             android:layout_width="match_parent">
 
            <TextView android:layout_height="wrap_content" 
-                android:background="@drawable/buttonshape"
+                android:background="#fff"
                 style="@android:style/Widget.Button" 
                 android:layout_weight="1"
-                android:textSize="15sp"
+                android:textSize="17sp"
                android:clickable="true" android:focusable="true"
                 android:text="Month"
                 android:onClick="month_clicked"
@@ -55,16 +55,17 @@
 				
             <!--   android:onClick="onClick" -->  
             <TextView android:layout_height="wrap_content" 
-                android:background="@drawable/buttonshape"
+                android:background="#fff"
                 style="@android:style/Widget.Button" 
                 android:layout_weight="1"
                 android:clickable="true" android:focusable="true"
-                 android:textSize="15sp"
+                 android:textSize="17sp"
                 android:text="All"
                 android:onClick="all_clicked"
                 android:layout_width="0dp"></TextView>
             
             </TableRow>
+           
             </TableLayout>
        
     
@@ -83,13 +84,26 @@
   <LinearLayout 
       android:id="@+id/event_display"
       android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+      android:layout_height="match_parent"
+      android:orientation="vertical">
        <TextView
         android:id="@+id/textview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" 
-        android:text="Trumplab"/>
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:textSize="15sp" 
+        android:text=""/>
+       
+        <TextView
+        android:id="@+id/tex"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="5dp"
+        
+        android:textSize="15sp" 
+        android:background="@color/profile_selected"
+        android:text=""/>
       
   </LinearLayout>
    

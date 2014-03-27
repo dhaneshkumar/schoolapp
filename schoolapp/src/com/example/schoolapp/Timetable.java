@@ -64,11 +64,15 @@ import android.widget.TextView;
 		    
 		   LinearLayout l1 = (LinearLayout) getView().findViewById(R.id.LinearLayout);
 		   
-	        
+		 
+		    
 	        List<HashMap<String, String>> timetableDetails = new ArrayList<HashMap<String, String>>();
 			DatabaseHandler db = new DatabaseHandler(getActivity());
 			timetableDetails = db.getTimeTable(index);
 	        
+			
+		       Typeface tf = Typeface.createFromAsset(getActivity().getAssets(),  getString(R.string.fontname));
+			
 	        Iterator<HashMap<String, String>> k=timetableDetails.iterator();
 			while(k.hasNext())
 			{
@@ -90,9 +94,10 @@ import android.widget.TextView;
            	 //text1 details
              TextView text1 = new TextView(getActivity());
          	 text1.setText(user.get("from"));
-           	 text1.setPadding(10, 5, 10, 0);
+           	 text1.setPadding(10, 6, 10, 6);
            	 text1.setWidth(0);
            	 text1.setTextSize(15);
+           	 text1.setTypeface(tf);
            	 text1.setLayoutParams(rlp1);
            	 text1.setTextColor(getResources().getColor(R.color.profile_font_color));
            	 linear.addView(text1);
@@ -102,19 +107,21 @@ import android.widget.TextView;
          	text2.setText(user.get("subject"));
          	text2.setWidth(0);
          	 text1.setTextSize(15);
+         	text2.setTypeface(tf);
           	 text2.setLayoutParams(rlp2);
           	 text2.setTextColor(getResources().getColor(R.color.profile_font_color));
-           	 text2.setPadding(0,5,0,0);
+           	 text2.setPadding(0,6,0,6);
            	 linear.addView(text2);
            	 
            	//text3 details
            	TextView text3 = new TextView(getActivity());
            	text3.setText(user.get("teachername"));
            	text3.setWidth(0);
+           	text3.setTypeface(tf);
         	text3.setTextSize(15);
          	text3.setLayoutParams(rlp3);
          	text3.setTextColor(getResources().getColor(R.color.profile_font_color));
-           	text3.setPadding(0, 5, 0, 0);
+           	text3.setPadding(0, 6, 0, 6);
            	linear.addView(text3);
            	 
            	l1.addView(linear);
@@ -123,8 +130,9 @@ import android.widget.TextView;
            	TextView text4 = new TextView(getActivity());
            	LinearLayout.LayoutParams rlp4 = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 1);
            	text4.setText("");
+           	text4.setTypeface(tf);
          	text4.setLayoutParams(rlp4);
-         	text4.setBackgroundColor(getResources().getColor(R.color.contact_back_color));
+         	text4.setBackgroundColor(getResources().getColor(R.color.profile_selected));
            	l1.addView(text4);
 			}
 		}

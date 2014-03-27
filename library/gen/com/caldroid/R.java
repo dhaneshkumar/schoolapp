@@ -11,26 +11,28 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
+        public static int app_back_color=0x7f040009;
         public static int caldroid_black=0x7f040002;
         public static int caldroid_darker_gray=0x7f040006;
         public static int caldroid_gray=0x7f040005;
         /**  A dark Holo shade of blue 
          */
-        public static int caldroid_holo_blue_dark=0x7f04000a;
+        public static int caldroid_holo_blue_dark=0x7f04000c;
         /**  A light Holo shade of blue 
          */
-        public static int caldroid_holo_blue_light=0x7f040009;
+        public static int caldroid_holo_blue_light=0x7f04000b;
         /**  For settings framework 
          */
         public static int caldroid_lighter_gray=0x7f040004;
         /**  A really bright Holo shade of blue 
          */
-        public static int caldroid_sky_blue=0x7f04000b;
+        public static int caldroid_sky_blue=0x7f04000d;
         public static int caldroid_transparent=0x7f040003;
         public static int caldroid_white=0x7f040000;
         public static int cgray=0x7f040007;
         public static int green=0x7f040001;
-        public static int offwhite=0x7f040008;
+        public static int offwhite=0x7f04000a;
+        public static int profile_selected=0x7f040008;
     }
     public static final class drawable {
         public static int calendar_next_arrow=0x7f020000;

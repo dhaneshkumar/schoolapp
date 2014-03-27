@@ -1,12 +1,16 @@
 package library;
 
+import com.example.schoolapp.R;
+
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Path;
 import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.widget.TextView;
 
 public class utils extends ActionBarActivity{
 	public static Bitmap getRoundedShape(Bitmap scaleBitmapImage) {
@@ -38,6 +42,15 @@ public class utils extends ActionBarActivity{
 	{
 		System.out.println(str);
 	}
+	
+	
+	public void setFont(TextView textView) {
+        Typeface tf = Typeface.createFromAsset(textView.getContext()
+                .getAssets(), textView.getContext().getString(R.string.fontname));
+
+        textView.setTypeface(tf);
+
+    }
 	
 	
 }

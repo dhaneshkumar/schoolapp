@@ -59,11 +59,13 @@ import com.example.schoolapp.*;
      // adding nav drawer items to array
      		navDrawerItems.add(new NavDrawerItem(navigationList[0], navMenuIcons.getResourceId(0, -1)));
      		navDrawerItems.add(new NavDrawerItem(navigationList[1], navMenuIcons.getResourceId(1, -1)));
-     		navDrawerItems.add(new NavDrawerItem(navigationList[2], navMenuIcons.getResourceId(2, -1)));
+     		navDrawerItems.add(new NavDrawerItem(navigationList[2], navMenuIcons.getResourceId(2, -1),true, "2"));
      		navDrawerItems.add(new NavDrawerItem(navigationList[3], navMenuIcons.getResourceId(3, -1)));
      		navDrawerItems.add(new NavDrawerItem(navigationList[4], navMenuIcons.getResourceId(4, -1)));
      		navDrawerItems.add(new NavDrawerItem(navigationList[5], navMenuIcons.getResourceId(5, -1)));
      		navDrawerItems.add(new NavDrawerItem(navigationList[6], navMenuIcons.getResourceId(6, -1)));
+     		navDrawerItems.add(new NavDrawerItem(navigationList[7], navMenuIcons.getResourceId(7, -1)));
+     		navDrawerItems.add(new NavDrawerItem(navigationList[8], navMenuIcons.getResourceId(8, -1)));
      		
      	// Recycle the typed array
     		navMenuIcons.recycle();
@@ -133,6 +135,21 @@ import com.example.schoolapp.*;
         inflater.inflate(R.menu.main_activity_actions, menu);
         return super.onCreateOptionsMenu(menu);
     }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // toggle nav drawer on selecting action bar app icon/title
+        if (mDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        // Handle action bar actions click
+        switch (item.getItemId()) {
+        case R.id.action_settings:
+            return true;
+        default:
+            return super.onOptionsItemSelected(item);
+        }
+    }
 
     /* Called whenever we call invalidateOptionsMenu() */
     @Override
@@ -156,24 +173,30 @@ import com.example.schoolapp.*;
 		Intent fragment = null;
 		switch (position) {
 		case 0:
-			 fragment = new Intent(this,  profile_student.class);			
+			 fragment = new Intent(this,  Home.class);			
 			break;
 		case 1:
-			fragment = new Intent(this,  TimetableSetup.class);
+			 fragment = new Intent(this,  profile_student.class);			
 			break;
 		case 2:
-			fragment = new Intent(this, AcadCalender.class);
+			 fragment = new Intent(this,  Messages.class);			
 			break;
 		case 3:
-			fragment = new Intent(this, ContactList.class);
+			fragment = new Intent(this,  TimetableSetup.class);
 			break;
 		case 4:
-			fragment = new Intent(this, report_card.class);
+			fragment = new Intent(this, AcadCalender.class);
 			break;
 		case 5:
-			fragment = new Intent(this, Leaveapp.class);
+			fragment = new Intent(this, ContactList.class);
 			break;
 		case 6:
+			fragment = new Intent(this, report_card.class);
+			break;
+		case 7:
+			fragment = new Intent(this, Leaveapp.class);
+			break;
+		case 8:
 			fragment = new Intent(this, settings_page.class);
 			break;
 		default:

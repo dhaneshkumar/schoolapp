@@ -97,8 +97,8 @@ public class Leaveapp extends commonDrawer{
 		getSupportActionBar().setBackgroundDrawable(new 
 				   ColorDrawable(getResources().getColor(R.color.profile_selected))); 
 		
-		Typeface tf= Typeface.createFromAsset(getAssets(), "museo-300.ttf");
-		  TextView mTextView =(TextView) findViewById(R.id.textView1);
+		Typeface tf= Typeface.createFromAsset(getAssets(), getString(R.string.fontname));
+		TextView mTextView =(TextView) findViewById(R.id.textView1);
 		  
 		  utils.ls("try to set typeface--");
 		    mTextView.setTypeface(tf);
@@ -140,7 +140,12 @@ public class Leaveapp extends commonDrawer{
              });
 		     
 		     TextView school= (TextView) findViewById(R.id.submit);
+		     school.setTypeface(tf);
 		     TextView hool= (TextView) findViewById(R.id.preview);
+		     TextView medicalreason= (TextView) findViewById(R.id.textView2);
+		     hool.setTypeface(tf);
+		     medicalreason.setTypeface(tf);
+		     
 		    	school.setClickable(true);
 				school.setOnClickListener( new View.OnClickListener(){
 					@Override
@@ -178,6 +183,11 @@ public class Leaveapp extends commonDrawer{
 		select.setOnItemSelectedListener(new SpinnerSelectedListener()); */
 
 	}
+	
+	public void onBackPressed() {
+		   Intent intent = new Intent(this, Home.class);
+		   startActivity(intent);
+		 }
 	
 	public class SpinnerSelectedListener implements OnItemSelectedListener {
 

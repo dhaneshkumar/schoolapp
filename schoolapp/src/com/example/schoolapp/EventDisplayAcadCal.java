@@ -1,11 +1,16 @@
 package com.example.schoolapp;
 
+import library.utils;
+import nav_drawer.commonDrawer;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.TextView;
 
-public class EventDisplayAcadCal extends Activity {
+public class EventDisplayAcadCal extends commonDrawer {
 TextView title;
 TextView start_date;
 TextView start_time;
@@ -20,7 +25,17 @@ TextView extra_details;
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.event_display);
+		//setContentView(R.layout.event_display);
+		
+		
+		LayoutInflater inflater = (LayoutInflater) this
+	            .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+	    View contentView = inflater.inflate(R.layout.event_display, null, false);
+	    mDrawerLayout.addView(contentView, 0);
+	    
+	    
+	    utils ul =new utils();
+	    
 		 Intent intent = getIntent();
 		  String[] myStrings = intent.getStringArrayExtra("firstKeyName");
 		  title=(TextView)findViewById(R.id.title_txt);
@@ -38,10 +53,17 @@ TextView extra_details;
 		 special_guest=(TextView)findViewById(R.id.special_guest_txt);
 		 special_guest.setText(myStrings[6]);
 		 venue=(TextView)findViewById(R.id.venue_txt);
-		 venue.setText(myStrings[7]);
+		 venue.setText("Venue : " + myStrings[7]);
 		 extra_details=(TextView)findViewById(R.id.extra_details_txt);
 		 extra_details.setText(myStrings[8]);
 		 
+		 ul.setFont(title);
+		 ul.setFont(start_date);
+		 ul.setFont(start_time);
+		 ul.setFont(end_date);
+		 ul.setFont(end_time);
+		 ul.setFont(description);
+		 ul.setFont(venue);
 	}
 
 	

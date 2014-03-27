@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import library.utils;
+
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +17,8 @@ import android.widget.TextView;
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     private Context _context;
+    
+    public static Typeface typeFace;
     private List<String> _h_quiz_type; // header titles
     private List<String> _h_quiz_no;
     private List<String> _h_quiz_subject;
@@ -34,6 +39,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         this._h_quiz_subject=_h_quiz_subject;
         this._h_quiz_marks=_h_quiz_marks;
         System.out.println("check123");
+        
 	}
 
 	@Override
@@ -111,14 +117,28 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
 	        }
 	 
+	       
+	        
+	         
 	        TextView quiz_type = (TextView) convertView
 	                .findViewById(R.id.quiz_type_txt);
+	        
+	       /* Typeface tf = Typeface.createFromAsset(quiz_type.getContext().getAssets(),
+	        		quiz_type.getContext().getString(R.string.fontname));
+	        quiz_type.setTypeface(tf);
+	        */
+	        
 	        TextView quiz_no = (TextView) convertView
 	                .findViewById(R.id.quiz_no_txt);
 	        TextView subject = (TextView) convertView
 	                .findViewById(R.id.subject_txt);
 	        TextView marks = (TextView) convertView
 	                .findViewById(R.id.marks_txt);
+	        
+	       utils ul =new utils();
+	       ul.setFont(quiz_no);
+	       ul.setFont(marks);
+	       ul.setFont(quiz_type);
 	       
 	       quiz_type.setText(headerTitle.get(0));
 	       quiz_no.setText(headerTitle.get(1));
@@ -140,16 +160,27 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 	            LayoutInflater infalInflater = (LayoutInflater) this._context
 	                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	            convertView = infalInflater.inflate(R.layout.report_card_2, null);
+	            
 	        }
+	       
 	        TextView txtListChild = (TextView) convertView
 	                .findViewById(R.id.chapter_txt);
+	        
 	        TextView txtListChild2 = (TextView) convertView
 	                .findViewById(R.id.rank_txt);
 	        TextView txtListChild3 = (TextView) convertView
 	                .findViewById(R.id.remarks_txt);
+	        
+	       
 	        txtListChild.setText(childText.get(0));
 	        txtListChild2.setText(childText.get(1));
 	        txtListChild3.setText(childText.get(2));
+	       
+	        utils ul =new utils();
+		       ul.setFont(txtListChild);
+		       ul.setFont(txtListChild2);
+		       ul.setFont(txtListChild3);
+	        
 	        return convertView;
 	}
 
@@ -158,5 +189,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	
 
 }

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/offwhite"
+    android:background="@color/app_back_color"
     android:orientation="vertical" >
     
    <!--  <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -15,12 +15,12 @@
         android:id="@+id/calendar_title_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-            android:background="@color/green"
+        android:background="@color/app_back_color"
          >
         <Button
             android:id="@+id/calendar_left_arrow"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignParentLeft="true"
             android:background="@drawable/left_arrow" />
 
@@ -33,13 +33,14 @@
             android:layout_toRightOf="@+id/calendar_left_arrow"
             android:gravity="center_horizontal"
             android:textIsSelectable="true"
-            android:textSize="16sp" 
-            android:background="#7bc37a"/>
+            android:textSize="18sp" 
+            android:textColor="@color/profile_selected"
+            android:background="@color/app_back_color"/>
 
         <Button
             android:id="@+id/calendar_right_arrow"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignParentRight="true"
             android:background="@drawable/right_arrow" />
         <!-- <Button
@@ -49,6 +50,7 @@
             android:layout_alignParentRight="true"
             android:background="@drawable/right_arrow" />-->
     </RelativeLayout>
+    
 
     <GridView
         android:id="@+id/weekday_gridview"
@@ -59,11 +61,13 @@
         android:stretchMode="columnWidth" 
         >
     </GridView>
-
+    
     <com.antonyt.infiniteviewpager.InfiniteViewPager
         android:id="@+id/months_infinite_pager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="-10dp" />
-
+    
+    
+    
 </LinearLayout>

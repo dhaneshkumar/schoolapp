@@ -4,6 +4,112 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/app_back_color" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:text="Math"
+        android:textSize="20sp" />
+    
+    <LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#c2c8d6">
+<RelativeLayout 
+    android:id="@+id/graphlayoutview"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="20dp"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    android:paddingTop="8dp">
+     <LinearLayout
+       android:id="@+id/graph_report"
+	   android:layout_below="@+id/subtext"
+	   android:orientation="vertical"
+	   android:layout_width="match_parent"
+	   android:layout_height="150dp"
+	   android:layout_marginTop="6dp"
+	   android:layout_centerHorizontal="true"
+	   android:background="#ebebeb">
+	   <com.androidplot.xy.XYPlot
+            android:id="@+id/mySimpleXYPlot"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            androidPlot.graphWidget.gridLinePaint.color="#000000" />
+	   </LinearLayout>
+	 <RelativeLayout
+	     android:layout_below="@+id/graph_report"
+	     android:layout_width="match_parent"
+		 android:layout_height="wrap_content"
+		 android:gravity="center"
+	     >
+	 <TextView 
+	     	android:id="@+id/maxgreenid"
+	     	android:layout_marginTop="18dp"
+	     	android:layout_marginRight="8dp"
+	     	android:layout_width="16dp"
+	     	android:layout_height="2dp"
+	        android:background="#00aa00"/>
+	 <TextView 
+	     	android:id="@+id/maxtxtid"
+	     	android:layout_toRightOf="@+id/maxgreenid"
+	     	android:textSize="16sp"
+	     	android:layout_marginTop="8dp"
+	     	android:layout_marginRight="24dp"
+	     	android:layout_width="wrap_content"
+	     	android:layout_height="wrap_content"
+	     	android:text="MAX"/>
+	 <TextView 
+	     	android:id="@+id/minredid"
+	     	android:layout_toRightOf="@+id/maxtxtid"
+	     	android:layout_marginTop="18dp"
+	     	android:layout_marginRight="8dp"
+	     	android:layout_width="16dp"
+	     	android:layout_height="2dp"
+	        android:background="#f44141"/>
+
+	 <TextView
+	     android:id="@+id/mintxtid"
+	     android:layout_width="wrap_content"
+	     android:layout_height="wrap_content"
+	     android:layout_marginTop="8dp"
+	     android:layout_marginRight="24dp"
+	     android:layout_toRightOf="@+id/minredid"
+	     android:text="MIN"
+	     android:textSize="16sp" />
+	 <TextView 
+	     	android:id="@+id/yourgreenid"
+	     	android:layout_toRightOf="@+id/mintxtid"
+	     	android:layout_marginTop="18dp"
+	     	android:layout_marginRight="8dp"
+	     	android:layout_width="16dp"
+	     	android:layout_height="2dp"
+	        android:background="#406be4"/>
+
+	 <TextView
+	     android:id="@+id/yourtxtid"
+	     android:layout_width="wrap_content"
+	     android:layout_height="wrap_content"
+	     android:layout_marginTop="8dp"
+	     android:layout_toRightOf="@+id/yourgreenid"
+	     android:text="Your Marks"
+	     android:textSize="16sp" />
+	 </RelativeLayout>
+</RelativeLayout>
+<TextView 
+         	android:layout_height="2dp"
+         	android:background="#acacac"
+         	android:layout_width="match_parent"/>
+
+</LinearLayout>
+    
+    
  
             <ExpandableListView
                 android:id="@+id/lvExp"

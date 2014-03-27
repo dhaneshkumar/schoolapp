@@ -9,8 +9,10 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class splash extends ActionBarActivity{
@@ -31,15 +33,24 @@ public class splash extends ActionBarActivity{
 		DatabaseHandler db = new DatabaseHandler(this);
 				
 		String[] tableList=DatabaseHandler.tableList;
-		db.setup(tableList);
-		db.setDefaultID();
+		
+		
+		
+		if(db.getCount()==0)
+		{
+			db.setup(tableList);
+			db.setDefaultID();
+			db.updateCount();
+		}
+		
+		
 		
 		TextView school=(TextView) findViewById(R.id.signin);
-		Typeface tf= Typeface.createFromAsset(getAssets(), "museo-300.ttf");
+		Typeface tf= Typeface.createFromAsset(getAssets(), getString(R.string.fontname));
 		school.setTypeface(tf);
 		
 		school.setClickable(true);
-		final Intent intent1 = new Intent(this, profile_student.class);
+		final Intent intent1 = new Intent(this, Home.class);
 		school.setOnClickListener( new View.OnClickListener(){
 			@Override
 			public void onClick(View v) {
@@ -48,5 +59,7 @@ public class splash extends ActionBarActivity{
 		});
 		
 	}
+	
+	
 }
 
