@@ -10,6 +10,7 @@ import android.annotation.SuppressLint;
 import android.app.ActionBar.LayoutParams;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -57,6 +58,14 @@ public class PhoneList extends commonDrawer {
 
 	    getSupportActionBar().setBackgroundDrawable(new 
 				   ColorDrawable(getResources().getColor(R.color.profile_selected))); 
+	  //setting action bar title font
+  		int actionBarTitle = Resources.getSystem().getIdentifier("action_bar_title", "id", "android");
+  		  TextView actionBarTitleView = (TextView) findViewById(actionBarTitle);
+  		  Typeface typeface = Typeface.createFromAsset(actionBarTitleView.getContext().getAssets(), actionBarTitleView.getContext().getString(R.string.fontname));
+  		  if(actionBarTitleView != null){
+  		      actionBarTitleView.setTypeface(typeface);
+  		  }
+    
 		
 	    Intent intent = getIntent();
 	     tag = intent.getStringExtra("tag");

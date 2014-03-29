@@ -9,6 +9,7 @@ import android.app.ActionBar.Tab;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
@@ -18,6 +19,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.*;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
 
 
 
@@ -43,9 +45,14 @@ import android.view.View;
 			actionBar = getActionBar();
 			actionBar.setTitle("Timetable");
 			actionBar.setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.app_back_color)));
-			//actionBar.setStackedBackgroundDrawable(getResources().getDrawable(
-		       //     R.drawable.profile_background));
-			
+			//setting action bar title font
+	  		int actionBarTitle = Resources.getSystem().getIdentifier("action_bar_title", "id", "android");
+	  		  TextView actionBarTitleView = (TextView) findViewById(actionBarTitle);
+	  		  Typeface typeface = Typeface.createFromAsset(actionBarTitleView.getContext().getAssets(), actionBarTitleView.getContext().getString(R.string.fontname));
+	  		  if(actionBarTitleView != null){
+	  		      actionBarTitleView.setTypeface(typeface);
+	  		  }
+	    
 			
 			getActionBar().setBackgroundDrawable(new 
 					   ColorDrawable(getResources().getColor(R.color.profile_selected)));  

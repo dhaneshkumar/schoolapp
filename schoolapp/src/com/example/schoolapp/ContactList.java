@@ -3,6 +3,7 @@ package com.example.schoolapp;
 import nav_drawer.commonDrawer;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class ContactList extends commonDrawer implements View.OnClickListener{
 	
@@ -24,8 +26,18 @@ public class ContactList extends commonDrawer implements View.OnClickListener{
 	    
 	    //setting action bar title
 	    getSupportActionBar().setTitle("Contact");
+	    
+	    //setting background color of action bar
 	    getSupportActionBar().setBackgroundDrawable(new 
-				   ColorDrawable(getResources().getColor(R.color.profile_selected)));  
+				   ColorDrawable(getResources().getColor(R.color.profile_selected))); 
+	    
+	  //setting action bar title font
+	  		int actionBarTitle = Resources.getSystem().getIdentifier("action_bar_title", "id", "android");
+	  		  TextView actionBarTitleView = (TextView) findViewById(actionBarTitle);
+	  		  Typeface typeface = Typeface.createFromAsset(actionBarTitleView.getContext().getAssets(), actionBarTitleView.getContext().getString(R.string.fontname));
+	  		  if(actionBarTitleView != null){
+	  		      actionBarTitleView.setTypeface(typeface);
+	  		  }
 	    
 	    Button teacher =  ( Button) findViewById(R.id.teacher);
 	    Button admin =  ( Button) findViewById(R.id.administration);

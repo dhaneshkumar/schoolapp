@@ -4,6 +4,7 @@ import library.utils;
 import nav_drawer.commonDrawer;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -50,6 +51,15 @@ public class settings_page extends commonDrawer implements OnClickListener{
 		getSupportActionBar().setTitle("Settings");
 		getSupportActionBar().setBackgroundDrawable(new 
 				   ColorDrawable(getResources().getColor(R.color.profile_selected)));  
+		
+		//setting action bar title font
+  		int actionBarTitle = Resources.getSystem().getIdentifier("action_bar_title", "id", "android");
+  		  TextView actionBarTitleView = (TextView) findViewById(actionBarTitle);
+  		  Typeface typeface = Typeface.createFromAsset(actionBarTitleView.getContext().getAssets(), actionBarTitleView.getContext().getString(R.string.fontname));
+  		  if(actionBarTitleView != null){
+  		      actionBarTitleView.setTypeface(typeface);
+  		  }
+    
 		
 		utils.ls("Entered in setting page  : ---");
 		Typeface tf= Typeface.createFromAsset(getAssets(), getString(R.string.fontname));

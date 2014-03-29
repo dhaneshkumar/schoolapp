@@ -3,6 +3,7 @@ package com.example.schoolapp;
 import library.utils;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -35,9 +36,27 @@ public class Home extends commonDrawer{
 	    mDrawerLayout.addView(contentView, 0);
 	    
 	    //setting action bar title
-	    getSupportActionBar().setTitle("Hashtagkid");
+	    getSupportActionBar().setTitle("Notifications");
 	    getSupportActionBar().setBackgroundDrawable(new 
 				   ColorDrawable(getResources().getColor(R.color.profile_selected)));  
+	    
+	    
+	
+		  int apino =Integer.valueOf(android.os.Build.VERSION.SDK);
+		  System.out.println(" sdk version : "  +  apino );
+		  if(apino>=11)
+		  {
+			//setting action bar title font
+				int actionBarTitle = Resources.getSystem().getIdentifier("action_bar_title", "id", "android");
+			
+				TextView actionBarTitleView = (TextView) findViewById(actionBarTitle);
+				  Typeface typeface = Typeface.createFromAsset(actionBarTitleView.getContext().getAssets(), actionBarTitleView.getContext().getString(R.string.fontname));
+				  if(actionBarTitleView != null){
+				      actionBarTitleView.setTypeface(typeface);
+				  }
+		  }
+		  
+	    
 	    utils.ls("entered in home page1");
 	    
 	    LinearLayout l1 = (LinearLayout ) findViewById(R.id.l1);

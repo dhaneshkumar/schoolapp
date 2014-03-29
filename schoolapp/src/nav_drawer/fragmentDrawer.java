@@ -3,8 +3,6 @@ package nav_drawer;
 
 import java.util.ArrayList;
 
-import library.utils;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -12,6 +10,7 @@ import android.content.res.TypedArray;
 import android.media.audiofx.BassBoost.Settings;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -23,11 +22,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.example.schoolapp.*;
 @SuppressLint("NewApi")
-	public class commonDrawer extends ActionBarActivity {
+	public class fragmentDrawer extends FragmentActivity {
 	public String[] navigationList;
     public DrawerLayout mDrawerLayout;
     public LinearLayout linearLayout;
@@ -46,12 +44,6 @@ import com.example.schoolapp.*;
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.nav_drawer);
-		
-		utils ul = new utils();
-		TextView tt = (TextView)findViewById(R.id.title);
-		/*ul.setFont(tt);*/
-		
-		ul.ls("111111111111");
 
 		CONTENT_LAYOUT_ID =R.layout.phonelist;
 		mTitle = mDrawerTitle = getTitle();
@@ -61,7 +53,6 @@ import com.example.schoolapp.*;
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
         int j=R.id.left_drawer;
         
-        ul.ls("2222");
         navMenuIcons = getResources()
 				.obtainTypedArray(R.array.nav_drawer_icons);
         navDrawerItems = new ArrayList<NavDrawerItem>();
@@ -77,7 +68,6 @@ import com.example.schoolapp.*;
      		navDrawerItems.add(new NavDrawerItem(navigationList[7], navMenuIcons.getResourceId(7, -1)));
      		navDrawerItems.add(new NavDrawerItem(navigationList[8], navMenuIcons.getResourceId(8, -1)));
      		
-     		ul.ls("3333333");
      	// Recycle the typed array
     		navMenuIcons.recycle();
     		
@@ -89,34 +79,30 @@ import com.example.schoolapp.*;
     				navDrawerItems);
     		mDrawerList.setAdapter(adapter);
     		// enabling action bar app icon and behaving it as toggle button
-    		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    		getSupportActionBar().setHomeButtonEnabled(true);
+    		getActionBar().setDisplayHomeAsUpEnabled(true);
+    		getActionBar().setHomeButtonEnabled(true);
     		
-    		
-    		ul.ls("4444444");
     		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
     				R.drawable.ic_drawer, //nav menu toggle icon
     				R.string.app_name, // nav drawer open - description for accessibility
     				R.string.app_name // nav drawer close - description for accessibility
     		) {
     			public void onDrawerClosed(View view) {
-    				getSupportActionBar().setTitle(mTitle);
+    				//getActionBar().setTitle(mTitle);
     				// calling onPrepareOptionsMenu() to show action bar icons
     				invalidateOptionsMenu();
     			}
 
-    			
     			public void onDrawerOpened(View drawerView) {
-    				//getSupportActionBar().setTitle(mDrawerTitle);
+    				getActionBar().setTitle(mDrawerTitle);
     				// calling onPrepareOptionsMenu() to hide action bar icons
     				invalidateOptionsMenu();
     			}
     		};
     		mDrawerLayout.setDrawerListener(mDrawerToggle);
-    		ul.ls("1111555555555555");
+
     }
 
-	
 	protected void setContentLayout(int sourceId) {
 	    View contentLayout = findViewById(CONTENT_LAYOUT_ID);
 	    ViewGroup parent = (ViewGroup) contentLayout.getParent();
@@ -235,7 +221,7 @@ import com.example.schoolapp.*;
 	@Override
 	public void setTitle(CharSequence title) {
 		mTitle = title;
-		getSupportActionBar().setTitle(mTitle);
+		getActionBar().setTitle(mTitle);
 	}
 
 	/**

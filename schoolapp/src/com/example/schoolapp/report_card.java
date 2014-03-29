@@ -10,6 +10,7 @@ import nav_drawer.commonDrawer;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
@@ -18,6 +19,7 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ExpandableListView;
+import android.widget.TextView;
 
 import com.androidplot.ui.AnchorPosition;
 import com.androidplot.ui.LayoutManager;
@@ -58,9 +60,19 @@ public class report_card extends commonDrawer {
 	    View contentView = inflater.inflate(R.layout.reportcard, null, false);
 	    mDrawerLayout.addView(contentView, 0);
 		
+	    //setting action bar title and background
 		 getSupportActionBar().setTitle("Report Card");
 		    getSupportActionBar().setBackgroundDrawable(new 
-					   ColorDrawable(getResources().getColor(R.color.profile_selected)));  
+					   ColorDrawable(getResources().getColor(R.color.profile_selected))); 
+		    
+		  //setting action bar title font
+	  		int actionBarTitle = Resources.getSystem().getIdentifier("action_bar_title", "id", "android");
+	  		  TextView actionBarTitleView = (TextView) findViewById(actionBarTitle);
+	  		  Typeface typeface = Typeface.createFromAsset(actionBarTitleView.getContext().getAssets(), actionBarTitleView.getContext().getString(R.string.fontname));
+	  		  if(actionBarTitleView != null){
+	  		      actionBarTitleView.setTypeface(typeface);
+	  		  }
+	    
 		
 		 Typeface tf = Typeface.createFromAsset(getAssets(), getString(R.string.fontname));
 		//View rLayout =  findViewById(R.id.r_layout1);

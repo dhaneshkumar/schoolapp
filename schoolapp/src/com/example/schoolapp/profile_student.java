@@ -11,6 +11,7 @@ import nav_drawer.commonDrawer;
 import android.app.ActionBar.LayoutParams;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -19,6 +20,9 @@ import android.graphics.drawable.ColorDrawable;
 import android.opengl.Visibility;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.TypefaceSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -56,14 +60,30 @@ public class profile_student extends commonDrawer {
 				false);
 		mDrawerLayout.addView(contentView, 0);
 		
-		
+	
 		
 		//Setting action bar title and background color
 		getSupportActionBar().setTitle("Student Profile");
 		getSupportActionBar().setBackgroundDrawable(new 
 				   ColorDrawable(getResources().getColor(R.color.profile_selected))); 
 		
+		//setting action bar title font
+  		int actionBarTitle = Resources.getSystem().getIdentifier("action_bar_title", "id", "android");
+  		  TextView actionBarTitleView = (TextView) findViewById(actionBarTitle);
+  		  Typeface typeface = Typeface.createFromAsset(actionBarTitleView.getContext().getAssets(), actionBarTitleView.getContext().getString(R.string.fontname));
+  		  if(actionBarTitleView != null){
+  		      actionBarTitleView.setTypeface(typeface);
+  		  }
+      
+		 
+		
+		
+		
+		TextView tt = (TextView)findViewById(R.id.title);
+		
 		Typeface tf= Typeface.createFromAsset(getAssets(), getString(R.string.fontname));
+		
+		
 		utils.ls("Entered in student profile");
 		name=(TextView) findViewById(R.id.name);
 		clas=(TextView) findViewById(R.id.clas);

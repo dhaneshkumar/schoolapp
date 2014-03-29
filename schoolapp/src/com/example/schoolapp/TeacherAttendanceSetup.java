@@ -2,6 +2,7 @@ package com.example.schoolapp;
 
 
 import nav_drawer.commonDrawer;
+import nav_drawer.fragmentDrawer;
 import library.TabsPagerAdapter;
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
@@ -20,7 +21,7 @@ import android.widget.TabHost;
 
 
 	@SuppressLint("NewApi")
-	public class TeacherAttendanceSetup  extends FragmentActivity implements
+	public class TeacherAttendanceSetup  extends fragmentDrawer implements
 			ActionBar.TabListener {
 
 		private ViewPager viewPager;

@@ -3,6 +3,7 @@ package com.example.schoolapp;
 import library.DatabaseHandler;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
@@ -26,15 +27,24 @@ public class splash extends ActionBarActivity{
 		 * Intialising all tables
 		 */
 		
+		//setting action bar title and background
 		getSupportActionBar().setTitle("Hashtagkid");
 		getSupportActionBar().setBackgroundDrawable(new 
 				   ColorDrawable(getResources().getColor(R.color.profile_selected))); 
+		//setting action bar title font
+  		/*int actionBarTitle = Resources.getSystem().getIdentifier("action_bar_title", "id", "android");
+  		  TextView actionBarTitleView = (TextView) findViewById(actionBarTitle);
+  		  Typeface typeface = Typeface.createFromAsset(actionBarTitleView.getContext().getAssets(), actionBarTitleView.getContext().getString(R.string.fontname));
+  		  if(actionBarTitleView != null){
+  		      actionBarTitleView.setTypeface(typeface);
+  		  }*/
+    
 		
 		DatabaseHandler db = new DatabaseHandler(this);
 				
 		String[] tableList=DatabaseHandler.tableList;
 		
-		
+		/*
 		
 		if(db.getCount()==0)
 		{
@@ -43,7 +53,7 @@ public class splash extends ActionBarActivity{
 			db.updateCount();
 		}
 		
-		
+		*/
 		
 		TextView school=(TextView) findViewById(R.id.signin);
 		Typeface tf= Typeface.createFromAsset(getAssets(), getString(R.string.fontname));

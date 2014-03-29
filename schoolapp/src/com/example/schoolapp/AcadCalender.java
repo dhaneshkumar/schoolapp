@@ -19,7 +19,9 @@ import com.roomorama.caldroid.CaldroidListener;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -125,6 +127,14 @@ public class AcadCalender extends FragmentActivity{
 		getActionBar().setTitle("Academic Calender");
 		getActionBar().setBackgroundDrawable(new 
 				   ColorDrawable(getResources().getColor(R.color.profile_selected))); 
+		
+		//setting action bar title font
+				int actionBarTitle = Resources.getSystem().getIdentifier("action_bar_title", "id", "android");
+				  TextView actionBarTitleView = (TextView) findViewById(actionBarTitle);
+				  Typeface typeface = Typeface.createFromAsset(actionBarTitleView.getContext().getAssets(), actionBarTitleView.getContext().getString(R.string.fontname));
+				  if(actionBarTitleView != null){
+				      actionBarTitleView.setTypeface(typeface);
+				  }
 		
 		display_event=(TextView)findViewById(R.id.textview);
 		list=(ListView)findViewById(R.id.list);

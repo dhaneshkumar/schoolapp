@@ -12,6 +12,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
@@ -93,9 +94,19 @@ public class Leaveapp extends commonDrawer{
 				false);
 		mDrawerLayout.addView(contentView, 0);
 		
+		//setting action bar title and background
 		getSupportActionBar().setTitle("Leave Application");
 		getSupportActionBar().setBackgroundDrawable(new 
 				   ColorDrawable(getResources().getColor(R.color.profile_selected))); 
+		
+		//setting action bar title font
+  		int actionBarTitle = Resources.getSystem().getIdentifier("action_bar_title", "id", "android");
+  		  TextView actionBarTitleView = (TextView) findViewById(actionBarTitle);
+  		  Typeface typeface = Typeface.createFromAsset(actionBarTitleView.getContext().getAssets(), actionBarTitleView.getContext().getString(R.string.fontname));
+  		  if(actionBarTitleView != null){
+  		      actionBarTitleView.setTypeface(typeface);
+  		  }
+    
 		
 		Typeface tf= Typeface.createFromAsset(getAssets(), getString(R.string.fontname));
 		TextView mTextView =(TextView) findViewById(R.id.textView1);

@@ -5,6 +5,7 @@ import nav_drawer.commonDrawer;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -46,6 +47,15 @@ public class PhoneList_ext extends commonDrawer {
 	    getSupportActionBar().setBackgroundDrawable(new 
 				   ColorDrawable(getResources().getColor(R.color.profile_selected))); 
 	    Typeface tf= Typeface.createFromAsset(getAssets(), getString(R.string.fontname));
+	  //setting action bar title font
+  		int actionBarTitle = Resources.getSystem().getIdentifier("action_bar_title", "id", "android");
+  		  TextView actionBarTitleView = (TextView) findViewById(actionBarTitle);
+  		  Typeface typeface = Typeface.createFromAsset(actionBarTitleView.getContext().getAssets(), actionBarTitleView.getContext().getString(R.string.fontname));
+  		  if(actionBarTitleView != null){
+  		      actionBarTitleView.setTypeface(typeface);
+  		  }
+    
+	    
 		name=(TextView) findViewById(R.id.name);
 		clas=(TextView) findViewById(R.id.clas);
 		subjects=(TextView) findViewById(R.id.subjects);

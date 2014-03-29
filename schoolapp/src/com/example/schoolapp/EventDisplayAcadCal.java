@@ -5,6 +5,9 @@ import nav_drawer.commonDrawer;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +35,21 @@ TextView extra_details;
 	            .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	    View contentView = inflater.inflate(R.layout.event_display, null, false);
 	    mDrawerLayout.addView(contentView, 0);
+	    
+	  //setting action bar title
+	    getSupportActionBar().setTitle("Contact");
+	    
+	    //setting background color of action bar
+	    getSupportActionBar().setBackgroundDrawable(new 
+				   ColorDrawable(getResources().getColor(R.color.profile_selected)));
+	    
+	  //setting action bar title font
+	  		int actionBarTitle = Resources.getSystem().getIdentifier("action_bar_title", "id", "android");
+	  		  TextView actionBarTitleView = (TextView) findViewById(actionBarTitle);
+	  		  Typeface typeface = Typeface.createFromAsset(actionBarTitleView.getContext().getAssets(), actionBarTitleView.getContext().getString(R.string.fontname));
+	  		  if(actionBarTitleView != null){
+	  		      actionBarTitleView.setTypeface(typeface);
+	  		  }
 	    
 	    
 	    utils ul =new utils();

@@ -1,7 +1,11 @@
 package library;
 
+import nav_drawer.commonDrawer;
+
 import com.example.schoolapp.R;
 
+import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Path;
@@ -10,9 +14,12 @@ import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.appcompat.R.layout;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.TextView;
 
-public class utils extends ActionBarActivity{
+public class utils extends commonDrawer{
 	public static Bitmap getRoundedShape(Bitmap scaleBitmapImage) {
 		  // TODO Auto-generated method stub
 		  int targetWidth = scaleBitmapImage.getHeight();
@@ -51,6 +58,7 @@ public class utils extends ActionBarActivity{
         textView.setTypeface(tf);
 
     }
+	
 	
 	
 }

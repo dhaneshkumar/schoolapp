@@ -10,7 +10,7 @@
      <string name="vborder">8dp</string>
     <string name="phoneList">Phone List</string>
     <string name="timeTable">Time Table</string>
-    <string name="fontname">font.ttf</string>
+    <string name="fontname">Lora-Regular.ttf</string>
    
     
      <!-- Nav Drawer Menu Items -->

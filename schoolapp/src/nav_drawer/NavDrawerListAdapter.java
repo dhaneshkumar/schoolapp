@@ -4,6 +4,8 @@ import com.example.schoolapp.R;
 
 import java.util.ArrayList;
 
+import library.utils;
+
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -49,7 +51,11 @@ public class NavDrawerListAdapter extends BaseAdapter {
         ImageView imgIcon = (ImageView) convertView.findViewById(R.id.icon);
         TextView txtTitle = (TextView) convertView.findViewById(R.id.title);
         TextView txtCount = (TextView) convertView.findViewById(R.id.counter);
-         
+        
+        utils ul =new utils();
+        ul.setFont(txtTitle);
+        ul.setFont(txtCount);
+        
         imgIcon.setImageResource(navDrawerItems.get(position).getIcon());        
         txtTitle.setText(navDrawerItems.get(position).getTitle());
         

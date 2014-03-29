@@ -2,16 +2,12 @@ linking of fragment and activity
 one time loading of data from server
 check app for api lower than 11
 acad calender. + eventTable
-back navigation should lead to parent
-navigation drawer selection action name
 switch orientation problem
 setting on right side
-
-navigation home button
-
-
-
-#0091c1 : color code
-
+orientation changing problem
+logout
+fast net setting
+progress bar on retrieving data.
+child selector in navigation drawer
 
 
