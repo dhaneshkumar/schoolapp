@@ -5,28 +5,17 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import android.support.v7.*;
-import android.support.v4.*;
 
 import library.DatabaseHandler;
 import library.utils;
-
-
-
-import com.roomorama.caldroid.CaldroidFragment;
-import com.roomorama.caldroid.CaldroidListener;
-
-import android.annotation.SuppressLint;
+import nav_drawer.commonDrawer;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,10 +25,11 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-@SuppressLint({ "SimpleDateFormat", "NewApi" })
-public class AcadCalender extends FragmentActivity{
+import com.roomorama.caldroid.CaldroidFragment;
+import com.roomorama.caldroid.CaldroidListener;
+
+public class AcadCalender extends commonDrawer{
 	TextView display_event;
 	String [] store;
 	String date_string = "2014-02-24";
@@ -117,24 +107,37 @@ public class AcadCalender extends FragmentActivity{
 	}
 	
 	
-	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.acadcalender);
+		//setContentView(R.layout.acadcalender);
 		
-		getActionBar().setTitle("Academic Calender");
-		getActionBar().setBackgroundDrawable(new 
+		// setting the layout
+		LayoutInflater inflater = (LayoutInflater) this
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		View contentView = inflater.inflate(R.layout.acadcalender, null,
+				false);
+		mDrawerLayout.addView(contentView, 0);
+				
+		
+		getSupportActionBar().setTitle("Academic Calender");
+		getSupportActionBar().setBackgroundDrawable(new 
 				   ColorDrawable(getResources().getColor(R.color.profile_selected))); 
 		
-		//setting action bar title font
+
+		  int apino =Integer.valueOf(android.os.Build.VERSION.SDK);
+		  if(apino>=11)
+		  {
+			//setting action bar title font
 				int actionBarTitle = Resources.getSystem().getIdentifier("action_bar_title", "id", "android");
-				  TextView actionBarTitleView = (TextView) findViewById(actionBarTitle);
+			
+				TextView actionBarTitleView = (TextView) findViewById(actionBarTitle);
 				  Typeface typeface = Typeface.createFromAsset(actionBarTitleView.getContext().getAssets(), actionBarTitleView.getContext().getString(R.string.fontname));
 				  if(actionBarTitleView != null){
 				      actionBarTitleView.setTypeface(typeface);
 				  }
+		  }
 		
 		display_event=(TextView)findViewById(R.id.textview);
 		list=(ListView)findViewById(R.id.list);
@@ -167,6 +170,7 @@ public class AcadCalender extends FragmentActivity{
 		
 		//db.setAcadCalender();
 		result1=db.getAcadCalender();
+		db.close();
 		store= result1.split("~");
 		System.out.println("result1---" + result1);
 	//	System.out.println("store0---" + store[0]);

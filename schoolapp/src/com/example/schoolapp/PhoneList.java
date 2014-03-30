@@ -58,14 +58,19 @@ public class PhoneList extends commonDrawer {
 
 	    getSupportActionBar().setBackgroundDrawable(new 
 				   ColorDrawable(getResources().getColor(R.color.profile_selected))); 
-	  //setting action bar title font
-  		int actionBarTitle = Resources.getSystem().getIdentifier("action_bar_title", "id", "android");
-  		  TextView actionBarTitleView = (TextView) findViewById(actionBarTitle);
-  		  Typeface typeface = Typeface.createFromAsset(actionBarTitleView.getContext().getAssets(), actionBarTitleView.getContext().getString(R.string.fontname));
-  		  if(actionBarTitleView != null){
-  		      actionBarTitleView.setTypeface(typeface);
-  		  }
-    
+
+		  int apino =Integer.valueOf(android.os.Build.VERSION.SDK);
+		  if(apino>=11)
+		  {
+			//setting action bar title font
+				int actionBarTitle = Resources.getSystem().getIdentifier("action_bar_title", "id", "android");
+			
+				TextView actionBarTitleView = (TextView) findViewById(actionBarTitle);
+				  Typeface typeface = Typeface.createFromAsset(actionBarTitleView.getContext().getAssets(), actionBarTitleView.getContext().getString(R.string.fontname));
+				  if(actionBarTitleView != null){
+				      actionBarTitleView.setTypeface(typeface);
+				  }
+		  }
 		
 	    Intent intent = getIntent();
 	     tag = intent.getStringExtra("tag");
@@ -85,6 +90,7 @@ public class PhoneList extends commonDrawer {
 		String result1="";	    
 		//db.setPhoneList();
 		result1 = db.getPhoneList(tag);
+		db.close();
 		System.out.println("got result : " + result1);                 
 		
 		store = result1.split("###");
@@ -127,8 +133,8 @@ public class PhoneList extends commonDrawer {
 	        rl.addView(image);
 	        image.setImageResource(R.drawable.ab100);
 	        image.setBorderColor(getResources().getColor(R.color.GrayLight));
-	        image.setBorderWidth(3);
-	        image.addShadow();
+	        image.setBorderWidth(0);
+	       // image.addShadow();
 		                	 
 	       
 	        String[] parts = store[i].split("~~");

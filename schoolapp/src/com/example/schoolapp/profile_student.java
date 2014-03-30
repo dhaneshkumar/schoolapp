@@ -67,13 +67,19 @@ public class profile_student extends commonDrawer {
 		getSupportActionBar().setBackgroundDrawable(new 
 				   ColorDrawable(getResources().getColor(R.color.profile_selected))); 
 		
-		//setting action bar title font
-  		int actionBarTitle = Resources.getSystem().getIdentifier("action_bar_title", "id", "android");
-  		  TextView actionBarTitleView = (TextView) findViewById(actionBarTitle);
-  		  Typeface typeface = Typeface.createFromAsset(actionBarTitleView.getContext().getAssets(), actionBarTitleView.getContext().getString(R.string.fontname));
-  		  if(actionBarTitleView != null){
-  		      actionBarTitleView.setTypeface(typeface);
-  		  }
+
+		  int apino =Integer.valueOf(android.os.Build.VERSION.SDK);
+		  if(apino>=11)
+		  {
+			//setting action bar title font
+				int actionBarTitle = Resources.getSystem().getIdentifier("action_bar_title", "id", "android");
+			
+				TextView actionBarTitleView = (TextView) findViewById(actionBarTitle);
+				  Typeface typeface = Typeface.createFromAsset(actionBarTitleView.getContext().getAssets(), actionBarTitleView.getContext().getString(R.string.fontname));
+				  if(actionBarTitleView != null){
+				      actionBarTitleView.setTypeface(typeface);
+				  }
+		  }
       
 		 
 		
@@ -121,6 +127,7 @@ public class profile_student extends commonDrawer {
 		//Retrieving parent details
 		parentDetails = new ArrayList<HashMap<String, String>>();
 		parentDetails = db.getParentProfile();
+		db.close();
 		
 		name.setText(userDetails.get("name"));
 		clas.setText( "Class : " + userDetails.get("class"));
@@ -217,8 +224,8 @@ public class profile_student extends commonDrawer {
 	        vp.setMargins(10, 20, 0, 0);
 	       // image.setBackgroundColor(color.contact_back_color);
 	        image.setBorderColor(getResources().getColor(R.color.GrayLight));
-	        image.setBorderWidth(3);
-	        image.addShadow();
+	        image.setBorderWidth(0);
+	       // image.addShadow();
 	        image.setLayoutParams(vp);
 	        //image.setPadding(20, 20, 10, 4);
 	       

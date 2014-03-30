@@ -38,13 +38,19 @@ public class Messages extends commonDrawer{
 	    getSupportActionBar().setTitle("Messages");
 	    getSupportActionBar().setBackgroundDrawable(new 
 				   ColorDrawable(getResources().getColor(R.color.profile_selected)));  
-	  //setting action bar title font
-  		int actionBarTitle = Resources.getSystem().getIdentifier("action_bar_title", "id", "android");
-  		  TextView actionBarTitleView = (TextView) findViewById(actionBarTitle);
-  		  Typeface typeface = Typeface.createFromAsset(actionBarTitleView.getContext().getAssets(), actionBarTitleView.getContext().getString(R.string.fontname));
-  		  if(actionBarTitleView != null){
-  		      actionBarTitleView.setTypeface(typeface);
-  		  }
+
+		  int apino =Integer.valueOf(android.os.Build.VERSION.SDK);
+		  if(apino>=11)
+		  {
+			//setting action bar title font
+				int actionBarTitle = Resources.getSystem().getIdentifier("action_bar_title", "id", "android");
+			
+				TextView actionBarTitleView = (TextView) findViewById(actionBarTitle);
+				  Typeface typeface = Typeface.createFromAsset(actionBarTitleView.getContext().getAssets(), actionBarTitleView.getContext().getString(R.string.fontname));
+				  if(actionBarTitleView != null){
+				      actionBarTitleView.setTypeface(typeface);
+				  }
+		  }
     
 	    
 	    LinearLayout l1 = (LinearLayout ) findViewById(R.id.l1);

@@ -14,6 +14,7 @@ import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.ActionBar.LayoutParams;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -29,6 +30,7 @@ import com.example.schoolapp.R;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.LoaderManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,7 +71,7 @@ import android.widget.TextView;
 	        List<HashMap<String, String>> timetableDetails = new ArrayList<HashMap<String, String>>();
 			DatabaseHandler db = new DatabaseHandler(getActivity());
 			timetableDetails = db.getTimeTable(index);
-	        
+			db.close();
 			
 		       Typeface tf = Typeface.createFromAsset(getActivity().getAssets(),  getString(R.string.fontname));
 			
@@ -136,5 +138,11 @@ import android.widget.TextView;
            	l1.addView(text4);
 			}
 		}
+		
+		/*@Override
+		public void onConfigurationChanged(Configuration newConfig) {
+		  super.onConfigurationChanged(newConfig);
+		  //setContentView(R.layout.timetable);
+		}*/
 		
 	}

@@ -10,6 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:textColor="@color/contact_font_color"
         android:background="@color/contact_back_color"
         android:text="Teacher" />
@@ -25,6 +27,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+       android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:textColor="@color/contact_font_color"
         android:background="@color/contact_back_color"
         android:text="Administration" />
@@ -40,6 +44,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+       android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:textColor="@color/contact_font_color"
         android:background="@color/contact_back_color"
         android:text="Authority" />
@@ -54,6 +60,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+       android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:textColor="@color/contact_font_color"
         android:background="@color/contact_back_color"
         android:text="Others" />

@@ -4,12 +4,9 @@ package nav_drawer;
 import java.util.ArrayList;
 
 import library.utils;
-
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
-import android.media.audiofx.BassBoost.Settings;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
@@ -26,8 +23,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.schoolapp.*;
-@SuppressLint("NewApi")
-	public class commonDrawer extends ActionBarActivity {
+
+
+public class commonDrawer extends ActionBarActivity {
 	public String[] navigationList;
     public DrawerLayout mDrawerLayout;
     public LinearLayout linearLayout;
@@ -102,14 +100,14 @@ import com.example.schoolapp.*;
     			public void onDrawerClosed(View view) {
     				getSupportActionBar().setTitle(mTitle);
     				// calling onPrepareOptionsMenu() to show action bar icons
-    				invalidateOptionsMenu();
+    				supportInvalidateOptionsMenu();
     			}
 
     			
     			public void onDrawerOpened(View drawerView) {
     				//getSupportActionBar().setTitle(mDrawerTitle);
     				// calling onPrepareOptionsMenu() to hide action bar icons
-    				invalidateOptionsMenu();
+    				supportInvalidateOptionsMenu();
     			}
     		};
     		mDrawerLayout.setDrawerListener(mDrawerToggle);
@@ -166,7 +164,7 @@ import com.example.schoolapp.*;
         }
     }
 
-    /* Called whenever we call invalidateOptionsMenu() */
+    /* Called whenever we call supportInvalidateOptionsMenu() */
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         // If the nav drawer is open, hide action items related to the content view
@@ -177,7 +175,7 @@ import com.example.schoolapp.*;
 
     
     /* *
-	 * Called when invalidateOptionsMenu() is triggered
+	 * Called when supportInvalidateOptionsMenu() is triggered
 	 */
 
 	/**

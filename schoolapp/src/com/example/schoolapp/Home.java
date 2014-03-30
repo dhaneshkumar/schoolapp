@@ -43,7 +43,6 @@ public class Home extends commonDrawer{
 	    
 	
 		  int apino =Integer.valueOf(android.os.Build.VERSION.SDK);
-		  System.out.println(" sdk version : "  +  apino );
 		  if(apino>=11)
 		  {
 			//setting action bar title font
@@ -125,9 +124,11 @@ public class Home extends commonDrawer{
 	
 	public void onBackPressed() {
 		   //Log.i("HA", "Finishing");
+			
 		   Intent intent = new Intent(Intent.ACTION_MAIN);
 		   intent.addCategory(Intent.CATEGORY_HOME);
 		   intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		   
 		   startActivity(intent);
 		 }
 

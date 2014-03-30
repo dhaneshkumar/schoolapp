@@ -15,6 +15,8 @@ import android.graphics.drawable.BitmapDrawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
+
+@SuppressLint("NewApi")
 public class CircularImageView extends ImageView {
 	private int borderWidth;
 	private int viewWidth;
@@ -68,9 +70,11 @@ public class CircularImageView extends ImageView {
 		this.invalidate();
 	}
 
-	@SuppressLint("NewApi")
 	public void addShadow() {
-		setLayerType(LAYER_TYPE_SOFTWARE, paintBorder);
+		if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB) {
+			setLayerType(LAYER_TYPE_SOFTWARE, paintBorder);   
+	 }
+		
 		paintBorder.setShadowLayer(4.0f, 0.0f, 2.0f, Color.BLACK);
 	}
 

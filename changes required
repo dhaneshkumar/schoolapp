@@ -1,6 +1,5 @@
-linking of fragment and activity
 one time loading of data from server
-check app for api lower than 11
+check circular image for api lower than 11
 acad calender. + eventTable
 switch orientation problem
 setting on right side
@@ -9,5 +8,8 @@ logout
 fast net setting
 progress bar on retrieving data.
 child selector in navigation drawer
-
+backend linking of remaining pages
+testing on each api
+email button in teacher profile
+correct email process
 

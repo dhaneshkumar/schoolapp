@@ -22,6 +22,6 @@ public class Startscreen extends ActionBarActivity{
                 Startscreen.this.startActivity(mainIntent);
                 Startscreen.this.finish();
             }
-        }, 2000);
+        }, 500);
 	}
 }
