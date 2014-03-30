@@ -48,8 +48,7 @@ public class WeekdayArrayAdapter extends ArrayAdapter<String> {
 		} else {
 			textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 11);
 		}
-		textView.setTextColor(textColor);                          //**************< WEEK DASYS TEXT SETTING>************************
-		
+		textView.setTextColor(textColor);
 		//textView.setBackgroundColor(Color.parseColor("#aba8a8"));
 		textView.setGravity(Gravity.CENTER);
 		return textView;

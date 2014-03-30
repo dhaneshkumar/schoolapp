@@ -45,6 +45,7 @@
         <activity android:name="com.example.schoolapp.profile_student"></activity>
         <activity android:name="com.example.schoolapp.profile_parent"></activity>
         <activity android:name="com.example.schoolapp.TeacherAttandance"></activity>
+         <activity android:name="com.example.schoolapp.TeacherAttandanceSetup"></activity>
         <activity  android:name="com.example.schoolapp.AcadCalender"></activity>
         <activity  android:name="com.example.schoolapp.Leaveapp"></activity>
         <activity  android:name="com.example.schoolapp.Attendance"></activity>

@@ -95,7 +95,7 @@ import android.widget.TextView;
            	 
            	 //text1 details
              TextView text1 = new TextView(getActivity());
-         	 text1.setText(user.get("from"));
+         	 text1.setText(user.get("from") + " - " + user.get("to"));
            	 text1.setPadding(10, 6, 10, 6);
            	 text1.setWidth(0);
            	 text1.setTextSize(15);

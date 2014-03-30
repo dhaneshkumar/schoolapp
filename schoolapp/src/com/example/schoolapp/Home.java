@@ -1,6 +1,7 @@
 package com.example.schoolapp;
 
 import library.utils;
+import nav_drawer.commonDrawer;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -11,7 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import nav_drawer.commonDrawer;
+import android.widget.Toast;
 
 public class Home extends commonDrawer{
 	TextView name;
@@ -23,11 +24,12 @@ public class Home extends commonDrawer{
     TextView adetails;
     TextView atitle;
     TextView asender;
+    int backCount=0;
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		
+		backCount=0;
 		
 		utils.ls("entered in home page");
 		LayoutInflater inflater = (LayoutInflater) this
@@ -122,14 +124,25 @@ public class Home extends commonDrawer{
 		utils.ls("entered in home page5");
 	}
 	
+	
+	
 	public void onBackPressed() {
 		   //Log.i("HA", "Finishing");
 			
+		
+		if(backCount==1){
 		   Intent intent = new Intent(Intent.ACTION_MAIN);
 		   intent.addCategory(Intent.CATEGORY_HOME);
 		   intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		   
 		   startActivity(intent);
+		}
+		else{
+			backCount++;
+			
+		Toast.makeText(getApplicationContext(), "Press again to Exit", 
+				   Toast.LENGTH_SHORT).show();
+		}
 		 }
 
 }

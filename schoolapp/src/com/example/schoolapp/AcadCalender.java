@@ -76,9 +76,15 @@ public class AcadCalender extends commonDrawer{
 					//		greenDate);
 					
 					utils.ls("entered in acad calendar ------");
-					caldroidFragment.setTextColorForDate(R.color.grey, blueDate);
+					
+					//****************************< ALL EVENT'S TEXT COLOR >*****************************************
+					caldroidFragment.setTextColorForDate(R.color.white, blueDate);
+					
+					//****************************< ALL EVENT'S BACKGROUND COLOR >*****************************************
+					
 					caldroidFragment.setBackgroundResourceForDate(R.drawable.absent,
 							blueDate);
+					
 					
 					utils.ls("entered in acad calendar ------111");
 				//	caldroidFragment.refreshView();

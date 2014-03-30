@@ -11,28 +11,52 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
-        public static int app_back_color=0x7f040009;
+        public static int Black=0x7f040022;
+        public static int Blue=0x7f040021;
+        public static int Gray=0x7f040023;
+        public static int GrayHot=0x7f040025;
+        public static int GrayLight=0x7f040024;
+        public static int app_back_color=0x7f04001d;
         public static int caldroid_black=0x7f040002;
         public static int caldroid_darker_gray=0x7f040006;
         public static int caldroid_gray=0x7f040005;
         /**  A dark Holo shade of blue 
          */
-        public static int caldroid_holo_blue_dark=0x7f04000c;
+        public static int caldroid_holo_blue_dark=0x7f04000a;
         /**  A light Holo shade of blue 
          */
-        public static int caldroid_holo_blue_light=0x7f04000b;
+        public static int caldroid_holo_blue_light=0x7f040009;
         /**  For settings framework 
          */
         public static int caldroid_lighter_gray=0x7f040004;
         /**  A really bright Holo shade of blue 
          */
-        public static int caldroid_sky_blue=0x7f04000d;
+        public static int caldroid_sky_blue=0x7f04000b;
         public static int caldroid_transparent=0x7f040003;
         public static int caldroid_white=0x7f040000;
         public static int cgray=0x7f040007;
+        public static int contact_back_color=0x7f04001b;
+        public static int contact_font_color=0x7f04001c;
+        public static int counter_text_bg=0x7f040019;
+        public static int counter_text_color=0x7f04001a;
+        public static int darkBlue=0x7f040014;
         public static int green=0x7f040001;
-        public static int offwhite=0x7f04000a;
-        public static int profile_selected=0x7f040008;
+        public static int grey=0x7f04000e;
+        public static int gunmetal=0x7f040011;
+        public static int lightBlue=0x7f040010;
+        public static int lightGrey=0x7f040013;
+        public static int list_background=0x7f040016;
+        public static int list_background_pressed=0x7f040017;
+        public static int list_divider=0x7f040018;
+        public static int list_item_title=0x7f040015;
+        public static int offwhite=0x7f040008;
+        public static int profile_font_color=0x7f04001e;
+        public static int profile_selected=0x7f04001f;
+        public static int profile_selected123=0x7f040020;
+        public static int red=0x7f04000c;
+        public static int silver=0x7f04000f;
+        public static int slateGrey=0x7f040012;
+        public static int white=0x7f04000d;
     }
     public static final class drawable {
         public static int calendar_next_arrow=0x7f020000;

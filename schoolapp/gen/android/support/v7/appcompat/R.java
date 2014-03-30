@@ -133,9 +133,9 @@ public final class R {
 	}
 	public static final class color {
 		public static final int abc_search_url_text_holo = 0x7f050029;
-		public static final int abc_search_url_text_normal = 0x7f05000e;
-		public static final int abc_search_url_text_pressed = 0x7f050010;
-		public static final int abc_search_url_text_selected = 0x7f05000f;
+		public static final int abc_search_url_text_normal = 0x7f050026;
+		public static final int abc_search_url_text_pressed = 0x7f050028;
+		public static final int abc_search_url_text_selected = 0x7f050027;
 	}
 	public static final class dimen {
 		public static final int abc_action_bar_default_height = 0x7f0a0002;

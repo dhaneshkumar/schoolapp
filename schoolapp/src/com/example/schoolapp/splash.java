@@ -1,19 +1,15 @@
 package com.example.schoolapp;
 
 import library.DatabaseHandler;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 public class splash extends ActionBarActivity{
@@ -59,6 +55,13 @@ public class splash extends ActionBarActivity{
 			db.updateCount();
 		}
 		
+		
+		EditText username =(EditText) findViewById(R.id.username);
+		EditText password =(EditText) findViewById(R.id.password);
+		
+		//removing focus from username entry
+		username.setFocusable(false);
+		password.setFocusable(false);
 		
 		
 		TextView school=(TextView) findViewById(R.id.signin);

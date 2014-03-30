@@ -5,14 +5,11 @@
     <color name="green">#7bc37a</color>
     <color name="caldroid_black">#000000</color>
     <color name="caldroid_transparent">#00000000</color>
-    
     <!-- For settings framework -->
     <color name="caldroid_lighter_gray">#ddd</color>
     <color name="caldroid_gray">#CCC</color>
     <color name="caldroid_darker_gray">#aaa</color>
      <color name="cgray">#aba8a8</color>
-     <color name="profile_selected">#0091c1</color>
-      <color name="app_back_color">#c2c8d6</color>
      <color name="offwhite">#e7e7e7</color>
     <!-- A light Holo shade of blue -->
     <color name="caldroid_holo_blue_light">#ff33b5e5</color>
@@ -20,5 +17,31 @@
     <color name="caldroid_holo_blue_dark">#ff0099cc</color>
     <!-- A really bright Holo shade of blue -->
     <color name="caldroid_sky_blue">#FFA3E8F7</color>
+    <color name="red">#ffff0000</color>
+    <color name="white">#fff</color>
+    <color name="grey">#808080</color>
+    <color name="silver">#C0C0C0</color>
+    <color name="lightBlue">#ADD8E6</color>
+    <color name="gunmetal">#2C3539</color>
+    <color name="slateGrey">#6D7B8D</color>
+    <color name="lightGrey">#F0F0F0</color>
+    <color name="darkBlue">#0099FF</color>
+    <color name="list_item_title">#fff</color>
+    <color name="list_background">#fff</color>
+    <color name="list_background_pressed">#0091c1</color>
+    <color name="list_divider">#272727</color>
+    <color name="counter_text_bg">#626262</color>
+    <color name="counter_text_color">#c5c4c4</color>
+    <color name="contact_back_color">#f7f7f7</color>
+    <color name="contact_font_color">#4c4c4a</color>
+    <color name="app_back_color">#c2c8d6</color>
+    <color name="profile_font_color">#000</color>
+    <color name="profile_selected">#0091c1</color>
+    <color name="profile_selected123">#58a533</color>
+    <color name="Blue">#2980b9</color>
+    <color name="Black">#000000</color>
+    <color name="Gray">#c9c9c9</color>
+    <color name="GrayLight">#eeeeee</color>
+    <color name="GrayHot">#272727</color>
 
 </resources>

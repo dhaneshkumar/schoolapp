@@ -931,56 +931,56 @@ containing a value of this type.
         public static final int abc_split_action_bar_is_narrow=0x7f090002;
     }
     public static final class color {
-        public static final int Black=0x7f050025;
-        public static final int Blue=0x7f050024;
-        public static final int Gray=0x7f050026;
-        public static final int GrayHot=0x7f050028;
-        public static final int GrayLight=0x7f050027;
+        public static final int Black=0x7f050022;
+        public static final int Blue=0x7f050021;
+        public static final int Gray=0x7f050023;
+        public static final int GrayHot=0x7f050025;
+        public static final int GrayLight=0x7f050024;
         public static final int abc_search_url_text_holo=0x7f050029;
-        public static final int abc_search_url_text_normal=0x7f05000e;
-        public static final int abc_search_url_text_pressed=0x7f050010;
-        public static final int abc_search_url_text_selected=0x7f05000f;
-        public static final int app_back_color=0x7f050009;
+        public static final int abc_search_url_text_normal=0x7f050026;
+        public static final int abc_search_url_text_pressed=0x7f050028;
+        public static final int abc_search_url_text_selected=0x7f050027;
+        public static final int app_back_color=0x7f05001d;
         public static final int caldroid_black=0x7f050002;
         public static final int caldroid_darker_gray=0x7f050006;
         public static final int caldroid_gray=0x7f050005;
         /**  A dark Holo shade of blue 
          */
-        public static final int caldroid_holo_blue_dark=0x7f05000c;
+        public static final int caldroid_holo_blue_dark=0x7f05000a;
         /**  A light Holo shade of blue 
          */
-        public static final int caldroid_holo_blue_light=0x7f05000b;
+        public static final int caldroid_holo_blue_light=0x7f050009;
         /**  For settings framework 
          */
         public static final int caldroid_lighter_gray=0x7f050004;
         /**  A really bright Holo shade of blue 
          */
-        public static final int caldroid_sky_blue=0x7f05000d;
+        public static final int caldroid_sky_blue=0x7f05000b;
         public static final int caldroid_transparent=0x7f050003;
         public static final int caldroid_white=0x7f050000;
         public static final int cgray=0x7f050007;
-        public static final int contact_back_color=0x7f050020;
-        public static final int contact_font_color=0x7f050021;
-        public static final int counter_text_bg=0x7f05001e;
-        public static final int counter_text_color=0x7f05001f;
-        public static final int darkBlue=0x7f050019;
+        public static final int contact_back_color=0x7f05001b;
+        public static final int contact_font_color=0x7f05001c;
+        public static final int counter_text_bg=0x7f050019;
+        public static final int counter_text_color=0x7f05001a;
+        public static final int darkBlue=0x7f050014;
         public static final int green=0x7f050001;
-        public static final int grey=0x7f050013;
-        public static final int gunmetal=0x7f050016;
-        public static final int lightBlue=0x7f050015;
-        public static final int lightGrey=0x7f050018;
-        public static final int list_background=0x7f05001b;
-        public static final int list_background_pressed=0x7f05001c;
-        public static final int list_divider=0x7f05001d;
-        public static final int list_item_title=0x7f05001a;
-        public static final int offwhite=0x7f05000a;
-        public static final int profile_font_color=0x7f050022;
-        public static final int profile_selected=0x7f050008;
-        public static final int profile_selected123=0x7f050023;
-        public static final int red=0x7f050011;
-        public static final int silver=0x7f050014;
-        public static final int slateGrey=0x7f050017;
-        public static final int white=0x7f050012;
+        public static final int grey=0x7f05000e;
+        public static final int gunmetal=0x7f050011;
+        public static final int lightBlue=0x7f050010;
+        public static final int lightGrey=0x7f050013;
+        public static final int list_background=0x7f050016;
+        public static final int list_background_pressed=0x7f050017;
+        public static final int list_divider=0x7f050018;
+        public static final int list_item_title=0x7f050015;
+        public static final int offwhite=0x7f050008;
+        public static final int profile_font_color=0x7f05001e;
+        public static final int profile_selected=0x7f05001f;
+        public static final int profile_selected123=0x7f050020;
+        public static final int red=0x7f05000c;
+        public static final int silver=0x7f05000f;
+        public static final int slateGrey=0x7f050012;
+        public static final int white=0x7f05000d;
     }
     public static final class dimen {
         /**  Default height of an action bar. 
@@ -1253,7 +1253,7 @@ containing a value of this type.
         public static final int up=0x7f0200ae;
     }
     public static final class id {
-        public static final int LinearLayout=0x7f0800a9;
+        public static final int LinearLayout=0x7f0800ab;
         public static final int action_bar=0x7f08001c;
         public static final int action_bar_activity_content=0x7f080015;
         public static final int action_bar_container=0x7f08001b;
@@ -1265,7 +1265,7 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f080016;
         public static final int action_menu_presenter=0x7f080017;
         public static final int action_mode_close_button=0x7f080024;
-        public static final int action_settings=0x7f0800ab;
+        public static final int action_settings=0x7f0800ad;
         public static final int activity_chooser_view_content=0x7f080025;
         public static final int adate=0x7f080056;
         public static final int adate1=0x7f080050;
@@ -1282,8 +1282,8 @@ containing a value of this type.
         public static final int attitle1=0x7f08004d;
         public static final int authority=0x7f08004a;
         public static final int beginning=0x7f080011;
-        public static final int blog=0x7f0800a5;
-        public static final int blog_tx=0x7f0800a4;
+        public static final int blog=0x7f0800a7;
+        public static final int blog_tx=0x7f0800a6;
         public static final int calendar1=0x7f08003e;
         public static final int calendar_gridview=0x7f080059;
         public static final int calendar_left_arrow=0x7f080043;
@@ -1301,8 +1301,8 @@ containing a value of this type.
         public static final int contactdetails=0x7f08008a;
         public static final int contactno=0x7f08007f;
         public static final int counter=0x7f08005a;
-        public static final int daily_attendance_tx=0x7f0800a6;
-        public static final int dailyattendance=0x7f0800a7;
+        public static final int daily_attendance_tx=0x7f0800a8;
+        public static final int dailyattendance=0x7f0800a9;
         public static final int default_activity_button=0x7f080028;
         public static final int description_txt=0x7f080060;
         public static final int dialog=0x7f08000e;
@@ -1317,15 +1317,15 @@ containing a value of this type.
         public static final int end_time_txt=0x7f08005f;
         public static final int ending_date_txt=0x7f080070;
         public static final int event_display=0x7f08003f;
-        public static final int event_tx=0x7f0800a2;
-        public static final int events=0x7f0800a3;
+        public static final int event_tx=0x7f0800a4;
+        public static final int events=0x7f0800a5;
         public static final int expand_activities_button=0x7f080026;
         public static final int expanded_menu=0x7f08002c;
         public static final int extra_details_txt=0x7f080063;
-        public static final int grades=0x7f0800a1;
-        public static final int grades_tx=0x7f0800a0;
-        public static final int graph_report=0x7f080094;
-        public static final int graphlayoutview=0x7f080093;
+        public static final int grades=0x7f0800a3;
+        public static final int grades_tx=0x7f0800a2;
+        public static final int graph_report=0x7f080096;
+        public static final int graphlayoutview=0x7f080095;
         public static final int home=0x7f080014;
         public static final int homeAsUp=0x7f080005;
         public static final int icon=0x7f08002a;
@@ -1339,26 +1339,27 @@ containing a value of this type.
         public static final int list=0x7f08003d;
         public static final int listMode=0x7f080001;
         public static final int list_item=0x7f080029;
-        public static final int lvExp=0x7f08009d;
+        public static final int lvExp=0x7f08009f;
         public static final int marks_txt=0x7f080079;
-        public static final int maxgreenid=0x7f080097;
-        public static final int maxtxtid=0x7f080098;
+        public static final int maxgreenid=0x7f080099;
+        public static final int maxtxtid=0x7f08009a;
         public static final int middle=0x7f080012;
-        public static final int minredid=0x7f080099;
-        public static final int mintxtid=0x7f08009a;
+        public static final int minredid=0x7f08009b;
+        public static final int mintxtid=0x7f08009c;
         public static final int months_infinite_pager=0x7f080047;
-        public static final int mySimpleXYPlot=0x7f080096;
+        public static final int mySimpleXYPlot=0x7f080098;
         public static final int name=0x7f08007c;
         public static final int never=0x7f080009;
         public static final int none=0x7f080010;
         public static final int noofstudents=0x7f080088;
         public static final int normal=0x7f080000;
-        public static final int notification_tx=0x7f08009e;
-        public static final int notifications=0x7f08009f;
+        public static final int notification_tx=0x7f0800a0;
+        public static final int notifications=0x7f0800a1;
         public static final int others=0x7f08004b;
-        public static final int pager=0x7f0800aa;
+        public static final int pager=0x7f0800ac;
         public static final int parentLayout=0x7f08008b;
         public static final int parents=0x7f080083;
+        public static final int password=0x7f080077;
         public static final int phoneText1=0x7f080065;
         public static final int phoneText23=0x7f080066;
         public static final int phoneTexxt2=0x7f080067;
@@ -1366,14 +1367,14 @@ containing a value of this type.
         public static final int preview=0x7f080075;
         public static final int progress_circular=0x7f080018;
         public static final int progress_horizontal=0x7f080019;
-        public static final int quiz_no_txt=0x7f080077;
-        public static final int quiz_type_txt=0x7f080078;
+        public static final int quiz_no_txt=0x7f080092;
+        public static final int quiz_type_txt=0x7f080093;
         public static final int radio=0x7f08002f;
         public static final int rank_txt=0x7f08008e;
         public static final int reason_txt=0x7f080072;
         public static final int relativeLayout1=0x7f08006e;
         public static final int remarks_txt=0x7f080090;
-        public static final int s1=0x7f0800a8;
+        public static final int s1=0x7f0800aa;
         public static final int school=0x7f080082;
         public static final int schoolname=0x7f080085;
         public static final int search_badge=0x7f080032;
@@ -1392,18 +1393,18 @@ containing a value of this type.
         public static final int showCustom=0x7f080007;
         public static final int showHome=0x7f080004;
         public static final int showTitle=0x7f080006;
-        public static final int signin=0x7f080076;
+        public static final int signin=0x7f080078;
         public static final int special_guest_txt=0x7f080061;
         public static final int split_action_bar=0x7f08001e;
         public static final int start_date_txt=0x7f08005c;
         public static final int start_time_txt=0x7f08005d;
         public static final int starting_date_txt=0x7f08006f;
         public static final int studentLayout=0x7f080084;
-        public static final int subject_txt=0x7f080092;
+        public static final int subject_txt=0x7f080094;
         public static final int subjects=0x7f08007e;
         public static final int submit=0x7f080074;
         public static final int submit_area=0x7f080039;
-        public static final int subtext=0x7f080095;
+        public static final int subtext=0x7f080097;
         public static final int tabMode=0x7f080002;
         public static final int tableRow2=0x7f080069;
         public static final int tableRow4=0x7f08003c;
@@ -1420,11 +1421,12 @@ containing a value of this type.
         public static final int top_action_bar=0x7f080020;
         public static final int up=0x7f080021;
         public static final int useLogo=0x7f080003;
+        public static final int username=0x7f080076;
         public static final int venue_txt=0x7f080062;
         public static final int weekday_gridview=0x7f080046;
         public static final int withText=0x7f08000c;
-        public static final int yourgreenid=0x7f08009b;
-        public static final int yourtxtid=0x7f08009c;
+        public static final int yourgreenid=0x7f08009d;
+        public static final int yourtxtid=0x7f08009e;
     }
     public static final class integer {
         /**  The maximum number of action buttons that should be permitted within
