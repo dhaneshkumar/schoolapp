@@ -19,9 +19,9 @@
           android:gravity="center_vertical"
           android:paddingBottom="4dp"
           android:paddingLeft="10dp"
-          android:paddingTop="4dp"
+          android:paddingTop="5dp"
           android:text="8:00 -8:30 PM"
-          android:textSize="16sp" />
+          android:textSize="17sp" />
 
       <TextView
           android:id="@+id/textView2"
@@ -30,7 +30,7 @@
           android:layout_alignParentRight="true"
           android:layout_below="@+id/marks_txt"
           android:paddingBottom="4dp"
-          android:paddingRight="5dp"
+          android:paddingRight="8dp"
           android:text="dr. kuandh khanna"
           android:textSize="14sp" />
 

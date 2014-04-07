@@ -60,6 +60,7 @@ import android.widget.TextView;
 			return rootView;
 		}
 		
+		
 		@Override
 		public void onActivityCreated(Bundle savedInstanceState) {
 		    super.onActivityCreated(savedInstanceState);

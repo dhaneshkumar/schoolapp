@@ -1,6 +1,7 @@
 package com.example.schoolapp;
 
 import library.DatabaseHandler;
+import library.utils;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Typeface;
@@ -18,6 +19,9 @@ public class splash extends ActionBarActivity{
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login);
+		
+		
+		utils.ls("entered in splash -----------------");
 		
 		/*
 		 * Intialising all tables
@@ -41,7 +45,7 @@ public class splash extends ActionBarActivity{
 				  }
 		  }
     
-		
+	/*	
 		DatabaseHandler db = new DatabaseHandler(this);
 				
 		String[] tableList=DatabaseHandler.tableList;
@@ -54,8 +58,9 @@ public class splash extends ActionBarActivity{
 			db.setDefaultID();
 			db.updateCount();
 		}
+		*/
 		
-		
+		  
 		EditText username =(EditText) findViewById(R.id.username);
 		EditText password =(EditText) findViewById(R.id.password);
 		
@@ -78,6 +83,13 @@ public class splash extends ActionBarActivity{
 		});
 		
 	}
+	
+	 public void onBackPressed() {
+		 Intent intent = new Intent(Intent.ACTION_MAIN);
+		   intent.addCategory(Intent.CATEGORY_HOME);
+		   intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		   startActivity(intent);
+		 }
 	
 	
 }

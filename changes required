@@ -1,4 +1,3 @@
-one time loading of data from server
 check circular image for api lower than 11
 acad calender. + eventTable
 switch orientation problem
@@ -14,5 +13,6 @@ email button in teacher profile
 correct email process
 two time exit from app
 on drag upper show refreshing.
-add progress bar..
+while downloading data set timelimit : if time limit exceed than 20 show "poor internet connection"
+
 

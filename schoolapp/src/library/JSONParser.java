@@ -33,11 +33,16 @@ public class JSONParser extends AsyncTask<List<NameValuePair>, Void, JSONObject>
     // constructor
     public JSONParser(String url) {
     	URL = url;
+    	
+    	 System.out.println("start json parser :-------------");
     }
 
 	@Override
 	protected JSONObject doInBackground(List<NameValuePair>... params) {
 		// Making HTTP request
+		
+		 System.out.println("background under background starting :-------------");
+		
         try {
             // defaultHttpClient
             DefaultHttpClient httpClient = new DefaultHttpClient();

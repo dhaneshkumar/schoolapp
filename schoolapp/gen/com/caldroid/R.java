@@ -56,9 +56,9 @@ public final class R {
 		public static final int left_arrow = 0x7f020082;
 		public static final int next = 0x7f02008a;
 		public static final int previous = 0x7f020090;
-		public static final int red_border = 0x7f020093;
-		public static final int red_border_gray_bg = 0x7f020094;
-		public static final int right_arrow = 0x7f020097;
+		public static final int red_border = 0x7f020094;
+		public static final int red_border_gray_bg = 0x7f020095;
+		public static final int right_arrow = 0x7f020098;
 	}
 	public static final class id {
 		public static final int calendar_gridview = 0x7f080059;
